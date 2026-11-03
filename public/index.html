@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gym</title>
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Gym">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="mark" aria-hidden="true"></span>Gym</div>
+  <nav class="tabs" id="tabs" aria-label="Routines"></nav>
+</header>
+<main id="main"><p class="loading">Loading routines…</p></main>
+<footer class="foot">
+  <button id="wake" class="wake" type="button" hidden aria-pressed="false">Keep screen on</button>
+  <span id="status"></span>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

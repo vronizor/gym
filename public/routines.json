@@ -1,0 +1,595 @@
+{
+  "updated": "2026-11-03",
+  "routines": [
+    {
+      "id": "ski-cycling",
+      "name": "Cycling & ski prep",
+      "duration": "45 min",
+      "format": "Circuit, 3 rounds. 60–90 s rest between exercises, 2 min between rounds.",
+      "warmup": [
+        "2 min easy treadmill walk or bike",
+        "10 bodyweight squats",
+        "10 leg swings per leg, front-back and side-side",
+        "10 arm circles each way"
+      ],
+      "blocks": [
+        {
+          "title": "Circuit",
+          "items": [
+            { "ex": "goblet-squat", "dose": "10–12" },
+            { "ex": "sl-rdl", "dose": "8 per leg" },
+            { "ex": "lateral-lunge", "dose": "8 per side", "tag": "ski" },
+            { "ex": "db-row", "dose": "10 per arm", "tag": "posture" },
+            { "ex": "wall-sit", "dose": "30–45 s", "tag": "ski" },
+            { "ex": "plank", "dose": "30–45 s" },
+            { "ex": "glute-bridge", "dose": "15" }
+          ]
+        },
+        {
+          "title": "Optional finisher",
+          "items": [
+            { "ex": "jump-squat", "dose": "3 × 8", "tag": "ski" }
+          ]
+        }
+      ],
+      "notes": [
+        "Add a little weight when the last round still feels moderate.",
+        "Skip the finisher if your legs are already shaky; landing quality matters more than volume."
+      ]
+    },
+    {
+      "id": "short",
+      "name": "Short session",
+      "duration": "20 min",
+      "format": "Circuit, 3 rounds. 45–60 s rest between exercises.",
+      "warmup": [
+        "10 bodyweight squats",
+        "10 leg swings per leg",
+        "10 arm circles each way"
+      ],
+      "blocks": [
+        {
+          "title": "Circuit",
+          "items": [
+            { "ex": "goblet-squat", "dose": "10" },
+            { "ex": "db-row", "dose": "10 per arm" },
+            { "ex": "sl-rdl", "dose": "8 per leg" }
+          ]
+        },
+        {
+          "title": "If you have 3 more minutes",
+          "items": [
+            { "ex": "plank", "dose": "2 × 30–45 s" }
+          ]
+        }
+      ],
+      "notes": [
+        "One squat, one pull, one hinge: the minimum that keeps the main patterns going."
+      ]
+    },
+    {
+      "id": "upper",
+      "name": "Upper body & posture",
+      "duration": "35 min",
+      "format": "Supersets: do A1 then A2, rest 60–90 s, repeat for 3 rounds. Then B, then C.",
+      "warmup": [
+        "2 min rowing machine or arm circles",
+        "10 band pull-aparts or light rear-delt flys",
+        "5 slow cat-cows"
+      ],
+      "blocks": [
+        {
+          "title": "A",
+          "items": [
+            { "ex": "db-row", "dose": "3 × 10 per arm", "label": "A1", "tag": "posture" },
+            { "ex": "db-bench-press", "dose": "3 × 8–10", "label": "A2" }
+          ]
+        },
+        {
+          "title": "B",
+          "items": [
+            { "ex": "half-kneeling-press", "dose": "3 × 8 per arm", "label": "B1" },
+            { "ex": "face-pull", "dose": "3 × 12–15", "label": "B2", "tag": "posture" }
+          ]
+        },
+        {
+          "title": "C · core",
+          "items": [
+            { "ex": "dead-bug", "dose": "3 × 8 per side", "label": "C1" },
+            { "ex": "side-plank", "dose": "3 × 20–30 s per side", "label": "C2" }
+          ]
+        }
+      ],
+      "notes": [
+        "Pulling volume is at least equal to pushing on purpose: that balance is what helps desk posture."
+      ]
+    },
+    {
+      "id": "mobility",
+      "name": "Mobility",
+      "duration": "15 min",
+      "format": "One pass, slow and controlled. Breathe out into each stretch. No pain, only stretch.",
+      "warmup": [],
+      "blocks": [
+        {
+          "title": "Spine",
+          "items": [
+            { "ex": "cat-cow", "dose": "8 slow reps" },
+            { "ex": "open-book", "dose": "6 per side" }
+          ]
+        },
+        {
+          "title": "Hips",
+          "items": [
+            { "ex": "hip-90-90", "dose": "8 switches" },
+            { "ex": "worlds-greatest", "dose": "4 per side" },
+            { "ex": "couch-stretch", "dose": "45–60 s per side", "tag": "cycling" }
+          ]
+        },
+        {
+          "title": "Wind down",
+          "items": [
+            { "ex": "hamstring-stretch", "dose": "45 s per side" },
+            { "ex": "childs-pose", "dose": "1 min" }
+          ]
+        }
+      ],
+      "notes": [
+        "Good on rest days, after a ride, or as a cooldown after any of the other routines.",
+        "The couch stretch targets the hip flexors that stay shortened on the bike and at the desk."
+      ]
+    },
+    {
+      "id": "bike-strength",
+      "name": "Strength + indoor ride",
+      "duration": "60–70 min",
+      "format": "Strength first, then ride. Straight sets with 90–120 s rest: heavier and fewer reps than the circuit days.",
+      "warmup": [
+        "10 min easy spin, last 2 min a bit brisker",
+        "10 bodyweight squats",
+        "5 per side of the world's greatest stretch"
+      ],
+      "blocks": [
+        {
+          "title": "Strength · 25 min",
+          "items": [
+            { "ex": "bulgarian-split-squat", "dose": "3 × 6–8 per leg" },
+            { "ex": "sl-rdl", "dose": "3 × 6–8 per leg" },
+            { "ex": "step-up", "dose": "2 × 8 per leg" },
+            { "ex": "plank", "dose": "2 × 45 s" }
+          ]
+        },
+        {
+          "title": "Ride · 30–40 min",
+          "items": [
+            { "ex": "ride-endurance", "dose": "30–40 min" },
+            { "ex": "ride-tempo", "dose": "or 3 × 8 min" }
+          ]
+        }
+      ],
+      "notes": [
+        "Why strength first: in the off-season the lifting is the priority, and it needs fresh legs for good form. Steady riding is low-skill and tolerates fatigue well.",
+        "If a hard interval session is the priority that day, flip the order or do strength on a different day. Don't stack max efforts after heavy legs.",
+        "Pick the endurance ride by default and the tempo option at most once a week."
+      ]
+    }
+  ],
+  "exercises": {
+    "goblet-squat": {
+      "name": "Goblet squat",
+      "equipment": "1 dumbbell",
+      "setup": [
+        "Hold one dumbbell vertically at your chest, hands cupping the top end",
+        "Feet shoulder-width, toes slightly out"
+      ],
+      "movement": [
+        "Chest up, core tight",
+        "Sit down and back until thighs are about parallel",
+        "Elbows track between the knees at the bottom",
+        "Push through the whole foot to stand"
+      ],
+      "cues": [
+        "Dumbbell stays glued to the chest",
+        "Knees follow the toes, never cave in",
+        "Weight in mid-foot and heels"
+      ],
+      "easier": "Bodyweight, or squat to a bench",
+      "harder": "Heavier dumbbell, or a 3 s lowering"
+    },
+    "sl-rdl": {
+      "name": "Single-leg Romanian deadlift",
+      "equipment": "1–2 dumbbells",
+      "setup": [
+        "Stand on one leg, soft knee",
+        "Dumbbell in the opposite hand, or one in each hand for balance"
+      ],
+      "movement": [
+        "Hinge at the hip, free leg travels straight back",
+        "Lower the weight until you feel the hamstring stretch or your back starts to round",
+        "Squeeze the glute of the standing leg to come up"
+      ],
+      "cues": [
+        "A hinge, not a squat: little knee bend",
+        "Back leg, torso and arm move as one line",
+        "Hips stay square to the floor"
+      ],
+      "easier": "Tap the free foot down between reps, or hold a rack for balance",
+      "harder": "Heavier weight, or a pause at the bottom"
+    },
+    "lateral-lunge": {
+      "name": "Lateral lunge",
+      "equipment": "Bodyweight or 1 dumbbell",
+      "setup": [
+        "Feet together, dumbbell at the chest if loaded"
+      ],
+      "movement": [
+        "Big step to the side",
+        "Sit the hips back over the stepping leg; the other leg stays straight",
+        "Push off to return to the start"
+      ],
+      "cues": [
+        "Both feet point forward, heels down",
+        "Chest up, hips back like a one-sided squat"
+      ],
+      "easier": "Shorter step, less depth",
+      "harder": "Goblet hold, or a slide back to centre without stopping"
+    },
+    "db-row": {
+      "name": "One-arm dumbbell row",
+      "equipment": "1 dumbbell, bench",
+      "setup": [
+        "Left hand and left knee on the bench, right foot on the floor",
+        "Dumbbell in the right hand, back flat and close to parallel"
+      ],
+      "movement": [
+        "Pull the dumbbell toward your hip",
+        "Drive the elbow back and squeeze the shoulder blade",
+        "Lower with control, then switch sides after all reps"
+      ],
+      "cues": [
+        "Elbow to hip, not hand to shoulder",
+        "No torso twist"
+      ],
+      "easier": "Lighter dumbbell",
+      "harder": "Pause 1 s at the top",
+      "alt": "No bench: bent-over row with two dumbbells, hinged at the hips"
+    },
+    "wall-sit": {
+      "name": "Wall sit",
+      "equipment": "Wall",
+      "setup": [
+        "Back flat on a wall, feet about 60 cm out"
+      ],
+      "movement": [
+        "Slide down until knees are at about 90°",
+        "Hold, breathing steadily"
+      ],
+      "cues": [
+        "Knees over ankles, not past the toes",
+        "Whole back stays on the wall"
+      ],
+      "easier": "Sit higher, around 120° at the knee",
+      "harder": "Dumbbell on the thighs, or longer holds"
+    },
+    "plank": {
+      "name": "Plank",
+      "equipment": "Mat",
+      "setup": [
+        "Forearms on the floor, elbows under shoulders",
+        "Body in one line from head to heels"
+      ],
+      "movement": [
+        "Hold, breathing normally"
+      ],
+      "cues": [
+        "Squeeze glutes, tuck ribs down",
+        "Hips neither sagging nor piked"
+      ],
+      "easier": "Knees down",
+      "harder": "Lift one foot, or reach one arm forward alternately"
+    },
+    "glute-bridge": {
+      "name": "Glute bridge",
+      "equipment": "Mat",
+      "setup": [
+        "On your back, knees bent, feet flat and hip-width"
+      ],
+      "movement": [
+        "Drive through the heels and lift the hips",
+        "Squeeze the glutes for 1 s at the top",
+        "Lower slowly"
+      ],
+      "cues": [
+        "Ribs down: lift with the hips, not by arching the lower back",
+        "Knees stay hip-width"
+      ],
+      "easier": "Smaller range",
+      "harder": "Single-leg: other knee pulled to the chest. Or a dumbbell on the hips"
+    },
+    "jump-squat": {
+      "name": "Jump squat",
+      "equipment": "Bodyweight",
+      "setup": [
+        "Feet shoulder-width"
+      ],
+      "movement": [
+        "Quarter to half squat, then jump up explosively",
+        "Land softly and sink straight into the next rep"
+      ],
+      "cues": [
+        "Quiet landings, knees out",
+        "Stop the set when landings get sloppy"
+      ],
+      "easier": "Squat with a calf raise, no jump",
+      "harder": "Lateral bounds, side to side"
+    },
+    "bulgarian-split-squat": {
+      "name": "Bulgarian split squat",
+      "equipment": "Bench, dumbbells",
+      "setup": [
+        "Rear foot laces-down on a bench behind you",
+        "Front foot far enough forward that the shin stays roughly vertical at the bottom"
+      ],
+      "movement": [
+        "Lower the back knee toward the floor",
+        "Push through the front heel to stand",
+        "All reps on one leg, then switch"
+      ],
+      "cues": [
+        "Most of the weight on the front leg",
+        "Torso tall, or a slight lean for more glute"
+      ],
+      "easier": "Bodyweight, or a regular split squat without the bench",
+      "harder": "Dumbbells in both hands, or a 3 s lowering"
+    },
+    "step-up": {
+      "name": "Step-up",
+      "equipment": "Box or bench, dumbbells",
+      "setup": [
+        "Box at about knee height, dumbbells at the sides"
+      ],
+      "movement": [
+        "Whole foot on the box, drive up through that heel",
+        "Stand tall, then step down with control"
+      ],
+      "cues": [
+        "Don't push off the back foot",
+        "Knee tracks over the toes"
+      ],
+      "easier": "Lower box, no weight",
+      "harder": "Higher box or heavier dumbbells"
+    },
+    "push-up": {
+      "name": "Push-up",
+      "equipment": "Bodyweight",
+      "setup": [
+        "Hands slightly wider than shoulders, body in a straight line"
+      ],
+      "movement": [
+        "Lower the chest to the floor, elbows at about 45°",
+        "Push back up"
+      ],
+      "cues": [
+        "Core tight, hips don't sag"
+      ],
+      "easier": "Hands on a bench, or knees down",
+      "harder": "Feet elevated, or slow lowering"
+    },
+    "db-bench-press": {
+      "name": "Dumbbell bench press",
+      "equipment": "2 dumbbells, bench",
+      "setup": [
+        "Lie on the bench, feet flat, dumbbells over the chest",
+        "Shoulder blades pulled back and down"
+      ],
+      "movement": [
+        "Lower the dumbbells to chest level, elbows at about 45°",
+        "Press up until arms are straight"
+      ],
+      "cues": [
+        "Wrists stacked over elbows",
+        "Control the lowering, don't bounce"
+      ],
+      "easier": "Lighter dumbbells",
+      "harder": "Heavier, or 3 s lowering",
+      "alt": "No bench free: push-ups"
+    },
+    "half-kneeling-press": {
+      "name": "Half-kneeling dumbbell press",
+      "equipment": "1 dumbbell, mat",
+      "setup": [
+        "Kneel on one knee, other foot in front",
+        "Dumbbell at the shoulder on the kneeling-leg side"
+      ],
+      "movement": [
+        "Press straight up until the arm is locked",
+        "Lower slowly back to the shoulder"
+      ],
+      "cues": [
+        "Squeeze the glute of the kneeling leg",
+        "Ribs down, no leaning back"
+      ],
+      "easier": "Lighter weight",
+      "harder": "Heavier, or a 2 s pause overhead"
+    },
+    "face-pull": {
+      "name": "Face pull",
+      "equipment": "Cable with rope",
+      "setup": [
+        "Rope attachment at about face height",
+        "Overhand grip, step back until arms are straight"
+      ],
+      "movement": [
+        "Pull the rope toward your forehead, splitting the ends apart",
+        "Finish with elbows high and hands beside the ears",
+        "Return slowly"
+      ],
+      "cues": [
+        "Light weight, feel the back of the shoulders",
+        "Don't lean back to move the weight"
+      ],
+      "easier": "Lighter weight",
+      "harder": "1 s pause at the end",
+      "alt": "No cable: bent-over rear-delt fly with light dumbbells"
+    },
+    "dead-bug": {
+      "name": "Dead bug",
+      "equipment": "Mat",
+      "setup": [
+        "On your back, arms straight up, knees bent at 90° above the hips"
+      ],
+      "movement": [
+        "Slowly lower one arm overhead and the opposite leg toward the floor",
+        "Return, then switch sides"
+      ],
+      "cues": [
+        "Lower back stays pressed into the floor",
+        "Exhale as you extend"
+      ],
+      "easier": "Move only the legs",
+      "harder": "Light dumbbell in the hands"
+    },
+    "side-plank": {
+      "name": "Side plank",
+      "equipment": "Mat",
+      "setup": [
+        "On your side, forearm on the floor, elbow under shoulder",
+        "Feet stacked, or top foot in front for balance"
+      ],
+      "movement": [
+        "Lift the hips into one straight line, head to feet",
+        "Hold"
+      ],
+      "cues": [
+        "Hips pushed slightly forward, not piked back"
+      ],
+      "easier": "Bottom knee down",
+      "harder": "Lift the top leg"
+    },
+    "cat-cow": {
+      "name": "Cat-cow",
+      "equipment": "Mat",
+      "setup": [
+        "On hands and knees, hands under shoulders, knees under hips"
+      ],
+      "movement": [
+        "Inhale: drop the belly, lift chest and tailbone",
+        "Exhale: round the back up, tuck the chin and tailbone"
+      ],
+      "cues": [
+        "Move one vertebra at a time, slowly"
+      ]
+    },
+    "open-book": {
+      "name": "Open book",
+      "equipment": "Mat",
+      "setup": [
+        "Lie on your side, knees bent at 90° and stacked, arms straight in front"
+      ],
+      "movement": [
+        "Sweep the top arm up and over to the other side, following it with your eyes",
+        "Let the chest open toward the ceiling, pause, return"
+      ],
+      "cues": [
+        "Knees stay together on the floor: the rotation comes from the upper back"
+      ]
+    },
+    "hip-90-90": {
+      "name": "90/90 hip switch",
+      "equipment": "Mat",
+      "setup": [
+        "Sit with both knees bent at 90°, one leg in front and one to the side"
+      ],
+      "movement": [
+        "Keeping feet on the floor, rotate both knees to the other side",
+        "Sit tall in each position for a breath"
+      ],
+      "cues": [
+        "Hands behind you for support if needed",
+        "Slow, no forcing"
+      ]
+    },
+    "worlds-greatest": {
+      "name": "World's greatest stretch",
+      "equipment": "Mat",
+      "setup": [
+        "Step into a long lunge, back knee down or hovering"
+      ],
+      "movement": [
+        "Both hands inside the front foot, drop the elbow toward the instep",
+        "Rotate and reach the inside arm to the ceiling",
+        "Return the hand, then switch sides"
+      ],
+      "cues": [
+        "Squeeze the back glute to open the hip flexor"
+      ]
+    },
+    "couch-stretch": {
+      "name": "Couch stretch",
+      "equipment": "Wall or bench, pad for the knee",
+      "setup": [
+        "Back knee on a pad near the wall, shin up the wall",
+        "Front foot planted in a lunge position"
+      ],
+      "movement": [
+        "Bring the torso upright",
+        "Squeeze the glute of the back leg and hold"
+      ],
+      "cues": [
+        "Tuck the pelvis under; don't arch the lower back",
+        "Back off if the knee complains"
+      ],
+      "easier": "Knee further from the wall, hands on the front knee"
+    },
+    "hamstring-stretch": {
+      "name": "Lying hamstring stretch",
+      "equipment": "Strap or towel",
+      "setup": [
+        "On your back, strap around one foot"
+      ],
+      "movement": [
+        "Raise the straight leg until you feel the stretch",
+        "Hold, breathing slowly"
+      ],
+      "cues": [
+        "Other leg stays long on the floor",
+        "Slight knee bend is fine"
+      ]
+    },
+    "childs-pose": {
+      "name": "Child's pose",
+      "equipment": "Mat",
+      "setup": [
+        "Kneel, big toes together, knees apart"
+      ],
+      "movement": [
+        "Sit back onto the heels and reach the arms forward",
+        "Breathe into the back of the ribs"
+      ]
+    },
+    "ride-endurance": {
+      "name": "Endurance ride",
+      "equipment": "Indoor bike",
+      "movement": [
+        "Steady effort, conversational pace",
+        "Cadence 85–95"
+      ],
+      "cues": [
+        "You should be able to speak in full sentences",
+        "Easy last 5 min"
+      ]
+    },
+    "ride-tempo": {
+      "name": "Tempo intervals",
+      "equipment": "Indoor bike",
+      "movement": [
+        "After 10 min easy: 3 × 8 min at a comfortably hard effort, 3 min easy between",
+        "5 min easy to finish"
+      ],
+      "cues": [
+        "Short phrases only, but well short of all-out",
+        "If the legs are toast from lifting, ride easy instead"
+      ]
+    }
+  }
+}
