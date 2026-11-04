@@ -3,26 +3,47 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Gym</title>
-<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
+<title>tally</title>
+<meta name="theme-color" content="#0F1110">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Gym">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="tally">
+<link rel="preload" href="fonts/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+try {
+  const t = localStorage.getItem("gym:theme");
+  if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+} catch {}
+</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="top">
-  <div class="brand"><span class="mark" aria-hidden="true"></span>Gym</div>
+  <div class="bar">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 120 120" aria-hidden="true">
+        <g stroke="currentColor" stroke-width="12" stroke-linecap="round">
+          <line x1="34" y1="28" x2="34" y2="92"/>
+          <line x1="60" y1="28" x2="60" y2="92"/>
+          <line x1="86" y1="28" x2="86" y2="92"/>
+        </g>
+        <line class="slash" x1="18" y1="84" x2="102" y2="36" stroke-width="12" stroke-linecap="round"/>
+      </svg>
+      <span>tally</span>
+    </div>
+    <div class="actions">
+      <button id="theme" class="pill" type="button" aria-label="Colour theme">Auto</button>
+      <button id="wake" class="pill" type="button" hidden aria-pressed="false">Screen on</button>
+    </div>
+  </div>
   <nav class="tabs" id="tabs" aria-label="Routines"></nav>
 </header>
 <main id="main"><p class="loading">Loading routines…</p></main>
-<footer class="foot">
-  <button id="wake" class="wake" type="button" hidden aria-pressed="false">Keep screen on</button>
-  <span id="status"></span>
-</footer>
+<footer class="foot"><span id="status"></span></footer>
 <script src="app.js"></script>
 </body>
 </html>

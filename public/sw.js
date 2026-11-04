@@ -1,5 +1,9 @@
-const VERSION = "gym-v1";
-const SHELL = ["./", "index.html", "app.js", "style.css", "manifest.webmanifest", "icon.svg", "icon-192.png", "icon-512.png", "routines.json"];
+const VERSION = "gym-v2";
+const SHELL = [
+  "./", "index.html", "app.js", "style.css", "manifest.webmanifest",
+  "icon.svg", "icon-192.png", "icon-512.png", "routines.json",
+  "fonts/inter-tight.woff2", "fonts/jetbrains-mono.woff2",
+];
 const DATA = "routines.json";
 const NETWORK_TIMEOUT_MS = 3000;
 

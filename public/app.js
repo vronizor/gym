@@ -1,5 +1,8 @@
-const STORE_KEY = "gym:last-routine";
+const ROUTINE_KEY = "gym:last-routine";
+const THEME_KEY = "gym:theme";
+const THEMES = ["auto", "light", "dark"];
 const TAGS = { ski: "Ski", posture: "Posture", cycling: "Cycling" };
+const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
 let data = null;
 
@@ -22,12 +25,38 @@ function list(tag, items) {
   return items && items.length ? h(tag, {}, items.map((t) => h("li", {}, t))) : null;
 }
 
-function store(get, value) {
-  try {
-    return get ? localStorage.getItem(STORE_KEY) : localStorage.setItem(STORE_KEY, value);
-  } catch {
-    return null;
-  }
+function load_(key) {
+  try { return localStorage.getItem(key); } catch { return null; }
+}
+
+function save(key, value) {
+  try { localStorage.setItem(key, value); } catch {}
+}
+
+function currentTheme() {
+  const t = load_(THEME_KEY);
+  return THEMES.includes(t) ? t : "auto";
+}
+
+function applyTheme(theme) {
+  const root = document.documentElement;
+  if (theme === "auto") delete root.dataset.theme;
+  else root.dataset.theme = theme;
+  const dark = theme === "dark" || (theme === "auto" && darkQuery.matches);
+  document.querySelector('meta[name="theme-color"]').content = dark ? "#0F1110" : "#F4F4EF";
+  const btn = document.getElementById("theme");
+  btn.textContent = theme;
+  btn.setAttribute("aria-label", `Colour theme: ${theme}. Tap to change.`);
+}
+
+function setupTheme() {
+  applyTheme(currentTheme());
+  document.getElementById("theme").addEventListener("click", () => {
+    const next = THEMES[(THEMES.indexOf(currentTheme()) + 1) % THEMES.length];
+    save(THEME_KEY, next);
+    applyTheme(next);
+  });
+  darkQuery.addEventListener("change", () => applyTheme(currentTheme()));
 }
 
 function exerciseCard(item, index) {
@@ -42,12 +71,12 @@ function exerciseCard(item, index) {
 
   return h("details", { class: "card" },
     h("summary", {},
-      h("span", { class: "num" }, item.label || String(index)),
-      h("span", {}, h("span", { class: "name" }, ex.name), tag, h("span", { class: "dose" }, item.dose)),
-      h("span", { class: "chev", "aria-hidden": "true" })
+      h("span", { class: "idx" }, item.label || String(index).padStart(2, "0")),
+      h("span", { class: "name" }, ex.name, tag),
+      h("span", { class: "dose" }, item.dose)
     ),
     h("div", { class: "detail" },
-      ex.equipment && h("p", { class: "equip" }, ex.equipment),
+      ex.equipment && h("p", { class: "kit" }, ex.equipment),
       ex.setup && h("h3", {}, "Setup"), list("ul", ex.setup),
       ex.movement && h("h3", {}, "Movement"), list("ol", ex.movement),
       ex.cues && h("h3", {}, "Key points"), list("ul", ex.cues),
@@ -59,8 +88,8 @@ function exerciseCard(item, index) {
 
 function renderRoutine(id) {
   const routine = data.routines.find((r) => r.id === id) || data.routines[0];
-  store(false, routine.id);
-  document.title = `${routine.name} · Gym`;
+  save(ROUTINE_KEY, routine.id);
+  document.title = `${routine.name} · tally`;
 
   for (const tab of document.querySelectorAll(".tab")) {
     const on = tab.dataset.id === routine.id;
@@ -69,16 +98,16 @@ function renderRoutine(id) {
   }
 
   let n = 0;
-  const main = document.getElementById("main");
-  main.replaceChildren(...[
-    h("section", { class: "hero" },
-      h("h1", {}, routine.name),
-      h("div", { class: "meta" }, h("span", { class: "duration" }, routine.duration)),
-      routine.format && h("p", { class: "format" }, routine.format)
-    ),
+  document.getElementById("main").replaceChildren(...[
+    h("h1", {}, routine.name),
+    routine.equipment && h("p", { class: "equip" }, routine.equipment),
+    routine.stats && routine.stats.length
+      ? h("div", { class: "stats" }, routine.stats.map(([v, l]) => h("div", { class: "stat" }, h("b", {}, v), h("span", {}, l))))
+      : null,
+    routine.format && h("p", { class: "format" }, routine.format),
     routine.warmup && routine.warmup.length
       ? h("details", { class: "card warmup" },
-          h("summary", {}, h("span", { class: "name" }, "Warm-up"), h("span", { class: "chev", "aria-hidden": "true" })),
+          h("summary", {}, h("span", { class: "name" }, "Warm-up"), h("span", { class: "dose" }, `${routine.warmup.length} moves`)),
           h("div", { class: "detail" }, list("ul", routine.warmup)))
       : null,
     routine.blocks.map((block) =>
@@ -99,17 +128,16 @@ function renderTabs() {
         type: "button",
         "data-id": r.id,
         onclick: () => { location.hash = r.id; },
-      }, r.name)
+      }, r.short || r.name)
     )
   );
 }
 
 function setStatus(fromCache) {
-  const el = document.getElementById("status");
   const offline = fromCache || !navigator.onLine;
-  el.replaceChildren(
-    offline ? h("span", { class: "offline" }, "Offline · ") : "",
-    `Routines updated ${data.updated}`
+  document.getElementById("status").replaceChildren(
+    offline ? h("span", { class: "offline" }, "OFFLINE · ") : "",
+    `routines updated ${data.updated}`
   );
 }
 
@@ -119,9 +147,9 @@ async function load() {
     if (!res.ok) throw new Error(res.status);
     data = await res.json();
     renderTabs();
-    renderRoutine(location.hash.slice(1) || store(true));
+    renderRoutine(location.hash.slice(1) || load_(ROUTINE_KEY));
     setStatus(res.headers.get("x-gym-cache") === "1");
-  } catch (err) {
+  } catch {
     document.getElementById("main").replaceChildren(
       h("p", { class: "error" }, "Couldn't load routines. Open the page once while connected so it can save an offline copy.")
     );
@@ -134,23 +162,29 @@ function setupWake() {
   const btn = document.getElementById("wake");
   btn.hidden = false;
   const sync = () => btn.setAttribute("aria-pressed", wakeLock ? "true" : "false");
+  const acquire = async () => {
+    try {
+      wakeLock = await navigator.wakeLock.request("screen");
+      wakeLock.addEventListener("release", () => {
+        if (document.visibilityState === "visible") { wakeLock = null; sync(); }
+      });
+    } catch {
+      wakeLock = null;
+    }
+  };
   btn.addEventListener("click", async () => {
     if (wakeLock) {
-      await wakeLock.release();
+      const lock = wakeLock;
       wakeLock = null;
+      await lock.release();
     } else {
-      try {
-        wakeLock = await navigator.wakeLock.request("screen");
-        wakeLock.addEventListener("release", () => { if (document.visibilityState === "visible") { wakeLock = null; sync(); } });
-      } catch {
-        wakeLock = null;
-      }
+      await acquire();
     }
     sync();
   });
   document.addEventListener("visibilitychange", async () => {
     if (wakeLock && document.visibilityState === "visible") {
-      try { wakeLock = await navigator.wakeLock.request("screen"); } catch { wakeLock = null; }
+      await acquire();
       sync();
     }
   });
@@ -164,5 +198,6 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js").catch(() => {});
 }
 
+setupTheme();
 setupWake();
 load();

@@ -1,10 +1,13 @@
 {
-  "updated": "2026-11-03",
+  "updated": "2026-11-04",
   "routines": [
     {
       "id": "ski-cycling",
       "name": "Cycling & ski prep",
+      "short": "Ski prep",
       "duration": "45 min",
+      "equipment": "Gym: dumbbells, bench, wall",
+      "stats": [["45′", "total"], ["×3", "rounds"], ["60–90″", "rest"]],
       "format": "Circuit, 3 rounds. 60–90 s rest between exercises, 2 min between rounds.",
       "warmup": [
         "2 min easy treadmill walk or bike",
@@ -40,7 +43,10 @@
     {
       "id": "short",
       "name": "Short session",
+      "short": "Short",
       "duration": "20 min",
+      "equipment": "Gym: dumbbells, bench",
+      "stats": [["20′", "total"], ["×3", "rounds"], ["45–60″", "rest"]],
       "format": "Circuit, 3 rounds. 45–60 s rest between exercises.",
       "warmup": [
         "10 bodyweight squats",
@@ -70,7 +76,10 @@
     {
       "id": "upper",
       "name": "Upper body & posture",
+      "short": "Upper",
       "duration": "35 min",
+      "equipment": "Gym: dumbbells, bench, cable station",
+      "stats": [["35′", "total"], ["×3", "rounds"], ["60–90″", "rest"]],
       "format": "Supersets: do A1 then A2, rest 60–90 s, repeat for 3 rounds. Then B, then C.",
       "warmup": [
         "2 min rowing machine or arm circles",
@@ -107,7 +116,10 @@
     {
       "id": "mobility",
       "name": "Mobility",
+      "short": "Mobility",
       "duration": "15 min",
+      "equipment": "Anywhere: mat, strap or towel, wall",
+      "stats": [["15′", "total"], ["×1", "pass"], ["7", "moves"]],
       "format": "One pass, slow and controlled. Breathe out into each stretch. No pain, only stretch.",
       "warmup": [],
       "blocks": [
@@ -142,7 +154,10 @@
     {
       "id": "bike-strength",
       "name": "Strength + indoor ride",
+      "short": "Lift + ride",
       "duration": "60–70 min",
+      "equipment": "Gym: dumbbells, bench or box, indoor bike",
+      "stats": [["65′", "total"], ["25′", "strength"], ["30–40′", "ride"]],
       "format": "Strength first, then ride. Straight sets with 90–120 s rest: heavier and fewer reps than the circuit days.",
       "warmup": [
         "10 min easy spin, last 2 min a bit brisker",
