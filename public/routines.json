@@ -4,19 +4,32 @@
     {
       "id": "gym",
       "name": "Gym",
+      "hue": "blue",
       "equipment": ["Dumbbells, full rack", "Bench", "Box", "Cable station", "Indoor bike", "Mat"]
     },
     {
       "id": "paris",
       "name": "Paris home",
+      "hue": "orange",
       "equipment": ["Resistance bands, several strengths", "Light dumbbells: a 2 kg and a 4 kg pair (or 1 and 2 kg, to confirm)", "Mat", "Foam roller"]
+    },
+    {
+      "id": "ch",
+      "name": "CH",
+      "hue": "red",
+      "equipment": ["Mat"]
+    },
+    {
+      "id": "bcn",
+      "name": "BCN",
+      "hue": "teal",
+      "equipment": ["Mat", "4 L water jugs (usually around), about 4 kg each when full"]
     }
   ],
   "routines": [
     {
       "id": "ski-cycling",
       "name": "Cycling & ski prep",
-      "short": "Ski prep",
       "places": ["gym"],
       "duration": "45 min",
       "equipment": "Gym: dumbbells, bench, wall",
@@ -56,7 +69,6 @@
     {
       "id": "short",
       "name": "Short session",
-      "short": "Short",
       "places": ["gym"],
       "duration": "20 min",
       "equipment": "Gym: dumbbells, bench",
@@ -90,7 +102,6 @@
     {
       "id": "upper",
       "name": "Upper body & posture",
-      "short": "Upper",
       "places": ["gym"],
       "duration": "35 min",
       "equipment": "Gym: dumbbells, bench, cable station",
@@ -131,7 +142,6 @@
     {
       "id": "mobility",
       "name": "Mobility",
-      "short": "Mobility",
       "duration": "15 min",
       "equipment": "Anywhere: mat, strap or towel, wall",
       "stats": [["15′", "total"], ["×1", "pass"], ["7", "moves"]],
@@ -169,7 +179,6 @@
     {
       "id": "bike-strength",
       "name": "Strength + indoor ride",
-      "short": "Lift + ride",
       "places": ["gym"],
       "duration": "60–70 min",
       "equipment": "Gym: dumbbells, bench or box, indoor bike",
@@ -206,8 +215,7 @@
     },
     {
       "id": "paris-home",
-      "name": "Paris home · Strength",
-      "short": "Paris home",
+      "name": "Home strength",
       "places": ["paris"],
       "duration": "25 min",
       "equipment": "Bands, light dumbbells, mat, foam roller",
@@ -243,9 +251,110 @@
         "Progress with harder bands, extra reps or a pause at the bottom, not weight: light dumbbells run out fast for legs.",
         "If you can do 12 slow split squats per leg, hold both dumbbells, or add a fourth round."
       ]
+    },
+    {
+      "id": "ch-bodyweight",
+      "name": "Bodyweight circuit",
+      "places": ["ch"],
+      "duration": "20 min",
+      "equipment": "Mat only",
+      "stats": [["20′", "total"], ["×3", "rounds"], ["45″", "rest"]],
+      "format": "Circuit, 3 rounds, 45 s rest between exercises. With no load at all, every rep is slow: 3 seconds down, a short pause, then up.",
+      "warmup": [
+        "10 bodyweight squats",
+        "10 leg swings per leg, front-back and side-side",
+        "10 arm circles each way",
+        "4 per side of the world's greatest stretch"
+      ],
+      "blocks": [
+        {
+          "title": "Circuit",
+          "items": [
+            { "ex": "split-squat", "dose": "8 per leg", "note": "3 s down, 1 s pause at the bottom." },
+            { "ex": "sl-rdl", "dose": "8 per leg", "note": "Bodyweight: reach both hands toward the floor, 3 s down." },
+            { "ex": "push-up", "dose": "8–12" },
+            { "ex": "prone-ytw", "dose": "6 each", "tag": "posture", "note": "Six Y, six T, six W, with a 2 s hold on each." },
+            { "ex": "glute-bridge", "dose": "10 per leg", "note": "Single-leg version, 1 s squeeze at the top." },
+            { "ex": "plank", "dose": "30–45 s" }
+          ]
+        }
+      ],
+      "notes": [
+        "A mat alone gives you nothing to pull against, so the Y-T-W raises stand in for rows. A light band packs flat in a bag and would fill that gap.",
+        "To make it harder: 1.5-rep split squats, slower push-ups, or a fourth round."
+      ]
+    },
+    {
+      "id": "bcn-jugs",
+      "name": "Water-jug circuit",
+      "places": ["bcn"],
+      "duration": "25 min",
+      "equipment": "Mat, two 4 L water jugs",
+      "stats": [["25′", "total"], ["×3", "rounds"], ["45″", "rest"]],
+      "format": "Circuit, 3 rounds, 45 s rest between exercises. A full 4 L jug weighs about 4 kg: enough for rows and to make split squats harder, light for everything else, so keep the 3 s lowering.",
+      "warmup": [
+        "10 bodyweight squats",
+        "10 leg swings per leg, front-back and side-side",
+        "10 arm circles each way",
+        "4 per side of the world's greatest stretch"
+      ],
+      "blocks": [
+        {
+          "title": "Circuit",
+          "items": [
+            { "ex": "split-squat", "dose": "8 per leg", "note": "A jug in each hand, 3 s down." },
+            { "ex": "sl-rdl", "dose": "8 per leg", "note": "A jug in the opposite hand, 3 s down." },
+            { "ex": "bent-over-row", "dose": "12", "note": "A jug in each hand, 1 s squeeze at the top." },
+            { "ex": "push-up", "dose": "8–12" },
+            { "ex": "glute-bridge", "dose": "10 per leg", "note": "Single-leg version, a jug on the working hip if it's easy." },
+            { "ex": "side-plank", "dose": "20–30 s per side" }
+          ]
+        }
+      ],
+      "notes": [
+        "Check the handles before you load a jug: thin ones split. Carry it by the handle and cap side, not the body.",
+        "Jugs can get lighter but not heavier, so progress with reps, tempo, or a fourth round."
+      ]
     }
   ],
   "exercises": {
+    "bent-over-row": {
+      "name": "Bent-over row",
+      "equipment": "Two dumbbells or water jugs",
+      "setup": [
+        "Feet hip-width, a weight in each hand",
+        "Hinge at the hips until the torso is about 45°, soft knees, back flat"
+      ],
+      "movement": [
+        "Pull both weights toward your hips, elbows close",
+        "Squeeze the shoulder blades together",
+        "Lower with control"
+      ],
+      "cues": [
+        "Torso stays still: no bouncing up",
+        "Neck long, eyes on the floor ahead"
+      ],
+      "easier": "Lighter load, or one arm at a time with the free hand on your knee",
+      "harder": "2 s pause at the top"
+    },
+    "prone-ytw": {
+      "name": "Prone Y-T-W raise",
+      "equipment": "Mat",
+      "setup": [
+        "Lie face down, forehead on a folded towel or the mat, thumbs up"
+      ],
+      "movement": [
+        "Y: arms overhead at 45°, lift them off the floor, hold 2 s, lower",
+        "T: arms out to the sides, lift, hold 2 s, lower",
+        "W: elbows bent at your sides, squeeze them back and up, hold 2 s, lower"
+      ],
+      "cues": [
+        "Lift from the shoulder blades, not by arching the lower back",
+        "Small range is fine; the squeeze is the point"
+      ],
+      "easier": "Fewer reps, or skip the Y",
+      "harder": "Longer holds, or a water bottle in each hand"
+    },
     "split-squat": {
       "name": "Split squat",
       "equipment": "Bodyweight or light dumbbells",

@@ -51,8 +51,8 @@ Install it from the browser menu with *Add to Home Screen*. On iOS this matters:
 
 Everything lives in `public/routines.json`.
 
-- `places[]`: `id`, `name`, `equipment[]`. The place picker filters routines and shows that place's kit at the bottom of the page.
-- `routines[]`: `id`, `name`, `short` (tab label), `places` (place ids; omit for anywhere), `equipment` (where and with what), `stats` (three `[value, label]` tiles), `format`, `warmup[]`, `blocks[].items[]` (`ex`, `dose`, optional `label`, `tag`, `note`), `notes[]`.
+- `places[]`: `id`, `name`, `hue` (blue, orange, red, teal, green or pink), `equipment[]`. The home screen filters routines by place and lists that place's kit.
+- `routines[]`: `id`, `name`, `places` (place ids; omit for anywhere), `equipment` (where and with what), `stats` (three `[value, label]` tiles), `format`, `warmup[]`, `blocks[].items[]` (`ex`, `dose`, optional `label`, `tag`, `note`), `notes[]`.
 - `exercises{}`: keyed by id, with `name`, `equipment`, `setup[]`, `movement[]`, `cues[]`, `easier`, `harder`, `alt`.
 - Tags: `ski`, `posture`, `cycling`.
 

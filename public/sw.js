@@ -1,4 +1,4 @@
-const VERSION = "gym-v3";
+const VERSION = "gym-v4";
 const SHELL = [
   "./", "index.html", "app.js", "style.css", "manifest.webmanifest",
   "icon.svg", "icon-192.png", "icon-512.png", "routines.json",

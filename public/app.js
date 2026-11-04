@@ -1,4 +1,3 @@
-const ROUTINE_KEY = "gym:last-routine";
 const THEME_KEY = "gym:theme";
 const PLACE_KEY = "gym:place";
 const THEMES = ["auto", "light", "dark"];
@@ -26,7 +25,7 @@ function list(tag, items) {
   return items && items.length ? h(tag, {}, items.map((t) => h("li", {}, t))) : null;
 }
 
-function load_(key) {
+function read(key) {
   try { return localStorage.getItem(key); } catch { return null; }
 }
 
@@ -35,7 +34,7 @@ function save(key, value) {
 }
 
 function currentTheme() {
-  const t = load_(THEME_KEY);
+  const t = read(THEME_KEY);
   return THEMES.includes(t) ? t : "auto";
 }
 
@@ -58,6 +57,29 @@ function setupTheme() {
     applyTheme(next);
   });
   darkQuery.addEventListener("change", () => applyTheme(currentTheme()));
+}
+
+const places = () => data.places || [];
+const placeById = (id) => places().find((p) => p.id === id);
+const anywhere = (r) => !r.places || !r.places.length;
+
+function currentPlace() {
+  const p = read(PLACE_KEY);
+  return placeById(p) ? p : "all";
+}
+
+function routinesFor(place) {
+  if (place === "all") return data.routines;
+  const routines = data.routines.filter((r) => anywhere(r) || r.places.includes(place));
+  return [...routines.filter((r) => !anywhere(r)), ...routines.filter(anywhere)];
+}
+
+function placePills(routine) {
+  if (anywhere(routine)) return [h("span", { class: "pl pl-any" }, "Anywhere")];
+  return routine.places.map((id) => {
+    const p = placeById(id);
+    return h("span", { class: `pl hue-${p?.hue || "none"}` }, p?.name || id);
+  });
 }
 
 function exerciseCard(item, index) {
@@ -87,53 +109,39 @@ function exerciseCard(item, index) {
   );
 }
 
-function currentPlace() {
-  const p = load_(PLACE_KEY);
-  return p && (data.places || []).some((x) => x.id === p) ? p : "all";
-}
-
-function availableAt(routine, place) {
-  return place === "all" || !routine.places || !routine.places.length || routine.places.includes(place);
-}
-
-function visibleRoutines() {
+function renderHome() {
+  document.title = "tally";
   const place = currentPlace();
-  const routines = data.routines.filter((r) => availableAt(r, place));
-  if (place === "all") return routines;
-  const anywhere = (r) => !r.places || !r.places.length;
-  return [...routines.filter((r) => !anywhere(r)), ...routines.filter(anywhere)];
+  const kit = placeById(place);
+  const pick = (id) => () => { save(PLACE_KEY, id); renderHome(); };
+
+  document.getElementById("main").replaceChildren(...[
+    h("div", { class: "filter", role: "group", "aria-label": "Place" },
+      h("button", { type: "button", class: "chip", "aria-pressed": String(place === "all"), onclick: pick("all") }, "All"),
+      places().map((p) =>
+        h("button", { type: "button", class: `chip hue-${p.hue || "none"}`, "aria-pressed": String(place === p.id), onclick: pick(p.id) }, p.name))
+    ),
+    h("div", { class: "grid" },
+      routinesFor(place).map((r) =>
+        h("a", { class: "tile", href: `#${r.id}` },
+          h("span", { class: "tile-name" }, r.name),
+          r.stats && r.stats[0] && h("span", { class: "tile-meta" }, r.stats.slice(0, 2).map(([v]) => v).join(" · ")),
+          h("span", { class: "pills" }, placePills(r))
+        ))
+    ),
+    kit && h("details", { class: "card kit-card" },
+      h("summary", {}, h("span", { class: "name" }, `What's at ${kit.name}`), h("span", { class: "dose" }, `${kit.equipment.length} item${kit.equipment.length === 1 ? "" : "s"}`)),
+      h("div", { class: "detail" }, list("ul", kit.equipment))),
+  ].flat().filter(Boolean));
 }
 
-function renderKit() {
-  const place = (data.places || []).find((p) => p.id === currentPlace());
-  const el = document.getElementById("kit");
-  el.hidden = !place;
-  if (!place) return;
-  el.replaceChildren(
-    h("summary", {}, h("span", { class: "name" }, `What's at ${place.name}`), h("span", { class: "dose" }, `${place.equipment.length} items`)),
-    h("div", { class: "detail" }, list("ul", place.equipment))
-  );
-}
-
-function renderRoutine(id) {
-  let routine = data.routines.find((r) => r.id === id);
-  if (routine && !availableAt(routine, currentPlace())) {
-    save(PLACE_KEY, routine.places[0]);
-    renderTabs();
-  }
-  routine = routine || visibleRoutines().find((r) => r.id === load_(ROUTINE_KEY)) || visibleRoutines()[0] || data.routines[0];
-  save(ROUTINE_KEY, routine.id);
+function renderRoutine(routine) {
   document.title = `${routine.name} · tally`;
-
-  for (const tab of document.querySelectorAll(".tab")) {
-    const on = tab.dataset.id === routine.id;
-    tab.setAttribute("aria-current", on ? "true" : "false");
-    if (on) tab.scrollIntoView({ block: "nearest", inline: "center" });
-  }
-
   let n = 0;
   document.getElementById("main").replaceChildren(...[
+    h("a", { class: "back", href: "#" }, "← All routines"),
     h("h1", {}, routine.name),
+    h("div", { class: "pills hero-pills" }, placePills(routine)),
     routine.equipment && h("p", { class: "equip" }, routine.equipment),
     routine.stats && routine.stats.length
       ? h("div", { class: "stats" }, routine.stats.map(([v, l]) => h("div", { class: "stat" }, h("b", {}, v), h("span", {}, l))))
@@ -151,40 +159,14 @@ function renderRoutine(id) {
     ),
     routine.notes && routine.notes.length ? h("ul", { class: "notes" }, routine.notes.map((t) => h("li", {}, t))) : null,
   ].flat().filter(Boolean));
-  window.scrollTo(0, 0);
 }
 
-function renderTabs() {
-  const place = currentPlace();
-  const select = h("select", {
-    class: "place",
-    "aria-label": "Place",
-    onchange: (e) => {
-      save(PLACE_KEY, e.target.value);
-      renderTabs();
-      const current = data.routines.find((r) => r.id === location.hash.slice(1));
-      if (current && availableAt(current, e.target.value)) renderRoutine(current.id);
-      else location.hash = visibleRoutines()[0].id;
-    },
-  },
-    h("option", { value: "all" }, "All places"),
-    (data.places || []).map((p) => h("option", { value: p.id }, p.name))
-  );
-  select.value = place;
-
-  document.getElementById("tabs").replaceChildren(
-    select,
-    ...visibleRoutines().map((r) =>
-      h("button", {
-        class: "tab",
-        type: "button",
-        "data-id": r.id,
-        "aria-current": r.id === location.hash.slice(1) ? "true" : "false",
-        onclick: () => { location.hash = r.id; },
-      }, r.short || r.name)
-    )
-  );
-  renderKit();
+function route() {
+  if (!data) return;
+  const routine = data.routines.find((r) => r.id === location.hash.slice(1));
+  if (routine) renderRoutine(routine);
+  else renderHome();
+  window.scrollTo(0, 0);
 }
 
 function setStatus(fromCache) {
@@ -200,8 +182,7 @@ async function load() {
     const res = await fetch("routines.json", { cache: "no-cache" });
     if (!res.ok) throw new Error(res.status);
     data = await res.json();
-    renderTabs();
-    renderRoutine(location.hash.slice(1) || load_(ROUTINE_KEY));
+    route();
     setStatus(res.headers.get("x-gym-cache") === "1");
   } catch {
     document.getElementById("main").replaceChildren(
@@ -244,7 +225,7 @@ function setupWake() {
   });
 }
 
-window.addEventListener("hashchange", () => data && renderRoutine(location.hash.slice(1)));
+window.addEventListener("hashchange", route);
 window.addEventListener("online", () => data && setStatus(false));
 window.addEventListener("offline", () => data && setStatus(true));
 
