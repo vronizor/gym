@@ -1,5 +1,6 @@
 const ROUTINE_KEY = "gym:last-routine";
 const THEME_KEY = "gym:theme";
+const PLACE_KEY = "gym:place";
 const THEMES = ["auto", "light", "dark"];
 const TAGS = { ski: "Ski", posture: "Posture", cycling: "Cycling" };
 const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -73,21 +74,54 @@ function exerciseCard(item, index) {
     h("summary", {},
       h("span", { class: "idx" }, item.label || String(index).padStart(2, "0")),
       h("span", { class: "name" }, ex.name, tag),
-      h("span", { class: "dose" }, item.dose)
+      h("span", { class: "dose" }, item.dose),
+      item.note && h("span", { class: "cue" }, item.note)
     ),
     h("div", { class: "detail" },
       ex.equipment && h("p", { class: "kit" }, ex.equipment),
       ex.setup && h("h3", {}, "Setup"), list("ul", ex.setup),
       ex.movement && h("h3", {}, "Movement"), list("ol", ex.movement),
       ex.cues && h("h3", {}, "Key points"), list("ul", ex.cues),
-      item.note && h("p", {}, item.note),
       scale.length ? h("div", { class: "scale" }, scale) : null
     )
   );
 }
 
+function currentPlace() {
+  const p = load_(PLACE_KEY);
+  return p && (data.places || []).some((x) => x.id === p) ? p : "all";
+}
+
+function availableAt(routine, place) {
+  return place === "all" || !routine.places || !routine.places.length || routine.places.includes(place);
+}
+
+function visibleRoutines() {
+  const place = currentPlace();
+  const routines = data.routines.filter((r) => availableAt(r, place));
+  if (place === "all") return routines;
+  const anywhere = (r) => !r.places || !r.places.length;
+  return [...routines.filter((r) => !anywhere(r)), ...routines.filter(anywhere)];
+}
+
+function renderKit() {
+  const place = (data.places || []).find((p) => p.id === currentPlace());
+  const el = document.getElementById("kit");
+  el.hidden = !place;
+  if (!place) return;
+  el.replaceChildren(
+    h("summary", {}, h("span", { class: "name" }, `What's at ${place.name}`), h("span", { class: "dose" }, `${place.equipment.length} items`)),
+    h("div", { class: "detail" }, list("ul", place.equipment))
+  );
+}
+
 function renderRoutine(id) {
-  const routine = data.routines.find((r) => r.id === id) || data.routines[0];
+  let routine = data.routines.find((r) => r.id === id);
+  if (routine && !availableAt(routine, currentPlace())) {
+    save(PLACE_KEY, routine.places[0]);
+    renderTabs();
+  }
+  routine = routine || visibleRoutines().find((r) => r.id === load_(ROUTINE_KEY)) || visibleRoutines()[0] || data.routines[0];
   save(ROUTINE_KEY, routine.id);
   document.title = `${routine.name} · tally`;
 
@@ -121,16 +155,36 @@ function renderRoutine(id) {
 }
 
 function renderTabs() {
+  const place = currentPlace();
+  const select = h("select", {
+    class: "place",
+    "aria-label": "Place",
+    onchange: (e) => {
+      save(PLACE_KEY, e.target.value);
+      renderTabs();
+      const current = data.routines.find((r) => r.id === location.hash.slice(1));
+      if (current && availableAt(current, e.target.value)) renderRoutine(current.id);
+      else location.hash = visibleRoutines()[0].id;
+    },
+  },
+    h("option", { value: "all" }, "All places"),
+    (data.places || []).map((p) => h("option", { value: p.id }, p.name))
+  );
+  select.value = place;
+
   document.getElementById("tabs").replaceChildren(
-    ...data.routines.map((r) =>
+    select,
+    ...visibleRoutines().map((r) =>
       h("button", {
         class: "tab",
         type: "button",
         "data-id": r.id,
+        "aria-current": r.id === location.hash.slice(1) ? "true" : "false",
         onclick: () => { location.hash = r.id; },
       }, r.short || r.name)
     )
   );
+  renderKit();
 }
 
 function setStatus(fromCache) {

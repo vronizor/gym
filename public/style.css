@@ -141,6 +141,26 @@ body {
 }
 .tabs::-webkit-scrollbar { display: none; }
 
+.place {
+  flex: none;
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 40px;
+  padding: 0 30px 0 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--ink);
+  background:
+    linear-gradient(45deg, transparent 50%, var(--ink) 50%) right 16px top 50% / 5px 5px no-repeat,
+    linear-gradient(135deg, var(--ink) 50%, transparent 50%) right 11px top 50% / 5px 5px no-repeat,
+    var(--bg);
+  color: var(--ink);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 .tab {
   flex: none;
   min-height: 40px;
@@ -267,6 +287,14 @@ h1 {
   white-space: nowrap;
 }
 
+.cue {
+  grid-column: 2 / -1;
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
 .tag {
   display: inline-block;
   font-size: 10px;
@@ -333,4 +361,9 @@ h1 {
   color: var(--muted);
   font-size: 11px;
 }
+.kit-card { margin-bottom: 16px; font-size: 15px; color: var(--ink); }
+.kit-card summary { grid-template-columns: 1fr auto; }
+.kit-card .name { font-family: "Inter Tight", system-ui, sans-serif; font-size: 16px; }
+.kit-card .dose { font-size: 13px; color: var(--muted); }
+.kit-card .detail { font-family: "Inter Tight", system-ui, sans-serif; }
 .offline { color: var(--num); font-weight: 800; }

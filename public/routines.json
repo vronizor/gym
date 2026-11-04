@@ -1,10 +1,23 @@
 {
   "updated": "2026-11-04",
+  "places": [
+    {
+      "id": "gym",
+      "name": "Gym",
+      "equipment": ["Dumbbells, full rack", "Bench", "Box", "Cable station", "Indoor bike", "Mat"]
+    },
+    {
+      "id": "paris",
+      "name": "Paris home",
+      "equipment": ["Resistance bands, several strengths", "Light dumbbells: a 2 kg and a 4 kg pair (or 1 and 2 kg, to confirm)", "Mat", "Foam roller"]
+    }
+  ],
   "routines": [
     {
       "id": "ski-cycling",
       "name": "Cycling & ski prep",
       "short": "Ski prep",
+      "places": ["gym"],
       "duration": "45 min",
       "equipment": "Gym: dumbbells, bench, wall",
       "stats": [["45′", "total"], ["×3", "rounds"], ["60–90″", "rest"]],
@@ -44,6 +57,7 @@
       "id": "short",
       "name": "Short session",
       "short": "Short",
+      "places": ["gym"],
       "duration": "20 min",
       "equipment": "Gym: dumbbells, bench",
       "stats": [["20′", "total"], ["×3", "rounds"], ["45–60″", "rest"]],
@@ -77,6 +91,7 @@
       "id": "upper",
       "name": "Upper body & posture",
       "short": "Upper",
+      "places": ["gym"],
       "duration": "35 min",
       "equipment": "Gym: dumbbells, bench, cable station",
       "stats": [["35′", "total"], ["×3", "rounds"], ["60–90″", "rest"]],
@@ -155,6 +170,7 @@
       "id": "bike-strength",
       "name": "Strength + indoor ride",
       "short": "Lift + ride",
+      "places": ["gym"],
       "duration": "60–70 min",
       "equipment": "Gym: dumbbells, bench or box, indoor bike",
       "stats": [["65′", "total"], ["25′", "strength"], ["30–40′", "ride"]],
@@ -187,9 +203,123 @@
         "If a hard interval session is the priority that day, flip the order or do strength on a different day. Don't stack max efforts after heavy legs.",
         "Pick the endurance ride by default and the tempo option at most once a week."
       ]
+    },
+    {
+      "id": "paris-home",
+      "name": "Paris home · Strength",
+      "short": "Paris home",
+      "places": ["paris"],
+      "duration": "25 min",
+      "equipment": "Bands, light dumbbells, mat, foam roller",
+      "stats": [["25′", "total"], ["×3", "rounds"], ["45″", "rest"]],
+      "format": "Circuit, 3 rounds, 45 s rest between exercises. The weights are too light to load the legs, so the work comes from one leg at a time and a slow lowering: count 3 seconds down on every rep.",
+      "warmup": [
+        "Foam roll quads and glutes, 30 s each",
+        "10 bodyweight squats",
+        "10 band pull-aparts with the lightest band",
+        "4 per side of the world's greatest stretch"
+      ],
+      "blocks": [
+        {
+          "title": "Circuit",
+          "items": [
+            { "ex": "split-squat", "dose": "8 per leg", "note": "3 s down. Hold a dumbbell in each hand once bodyweight gets easy." },
+            { "ex": "sl-rdl", "dose": "8 per leg", "note": "Heaviest dumbbell in the opposite hand, 3 s down." },
+            { "ex": "band-row", "dose": "12–15" },
+            { "ex": "glute-bridge", "dose": "10 per leg", "note": "Single-leg version, 1 s squeeze at the top." },
+            { "ex": "band-pull-apart", "dose": "15", "tag": "posture" },
+            { "ex": "dead-bug", "dose": "8 per side" }
+          ]
+        },
+        {
+          "title": "Cool-down",
+          "items": [
+            { "ex": "foam-thoracic", "dose": "1 min", "tag": "posture" },
+            { "ex": "childs-pose", "dose": "1 min" }
+          ]
+        }
+      ],
+      "notes": [
+        "Progress with harder bands, extra reps or a pause at the bottom, not weight: light dumbbells run out fast for legs.",
+        "If you can do 12 slow split squats per leg, hold both dumbbells, or add a fourth round."
+      ]
     }
   ],
   "exercises": {
+    "split-squat": {
+      "name": "Split squat",
+      "equipment": "Bodyweight or light dumbbells",
+      "setup": [
+        "Long stride stance: front foot flat, back heel up",
+        "Torso tall, hands on hips or dumbbells at the sides"
+      ],
+      "movement": [
+        "Lower straight down until the back knee almost touches the floor",
+        "Take 3 seconds on the way down",
+        "Push through the front heel to come up; feet stay planted",
+        "All reps on one leg, then switch"
+      ],
+      "cues": [
+        "Most of the weight on the front leg",
+        "Front knee tracks over the toes",
+        "Down like an elevator, not forward like a lunge"
+      ],
+      "easier": "Shorter range, or a hand on a wall for balance",
+      "harder": "Dumbbells, a 2 s pause at the bottom, or 1.5 reps (down, halfway up, down, up)"
+    },
+    "band-row": {
+      "name": "Seated band row",
+      "equipment": "Resistance band, mat",
+      "setup": [
+        "Sit with legs straight, band looped around the soles of your feet",
+        "Hold an end in each hand, arms straight, back tall"
+      ],
+      "movement": [
+        "Pull the hands to your lower ribs, elbows close to the body",
+        "Squeeze the shoulder blades together for 1 s",
+        "Return slowly"
+      ],
+      "cues": [
+        "Don't lean back to finish the rep",
+        "Shoulders down, away from the ears"
+      ],
+      "easier": "Lighter band, or knees slightly bent",
+      "harder": "Heavier band, or choke up on the band for more tension"
+    },
+    "band-pull-apart": {
+      "name": "Band pull-apart",
+      "equipment": "Light resistance band",
+      "setup": [
+        "Stand tall, band in both hands at shoulder height, arms straight, hands shoulder-width"
+      ],
+      "movement": [
+        "Pull the band apart until it touches your chest",
+        "Pause, then return slowly"
+      ],
+      "cues": [
+        "Squeeze between the shoulder blades",
+        "Ribs down: don't arch the lower back"
+      ],
+      "easier": "Lighter band, or hands wider apart",
+      "harder": "Heavier band, or hands closer together"
+    },
+    "foam-thoracic": {
+      "name": "Foam roller thoracic extension",
+      "equipment": "Foam roller, mat",
+      "setup": [
+        "Lie with the roller across your upper back, below the shoulder blades",
+        "Hands behind the head, hips on the floor"
+      ],
+      "movement": [
+        "Let the upper back extend over the roller, breathe out",
+        "Roll up a few centimetres and repeat",
+        "Stay above the lower ribs"
+      ],
+      "cues": [
+        "Support the head; don't crank the neck",
+        "Don't roll the lower back"
+      ]
+    },
     "goblet-squat": {
       "name": "Goblet squat",
       "equipment": "1 dumbbell",
