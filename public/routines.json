@@ -325,7 +325,7 @@
       "stats": [["60′", "total"], ["20′", "strength"], ["35–45′", "ride"]],
       "format": "Strength first while the legs are fresh, then ride. Straight sets: all sets of one exercise before the next, 60 s rest. The ride is in ERG mode: the trainer holds the watts, you hold the cadence.",
       "warmup": [
-        "8 min easy spin on the trainer, around 150 W",
+        "8 min easy spin on the trainer, around 50–55% FTP",
         "10 bodyweight squats",
         "4 per side of the world's greatest stretch"
       ],
@@ -343,15 +343,15 @@
         {
           "title": "Ride · ERG",
           "items": [
-            { "ex": "ride-endurance", "dose": "35 min", "note": "170–200 W (60–70% FTP), cadence 85–95. The default." },
-            { "ex": "ride-tempo", "dose": "or 3 × 8 min", "note": "240 W (85% FTP) for each block, 150 W for the 3 min between. Once a week at most." }
+            { "ex": "ride-endurance", "dose": "35 min", "note": "Any endurance / Z2 workout on the Dura, 60–70% FTP, cadence 85–95. The default." },
+            { "ex": "ride-tempo", "dose": "or 3 × 8 min", "note": "A tempo or sweet-spot workout on the Dura, blocks around 85% FTP. Once a week at most." }
           ]
         }
       ],
       "notes": [
-        "Watts are set from your FTP of 283 W. If it changes, keep the percentages and redo the watts.",
+        "Targets are % of FTP so they follow whatever FTP is set on the Dura: update it there after each test.",
         "ERG after leg work: resistance rises as cadence falls, so if you drop below about 80 rpm the effort spirals up. Shift to an easier gear, or lower the target by 5–10% for the rest of the ride.",
-        "Build both rides once as workouts on the GPS so the trainer follows them on its own."
+        "Avoid the hardest preset workouts on this day: after leg work, anything above sweet spot is better done fresh on its own day."
       ]
     }
   ],
