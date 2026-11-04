@@ -19,7 +19,7 @@ nginx.conf
 ```sh
 cd ~ && git clone git@github.com:vronizor/gym.git && cd gym
 docker compose up -d
-sudo tailscale serve --service=svc:gym --https=443 127.0.0.1:18095
+sudo tailscale serve --service=svc:gym --https=443 127.0.0.1:8050
 ```
 
 Approve the `svc:gym` service in the Tailscale admin console if it asks, then open `https://gym.<tailnet>.ts.net`.
