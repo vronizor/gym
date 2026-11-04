@@ -82,6 +82,17 @@ function placePills(routine) {
   });
 }
 
+function videoLink(ex) {
+  if (ex.yt === false) return null;
+  const q = ex.yt || `${ex.name} exercise`;
+  return h("a", {
+    class: "yt",
+    href: `https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`,
+    target: "_blank",
+    rel: "noopener noreferrer",
+  }, "Watch on YouTube ↗");
+}
+
 function exerciseCard(item, index) {
   const ex = data.exercises[item.ex];
   if (!ex) return h("p", { class: "error" }, `Unknown exercise: ${item.ex}`);
@@ -100,7 +111,9 @@ function exerciseCard(item, index) {
       item.note && h("span", { class: "cue" }, item.note)
     ),
     h("div", { class: "detail" },
-      ex.equipment && h("p", { class: "kit" }, ex.equipment),
+      (ex.equipment || ex.yt !== false) && h("div", { class: "kit-row" },
+        ex.equipment && h("p", { class: "kit" }, ex.equipment),
+        videoLink(ex)),
       ex.setup && h("h3", {}, "Setup"), list("ul", ex.setup),
       ex.movement && h("h3", {}, "Movement"), list("ol", ex.movement),
       ex.cues && h("h3", {}, "Key points"), list("ul", ex.cues),

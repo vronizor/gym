@@ -6,6 +6,7 @@ Reference-only routine page for Vincent's phone. No logging and no backend, by c
 - Each routine has `places: [ids]`; omit it for routines that work anywhere (mobility). The page filters by place.
 - Place-specific variants are separate routines, not a toggle. Name a routine for what it is ("Home strength", "Water-jug circuit"), never by place: the place pill shows where. Keep the squat, hinge, pull and core intent when substituting exercises, and say in `notes` when the kit can't cover one of them.
 - The home screen is a grid of routine tiles with a place filter; a tile shows the name, the first two `stats` values and the place pills. Every routine needs `equipment` (what this routine uses) and three `stats` tiles. Put per-item cues that change the exercise (single-leg version, tempo, which dumbbell) in the item's `note`: it shows without opening the card.
+- Each exercise card links to a YouTube search for `"<name> exercise"`. Set `yt` on an exercise to a better query when the name is ambiguous, or `yt: false` to hide the link (rides).
 - Content changes go in `public/routines.json` only. Reuse existing exercise ids before adding new ones. Every `ex` in a routine must exist in `exercises`.
 - Bump `updated` on any content change. Bump `VERSION` in `public/sw.js` on any change to app files.
 - Keep it static and dependency-free: no build step, no external fonts or CDNs. It must work fully offline.

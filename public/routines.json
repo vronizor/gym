@@ -377,6 +377,7 @@
     },
     "prone-ytw": {
       "name": "Prone Y-T-W raise",
+      "yt": "prone Y T W raise",
       "equipment": "Mat",
       "setup": [
         "Lie face down, forehead on a folded towel or the mat, thumbs up"
@@ -706,6 +707,7 @@
     },
     "face-pull": {
       "name": "Face pull",
+      "yt": "cable face pull",
       "equipment": "Cable with rope",
       "setup": [
         "Rope attachment at about face height",
@@ -774,6 +776,7 @@
     },
     "open-book": {
       "name": "Open book",
+      "yt": "open book stretch thoracic rotation",
       "equipment": "Mat",
       "setup": [
         "Lie on your side, knees bent at 90° and stacked, arms straight in front"
@@ -788,6 +791,7 @@
     },
     "hip-90-90": {
       "name": "90/90 hip switch",
+      "yt": "90/90 hip switch mobility",
       "equipment": "Mat",
       "setup": [
         "Sit with both knees bent at 90°, one leg in front and one to the side"
@@ -850,6 +854,7 @@
     },
     "childs-pose": {
       "name": "Child's pose",
+      "yt": "child's pose stretch",
       "equipment": "Mat",
       "setup": [
         "Kneel, big toes together, knees apart"
@@ -861,6 +866,7 @@
     },
     "ride-endurance": {
       "name": "Endurance ride",
+      "yt": false,
       "equipment": "Indoor bike",
       "movement": [
         "Steady effort, conversational pace",
@@ -873,6 +879,7 @@
     },
     "ride-tempo": {
       "name": "Tempo intervals",
+      "yt": false,
       "equipment": "Indoor bike",
       "movement": [
         "After 10 min easy: 3 × 8 min at a comfortably hard effort, 3 min easy between",
