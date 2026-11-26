@@ -1,0 +1,1390 @@
+{
+ "updated": "2026-11-26",
+ "race": {
+  "name": "MB Race 70 km",
+  "date": "2027-07-03",
+  "date_note": "Placeholder: early July, confirm when announced",
+  "place": "Megève",
+  "km": 72,
+  "climb_m": 3190,
+  "profile": "Climbs: km 4–16 ~650 m · km 19–23 ~400 m at ~10% · km 30–33 ~330 m at ~11% · km 43–57 ~1,000 m, the decisive one · then ~800 m down in ~5 km"
+ },
+ "ftp": {
+  "watts": 283,
+  "source": "Strava, set manually; probably stale",
+  "tested": null
+ },
+ "rules": [
+  {
+   "id": "R1",
+   "text": "Priority when time is short: quality (T/AT) > long MTB (L) > long tempo (C) > torque (B) > easy spin and strength. Drop from the bottom."
+  },
+  {
+   "id": "R2",
+   "text": "Missed sessions are never stacked. A missed quality session may move within the same week if it stays 48 h away from the next hard session; otherwise it's gone."
+  },
+  {
+   "id": "R3",
+   "text": "A week counts as done when the quality session was completed and at least 70% of planned hours were ridden; partial between 40% and 70% or without the quality session; missed below 40%."
+  },
+  {
+   "id": "R4",
+   "text": "Advance to the next week's targets only if the last quality session was completed as written. If intervals were cut short or average power fell more than 3% below the band, repeat that session next week with targets 3% lower."
+  },
+  {
+   "id": "R5",
+   "text": "Two partial or missed weeks in a row: repeat the last completed week instead of advancing. The remaining weeks of that block shift; the taper and race week never move."
+  },
+  {
+   "id": "R6",
+   "text": "Three or more weeks off (illness, travel): restart two quality steps below the last one completed, without a recovery week first."
+  },
+  {
+   "id": "R7",
+   "text": "Strava descriptions mentioning sickness, bad nights, exhaustion or RPE 9–10 (in any language): next week keep the quality session only if the note says he's well, drop torque, cut long sessions by 30%. Sick: no intensity until two symptom-free days."
+  },
+  {
+   "id": "R8",
+   "text": "Unplanned rides count. An outdoor ride of 2.5 h+ with 1,000 m+ counts as the long MTB ride; 90′+ counts as long tempo. After a weekend ride with relative effort above 250, Monday is rest and the quality session moves to Tuesday or later."
+  },
+  {
+   "id": "R9",
+   "text": "If the MTB weekend falls on a different week than planned, swap that week's long tempo (C) with the nearest long MTB ride (L)."
+  },
+  {
+   "id": "R10",
+   "text": "Recovery weeks stay recovery weeks, even on good legs."
+  },
+  {
+   "id": "R11",
+   "text": "Change at most one variable per session per week: reps, duration, or targets by 3–5% FTP. No new workouts that would need rebuilding in COROS."
+  },
+  {
+   "id": "R12",
+   "text": "Three quality sessions in a row noted RPE 6 or below at full targets: bring the next FTP test forward."
+  },
+  {
+   "id": "R13",
+   "text": "If more than two weeks behind schedule entering May (week 18), skip ahead to the race-specific block rather than compressing; drop the missed progressions."
+  },
+  {
+   "id": "R14",
+   "text": "Every adjustment names the rule it applies. If Strava can't be read, write a report saying so and change nothing."
+  }
+ ],
+ "sessions": {
+  "FTP": {
+   "min": 50,
+   "name": "FTP test",
+   "kind": "test",
+   "where": "Trainer",
+   "dur": "50′",
+   "coros": "Dura's built-in Cycling FTP Test (Indoor Bike mode)",
+   "steps": [
+    [
+     "10′",
+     "open",
+     ""
+    ],
+    [
+     "30″",
+     "max sprint",
+     "spin up before; ERG off or skip on the fixie"
+    ],
+    [
+     "5′",
+     "open",
+     ""
+    ],
+    [
+     "20′",
+     "80% FTP",
+     "steady, this is the block that matters"
+    ],
+    [
+     "3′ + 3′",
+     "95% → 105%",
+     ""
+    ],
+    [
+     "3′ + 3′",
+     "110% → 115%",
+     "optional, only if HR is still below 90% of reserve"
+    ],
+    [
+     "5′",
+     "open",
+     ""
+    ]
+   ],
+   "notes": [
+    "Chest strap, fan on, rested, no big caffeine dose.",
+    "Check the new FTP shows on the Dura afterwards; every target in this plan is %FTP."
+   ]
+  },
+  "T1": {
+   "min": 60,
+   "name": "Threshold 2×15",
+   "kind": "quality",
+   "where": "Trainer",
+   "dur": "60′",
+   "coros": "Copy of “Anaerobic into Threshold Development” with the 5× repeat deleted",
+   "steps": [
+    [
+     "15′",
+     "55–65%",
+     ""
+    ],
+    [
+     "15′",
+     "91–95%",
+     ""
+    ],
+    [
+     "5′",
+     "50–55%",
+     ""
+    ],
+    [
+     "15′",
+     "91–95%",
+     ""
+    ],
+    [
+     "10′",
+     "50%",
+     ""
+    ]
+   ],
+   "notes": [
+    "Steady, not heroic: the second block should finish at RPE 7–8."
+   ]
+  },
+  "T2": {
+   "min": 70,
+   "name": "Threshold 2×20",
+   "kind": "quality",
+   "where": "Trainer",
+   "dur": "70′",
+   "coros": "Same copy, blocks set to 20′",
+   "steps": [
+    [
+     "15′",
+     "55–65%",
+     ""
+    ],
+    [
+     "20′",
+     "91–95%",
+     ""
+    ],
+    [
+     "5′",
+     "50–55%",
+     ""
+    ],
+    [
+     "20′",
+     "91–95%",
+     ""
+    ],
+    [
+     "10′",
+     "50%",
+     ""
+    ]
+   ],
+   "notes": []
+  },
+  "T3": {
+   "min": 70,
+   "name": "Threshold 2×20+",
+   "kind": "quality",
+   "where": "Trainer",
+   "dur": "70′",
+   "coros": "Same copy, targets 95–100%",
+   "steps": [
+    [
+     "15′",
+     "55–65%",
+     ""
+    ],
+    [
+     "20′",
+     "95–100%",
+     ""
+    ],
+    [
+     "5′",
+     "50–55%",
+     ""
+    ],
+    [
+     "20′",
+     "95–100%",
+     ""
+    ],
+    [
+     "10′",
+     "50%",
+     ""
+    ]
+   ],
+   "notes": [
+    "If the second block falls apart, the FTP is too high: note it in the Strava description."
+   ]
+  },
+  "T4": {
+   "min": 95,
+   "name": "Sweet spot 3×20",
+   "kind": "quality",
+   "where": "Trainer",
+   "dur": "95′",
+   "coros": "Same copy, a third 20′ block added",
+   "steps": [
+    [
+     "15′",
+     "55–65%",
+     ""
+    ],
+    [
+     "20′",
+     "88–94%",
+     ""
+    ],
+    [
+     "5′",
+     "50–55%",
+     ""
+    ],
+    [
+     "20′",
+     "88–94%",
+     ""
+    ],
+    [
+     "5′",
+     "50–55%",
+     ""
+    ],
+    [
+     "20′",
+     "88–94%",
+     ""
+    ],
+    [
+     "10′",
+     "50%",
+     ""
+    ]
+   ],
+   "notes": [
+    "Builds time-to-exhaustion: the long climbs of the race sit just below threshold."
+   ]
+  },
+  "T5": {
+   "min": 90,
+   "name": "Sweet spot 2×30",
+   "kind": "quality",
+   "where": "Trainer",
+   "dur": "90′",
+   "coros": "Same copy, blocks set to 30′",
+   "steps": [
+    [
+     "15′",
+     "55–65%",
+     ""
+    ],
+    [
+     "30′",
+     "88–94%",
+     ""
+    ],
+    [
+     "8′",
+     "50–55%",
+     ""
+    ],
+    [
+     "30′",
+     "88–94%",
+     ""
+    ],
+    [
+     "7′",
+     "50%",
+     ""
+    ]
+   ],
+   "notes": []
+  },
+  "AT": {
+   "min": 110,
+   "name": "Anaerobic into threshold",
+   "kind": "quality",
+   "where": "Trainer",
+   "dur": "110′",
+   "coros": "“Anaerobic into Threshold Development”, targets switched to %FTP",
+   "steps": [
+    [
+     "15′",
+     "55–65%",
+     ""
+    ],
+    [
+     "5 × 1′",
+     "125–135%",
+     "spin up a few seconds before each"
+    ],
+    [
+     "5 × 7′",
+     "50–55%",
+     "recovery between efforts"
+    ],
+    [
+     "20′",
+     "95–100%",
+     ""
+    ],
+    [
+     "5′",
+     "50–55%",
+     ""
+    ],
+    [
+     "20′",
+     "95–100%",
+     ""
+    ],
+    [
+     "10′",
+     "50%",
+     ""
+    ]
+   ],
+   "notes": [
+    "Race simulation: hard surges, then long steady work on tired legs."
+   ]
+  },
+  "B1": {
+   "min": 60,
+   "name": "Torque 5×6",
+   "kind": "torque",
+   "where": "Trainer",
+   "dur": "60′",
+   "coros": "New workout: power targets, cadence noted in step name",
+   "steps": [
+    [
+     "15′",
+     "55–65%",
+     ""
+    ],
+    [
+     "5 × 6′",
+     "85–90% · 60 rpm",
+     "seated, quiet upper body"
+    ],
+    [
+     "5 × 4′",
+     "50–55%",
+     "between efforts, normal cadence"
+    ],
+    [
+     "5′",
+     "50%",
+     ""
+    ]
+   ],
+   "notes": [
+    "Steep-ramp strength for climbs 2 and 3 (10–11%). Stop the set if knees complain."
+   ]
+  },
+  "B2": {
+   "min": 75,
+   "name": "Torque 4×10",
+   "kind": "torque",
+   "where": "Trainer",
+   "dur": "75′",
+   "coros": "Same workout, 4 × 10′",
+   "steps": [
+    [
+     "15′",
+     "55–65%",
+     ""
+    ],
+    [
+     "4 × 10′",
+     "85–90% · 60 rpm",
+     ""
+    ],
+    [
+     "3 × 5′",
+     "50–55%",
+     ""
+    ],
+    [
+     "5′",
+     "50%",
+     ""
+    ]
+   ],
+   "notes": []
+  },
+  "B3": {
+   "min": 70,
+   "name": "Torque 3×12",
+   "kind": "torque",
+   "where": "Trainer",
+   "dur": "70′",
+   "coros": "Same workout, 3 × 12′",
+   "steps": [
+    [
+     "15′",
+     "55–65%",
+     ""
+    ],
+    [
+     "3 × 12′",
+     "85–90% · 55–60 rpm",
+     ""
+    ],
+    [
+     "2 × 5′",
+     "50–55%",
+     ""
+    ],
+    [
+     "9′",
+     "50%",
+     ""
+    ]
+   ],
+   "notes": []
+  },
+  "C1": {
+   "min": 90,
+   "name": "Long tempo 90′",
+   "kind": "long",
+   "where": "Trainer",
+   "dur": "90′",
+   "coros": "New workout",
+   "steps": [
+    [
+     "15′",
+     "55–65%",
+     ""
+    ],
+    [
+     "3 × 15′",
+     "76–85%",
+     ""
+    ],
+    [
+     "2 × 5′",
+     "60%",
+     ""
+    ],
+    [
+     "10′",
+     "60% → 50%",
+     ""
+    ],
+    [
+     "10′",
+     "50%",
+     ""
+    ]
+   ],
+   "notes": [
+    "Eat and drink as you would on a long ride: practise the habit."
+   ]
+  },
+  "C2": {
+   "min": 120,
+   "name": "Long tempo 2h",
+   "kind": "long",
+   "where": "Trainer",
+   "dur": "120′",
+   "coros": "New workout",
+   "steps": [
+    [
+     "15′",
+     "55–65%",
+     ""
+    ],
+    [
+     "3 × 20′",
+     "76–85%",
+     ""
+    ],
+    [
+     "2 × 5′",
+     "60%",
+     ""
+    ],
+    [
+     "20′",
+     "88–92%",
+     "the last climb, on tired legs"
+    ],
+    [
+     "15′",
+     "50%",
+     ""
+    ]
+   ],
+   "notes": [
+    "60–80 g carbs per hour."
+   ]
+  },
+  "C3": {
+   "min": 135,
+   "name": "Long tempo 2h15",
+   "kind": "long",
+   "where": "Trainer",
+   "dur": "135′",
+   "coros": "“90-Minute Tempo Ride – Intermediate”, targets switched to %FTP",
+   "steps": [
+    [
+     "20′",
+     "55–65%",
+     ""
+    ],
+    [
+     "60′",
+     "76–85%",
+     ""
+    ],
+    [
+     "30′",
+     "88–92%",
+     "climb 4 simulation"
+    ],
+    [
+     "25′",
+     "55% → 50%",
+     ""
+    ]
+   ],
+   "notes": [
+    "Rehearse race fuel: 70–90 g carbs per hour."
+   ]
+  },
+  "E": {
+   "min": 50,
+   "name": "Easy spin",
+   "kind": "endurance",
+   "where": "Trainer or outdoors",
+   "dur": "45–60′",
+   "coros": "Free ride in ERG at a fixed wattage",
+   "steps": [
+    [
+     "45–60′",
+     "60–70%",
+     "a show on, nose breathing"
+    ]
+   ],
+   "notes": [
+    "Optional. First thing to drop in a busy week."
+   ]
+  },
+  "S": {
+   "min": 25,
+   "name": "Strength",
+   "kind": "strength",
+   "where": "Home",
+   "dur": "20–25′",
+   "routine": "paris-home",
+   "steps": [],
+   "notes": [
+    "Core and single-leg work. In CH use the bodyweight circuit."
+   ]
+  },
+  "O": {
+   "name": "Outdoor ride",
+   "kind": "outdoor",
+   "where": "Outdoors",
+   "dur": "as it comes",
+   "steps": [],
+   "notes": [
+    "Ride for fun. Mostly conversational; a hard climb or two is fine."
+   ]
+  },
+  "L": {
+   "name": "Long MTB ride",
+   "kind": "long-mtb",
+   "where": "MTB, CH",
+   "dur": "see week",
+   "steps": [],
+   "notes": [
+    "Hardest climb last. Practise descending when tired, and race fuelling."
+   ]
+  },
+  "RECON": {
+   "min": 270,
+   "name": "Course recon",
+   "kind": "long-mtb",
+   "where": "Megève",
+   "dur": "4–5 h",
+   "steps": [],
+   "notes": [
+    "First ~35 km of the course (unchanged for 2027). Note gearing, descents, where to eat."
+   ]
+  },
+  "OPEN": {
+   "min": 35,
+   "name": "Openers",
+   "kind": "endurance",
+   "where": "Trainer or outdoors",
+   "dur": "30–40′",
+   "steps": [
+    [
+     "20′",
+     "55–65%",
+     ""
+    ],
+    [
+     "3 × 1′",
+     "100–105%",
+     ""
+    ],
+    [
+     "2 × 3′",
+     "60%",
+     ""
+    ],
+    [
+     "5′",
+     "50%",
+     ""
+    ]
+   ],
+   "notes": []
+  },
+  "RACE": {
+   "name": "MB Race 70 km",
+   "kind": "race",
+   "where": "Megève",
+   "dur": "6–7.5 h",
+   "steps": [],
+   "notes": [
+    "Pace climb 1 conservatively; the race starts at km 43."
+   ]
+  }
+ },
+ "weeks": [
+  {
+   "start": "2026-11-30",
+   "phase": "Pre-season",
+   "type": "flex",
+   "focus": "Set up the trainer, find the routine",
+   "hours": "2–4 h",
+   "sessions": [
+    {
+     "s": "FTP",
+     "note": "if the trainer is ready; otherwise next week"
+    },
+    {
+     "s": "E"
+    },
+    {
+     "s": "O",
+     "note": "weekend, if in CH"
+    }
+   ],
+   "notes": [
+    "No targets this week. Anything you do is a win."
+   ]
+  },
+  {
+   "start": "2026-12-07",
+   "phase": "Pre-season",
+   "type": "flex",
+   "focus": "First threshold taste",
+   "hours": "3–4 h",
+   "sessions": [
+    {
+     "s": "FTP",
+     "note": "if not done yet"
+    },
+    {
+     "s": "T1"
+    },
+    {
+     "s": "E"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "start": "2026-12-14",
+   "phase": "Pre-season",
+   "type": "flex",
+   "focus": "Two sessions if possible",
+   "hours": "3–4 h",
+   "sessions": [
+    {
+     "s": "T1"
+    },
+    {
+     "s": "B1",
+     "note": "optional"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "start": "2026-12-21",
+   "phase": "Holidays",
+   "type": "flex",
+   "focus": "Ride outdoors, enjoy",
+   "hours": "as it comes",
+   "sessions": [
+    {
+     "s": "O",
+     "note": "1–2 rides, mostly easy"
+    },
+    {
+     "s": "S",
+     "note": "bodyweight circuit"
+    }
+   ],
+   "notes": [
+    "Christmas week: skip anything that costs family time."
+   ]
+  },
+  {
+   "start": "2026-12-28",
+   "phase": "Holidays",
+   "type": "flex",
+   "focus": "One longer ride",
+   "hours": "as it comes",
+   "sessions": [
+    {
+     "s": "L",
+     "min": 180,
+     "note": "3 h, 800–1,200 m if conditions allow"
+    },
+    {
+     "s": "O"
+    },
+    {
+     "s": "S",
+     "note": "bodyweight circuit"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "start": "2027-01-04",
+   "phase": "Threshold I",
+   "type": "build",
+   "focus": "Start the routine",
+   "hours": "≈4 h",
+   "sessions": [
+    {
+     "s": "T1"
+    },
+    {
+     "s": "B1"
+    },
+    {
+     "s": "C1"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 1
+  },
+  {
+   "start": "2027-01-11",
+   "phase": "Threshold I",
+   "type": "build",
+   "focus": "First long ride",
+   "hours": "≈5.5 h",
+   "sessions": [
+    {
+     "s": "T1"
+    },
+    {
+     "s": "B1"
+    },
+    {
+     "s": "L",
+     "min": 180,
+     "note": "3 h · 800–1,000 m"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 2
+  },
+  {
+   "start": "2027-01-18",
+   "phase": "Threshold I",
+   "type": "build",
+   "focus": "Longer blocks",
+   "hours": "≈4 h",
+   "sessions": [
+    {
+     "s": "T2"
+    },
+    {
+     "s": "B1"
+    },
+    {
+     "s": "C1"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 3
+  },
+  {
+   "start": "2027-01-25",
+   "phase": "Threshold I",
+   "type": "recovery",
+   "focus": "Recovery",
+   "hours": "≈3.5 h",
+   "sessions": [
+    {
+     "s": "T1"
+    },
+    {
+     "s": "L",
+     "min": 120,
+     "note": "2 h easy · or any outdoor ride"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 4
+  },
+  {
+   "start": "2027-02-01",
+   "phase": "Threshold II",
+   "type": "build",
+   "focus": "2×20 holds",
+   "hours": "≈4.5 h",
+   "sessions": [
+    {
+     "s": "T2"
+    },
+    {
+     "s": "B2"
+    },
+    {
+     "s": "C1"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 5
+  },
+  {
+   "start": "2027-02-08",
+   "phase": "Threshold II",
+   "type": "build",
+   "focus": "Longer weekend",
+   "hours": "≈6.5 h",
+   "sessions": [
+    {
+     "s": "T2"
+    },
+    {
+     "s": "B2"
+    },
+    {
+     "s": "L",
+     "min": 210,
+     "note": "3.5 h · 1,000–1,300 m"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 6
+  },
+  {
+   "start": "2027-02-15",
+   "phase": "Threshold II",
+   "type": "build",
+   "focus": "Raise the targets",
+   "hours": "≈5 h",
+   "sessions": [
+    {
+     "s": "T3"
+    },
+    {
+     "s": "B2"
+    },
+    {
+     "s": "C2"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 7
+  },
+  {
+   "start": "2027-02-22",
+   "phase": "Threshold II",
+   "type": "recovery",
+   "focus": "Recovery",
+   "hours": "≈3.5 h",
+   "sessions": [
+    {
+     "s": "T1"
+    },
+    {
+     "s": "L",
+     "min": 120,
+     "note": "2 h easy"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 8
+  },
+  {
+   "start": "2027-03-01",
+   "phase": "Sweet-spot endurance",
+   "type": "build",
+   "focus": "Retest",
+   "hours": "≈4.5 h",
+   "sessions": [
+    {
+     "s": "FTP",
+     "note": "replaces the quality session"
+    },
+    {
+     "s": "B2"
+    },
+    {
+     "s": "C2"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 9
+  },
+  {
+   "start": "2027-03-08",
+   "phase": "Sweet-spot endurance",
+   "type": "build",
+   "focus": "Three blocks",
+   "hours": "≈7 h",
+   "sessions": [
+    {
+     "s": "T4"
+    },
+    {
+     "s": "B3"
+    },
+    {
+     "s": "L",
+     "min": 240,
+     "note": "4 h · 1,300–1,600 m"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 10
+  },
+  {
+   "start": "2027-03-15",
+   "phase": "Sweet-spot endurance",
+   "type": "build",
+   "focus": "Three blocks",
+   "hours": "≈5 h",
+   "sessions": [
+    {
+     "s": "T4"
+    },
+    {
+     "s": "B3"
+    },
+    {
+     "s": "C2"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 11
+  },
+  {
+   "start": "2027-03-22",
+   "phase": "Sweet-spot endurance",
+   "type": "recovery",
+   "focus": "Recovery",
+   "hours": "≈3.5 h",
+   "sessions": [
+    {
+     "s": "T2"
+    },
+    {
+     "s": "L",
+     "min": 120,
+     "note": "2 h easy"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 12
+  },
+  {
+   "start": "2027-03-29",
+   "phase": "Long blocks",
+   "type": "build",
+   "focus": "30-minute blocks",
+   "hours": "≈5.5 h",
+   "sessions": [
+    {
+     "s": "T5"
+    },
+    {
+     "s": "B3"
+    },
+    {
+     "s": "C3"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 13
+  },
+  {
+   "start": "2027-04-05",
+   "phase": "Long blocks",
+   "type": "build",
+   "focus": "Big weekend",
+   "hours": "≈7.5 h",
+   "sessions": [
+    {
+     "s": "T5"
+    },
+    {
+     "s": "B3"
+    },
+    {
+     "s": "L",
+     "min": 270,
+     "note": "4.5 h · 1,600–2,000 m, hardest climb last"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 14
+  },
+  {
+   "start": "2027-04-12",
+   "phase": "Long blocks",
+   "type": "build",
+   "focus": "30-minute blocks",
+   "hours": "≈5.5 h",
+   "sessions": [
+    {
+     "s": "T5"
+    },
+    {
+     "s": "B3"
+    },
+    {
+     "s": "C3"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 15
+  },
+  {
+   "start": "2027-04-19",
+   "phase": "Long blocks",
+   "type": "recovery",
+   "focus": "Recovery",
+   "hours": "≈4.5 h",
+   "sessions": [
+    {
+     "s": "T4"
+    },
+    {
+     "s": "L",
+     "min": 150,
+     "note": "2.5 h easy"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 16
+  },
+  {
+   "start": "2027-04-26",
+   "phase": "Race-specific",
+   "type": "build",
+   "focus": "Surges then steady",
+   "hours": "≈4.5 h",
+   "sessions": [
+    {
+     "s": "AT"
+    },
+    {
+     "s": "B3",
+     "note": "optional"
+    },
+    {
+     "s": "C3"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 17
+  },
+  {
+   "start": "2027-05-03",
+   "phase": "Race-specific",
+   "type": "build",
+   "focus": "5-hour day",
+   "hours": "≈7 h",
+   "sessions": [
+    {
+     "s": "AT"
+    },
+    {
+     "s": "L",
+     "min": 300,
+     "note": "5 h · 2,000–2,300 m, full race fuelling"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 18
+  },
+  {
+   "start": "2027-05-10",
+   "phase": "Race-specific",
+   "type": "build",
+   "focus": "Surges then steady",
+   "hours": "≈4.5 h",
+   "sessions": [
+    {
+     "s": "AT"
+    },
+    {
+     "s": "B3",
+     "note": "optional"
+    },
+    {
+     "s": "C3"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 19
+  },
+  {
+   "start": "2027-05-17",
+   "phase": "Race-specific",
+   "type": "recovery",
+   "focus": "Recovery",
+   "hours": "≈4.5 h",
+   "sessions": [
+    {
+     "s": "T5"
+    },
+    {
+     "s": "L",
+     "min": 150,
+     "note": "2.5 h easy, technical descents"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 20
+  },
+  {
+   "start": "2027-05-24",
+   "phase": "Peak",
+   "type": "build",
+   "focus": "Back-to-back",
+   "hours": "≈5 h",
+   "sessions": [
+    {
+     "s": "AT"
+    },
+    {
+     "s": "C3"
+    },
+    {
+     "s": "E",
+     "note": "the day after C3"
+    }
+   ],
+   "notes": [],
+   "n": 21
+  },
+  {
+   "start": "2027-05-31",
+   "phase": "Peak",
+   "type": "build",
+   "focus": "Longest day",
+   "hours": "≈8.5 h",
+   "sessions": [
+    {
+     "s": "T5"
+    },
+    {
+     "s": "L",
+     "min": 360,
+     "note": "6 h · 2,500 m+, race-day rehearsal"
+    },
+    {
+     "s": "E"
+    }
+   ],
+   "notes": [],
+   "n": 22
+  },
+  {
+   "start": "2027-06-07",
+   "phase": "Peak",
+   "type": "build",
+   "focus": "Sharpen",
+   "hours": "≈4 h",
+   "sessions": [
+    {
+     "s": "AT"
+    },
+    {
+     "s": "C2"
+    },
+    {
+     "s": "S"
+    }
+   ],
+   "notes": [],
+   "n": 23
+  },
+  {
+   "start": "2027-06-14",
+   "phase": "Peak",
+   "type": "build",
+   "focus": "Recon",
+   "hours": "≈7 h",
+   "sessions": [
+    {
+     "s": "T4"
+    },
+    {
+     "s": "RECON",
+     "note": "or a 5 h · 2,500 m ride if snow"
+    },
+    {
+     "s": "E"
+    }
+   ],
+   "notes": [],
+   "n": 24
+  },
+  {
+   "start": "2027-06-21",
+   "phase": "Taper",
+   "type": "taper",
+   "focus": "Less volume, keep the snap",
+   "hours": "≈4 h",
+   "sessions": [
+    {
+     "s": "T2",
+     "note": "blocks cut to 12′",
+     "min": 55
+    },
+    {
+     "s": "L",
+     "min": 150,
+     "note": "2.5 h, easy with 2–3 short efforts"
+    },
+    {
+     "s": "E"
+    }
+   ],
+   "notes": [
+    "About 40% less than the last build week. Sleep is the session."
+   ],
+   "n": 25
+  },
+  {
+   "start": "2027-06-28",
+   "phase": "Race week",
+   "type": "race",
+   "focus": "Arrive fresh",
+   "hours": "2 h + race",
+   "sessions": [
+    {
+     "s": "E",
+     "note": "Mon, 45′ easy"
+    },
+    {
+     "s": "OPEN",
+     "note": "Wed"
+    },
+    {
+     "s": "OPEN",
+     "note": "Fri, 30′, shorter"
+    },
+    {
+     "s": "RACE",
+     "note": "Sat"
+    }
+   ],
+   "notes": [
+    "Carb-load Thu–Fri. Check the bike on Monday, not Friday."
+   ],
+   "n": 26
+  }
+ ],
+ "reports": []
+}

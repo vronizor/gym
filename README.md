@@ -7,9 +7,11 @@ Gym routine reference for the phone: routines with exercise how-tos, installable
 ```
 public/
   routines.json        all content: routines + exercise library
+  plan.json            MB Race training plan, weekly reports
   index.html app.js style.css
   sw.js                offline cache
   manifest.webmanifest icon.svg icon-*.png
+docs/weekly-review.md  procedure for the Monday review task
 compose.yaml           nginx, public/ mounted read-only
 nginx.conf
 ```
@@ -57,3 +59,7 @@ Everything lives in `public/routines.json`.
 - Tags: `ski`, `posture`, `cycling`.
 
 Bump `updated` when content changes. Bump `VERSION` in `sw.js` when you change app files (not needed for routine edits).
+
+## Training plan
+
+`#plan` shows the MB Race plan from `public/plan.json`: this week's sessions with %FTP targets and watts, the coming weeks, past weeks with their review status, and the adjustment rules. A scheduled Claude task runs every Monday morning, reads Strava, applies the rules to the coming week, writes a report, commits and tags a release. See `docs/weekly-review.md`.

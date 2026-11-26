@@ -5,6 +5,7 @@ const TAGS = { ski: "Ski", posture: "Posture", cycling: "Cycling" };
 const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
 let data = null;
+let plan = null;
 
 function h(tag, attrs = {}, ...children) {
   const el = document.createElement(tag);
@@ -14,7 +15,7 @@ function h(tag, attrs = {}, ...children) {
     else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
     else el.setAttribute(k, v === true ? "" : v);
   }
-  for (const c of children.flat()) {
+  for (const c of children.flat(Infinity)) {
     if (c == null || c === false) continue;
     el.append(c instanceof Node ? c : document.createTextNode(c));
   }
@@ -122,6 +123,175 @@ function exerciseCard(item, index) {
   );
 }
 
+const KIND = {
+  test: "Test", quality: "Quality", torque: "Torque", long: "Long", "long-mtb": "MTB",
+  endurance: "Easy", strength: "Strength", outdoor: "Outdoor", race: "Race",
+};
+
+function isoDay(d) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+function addDays(iso, n) {
+  const [y, m, d] = iso.split("-").map(Number);
+  return isoDay(new Date(y, m - 1, d + n));
+}
+
+function shortDate(iso) {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+}
+
+function weekRange(w) {
+  return `${shortDate(w.start)} – ${shortDate(addDays(w.start, 6))}`;
+}
+
+function currentWeekIndex() {
+  const today = isoDay(new Date());
+  const i = plan.weeks.findIndex((w) => today >= w.start && today <= addDays(w.start, 6));
+  if (i >= 0) return i;
+  return today < plan.weeks[0].start ? 0 : plan.weeks.length - 1;
+}
+
+function weekTitle(w) {
+  return w.n ? `Week ${w.n} · ${w.phase}` : w.phase;
+}
+
+function withWatts(target) {
+  const ftp = plan.ftp && plan.ftp.watts;
+  const m = ftp && target.match(/(\d+)(?:–(\d+))?%/);
+  if (!m || target.includes("→")) return target;
+  const lo = Math.round((ftp * m[1]) / 100);
+  const hi = m[2] ? Math.round((ftp * m[2]) / 100) : null;
+  return `${target} · ${hi ? `${lo}–${hi}` : lo} W`;
+}
+
+function reportFor(w) {
+  return (plan.reports || []).find((r) => r.week === w.start);
+}
+
+function sessionCard(item, index) {
+  const ses = plan.sessions[item.s];
+  if (!ses) return h("p", { class: "error" }, `Unknown session: ${item.s}`);
+  const kind = KIND[ses.kind] || ses.kind;
+  return h("details", { class: "card" },
+    h("summary", {},
+      h("span", { class: "idx" }, String(index).padStart(2, "0")),
+      h("span", { class: "name" }, ses.name, h("span", { class: `tag tag-k-${ses.kind}` }, kind)),
+      h("span", { class: "dose" }, item.min && ses.kind === "long-mtb" ? `${item.min / 60} h` : ses.dur),
+      item.note && h("span", { class: "cue" }, item.note)
+    ),
+    h("div", { class: "detail" },
+      h("p", { class: "kit" }, [ses.where, ses.coros].filter(Boolean).join(" · ")),
+      ses.steps && ses.steps.length
+        ? h("div", { class: "steps" }, ses.steps.map(([d, t, n]) =>
+            h("div", { class: "step" },
+              h("span", { class: "step-d" }, d),
+              h("span", { class: "step-t" }, withWatts(t)),
+              n && h("span", { class: "step-n" }, n))))
+        : null,
+      list("ul", ses.notes),
+      ses.routine && h("a", { class: "yt", href: `#${ses.routine}` }, "Open routine →")
+    )
+  );
+}
+
+function weekBody(w) {
+  const rep = reportFor(w);
+  return [
+    w.adjusted && h("p", { class: "adjusted" }, h("b", {}, "Adjusted: "), w.adjusted.reason),
+    w.sessions.map((it, i) => sessionCard(it, i + 1)),
+    w.notes && w.notes.length ? h("ul", { class: "notes week-notes" }, w.notes.map((t) => h("li", {}, t))) : null,
+    rep && reportCard(rep, false),
+  ];
+}
+
+function statusPill(status) {
+  return status ? h("span", { class: `st st-${status}` }, status) : null;
+}
+
+function reportCard(r, open) {
+  return h("details", { class: "card report", open: open || null },
+    h("summary", {},
+      h("span", { class: "name" }, `Review of ${shortDate(r.week)}`),
+      h("span", { class: "dose" }, statusPill(r.status))),
+    h("div", { class: "detail" },
+      r.summary && h("p", {}, r.summary),
+      r.done && r.done.length ? [h("h3", {}, "Done"), list("ul", r.done)] : null,
+      r.changes && r.changes.length ? [h("h3", {}, "Changes to the plan"), list("ul", r.changes)] : null,
+      r.rules && r.rules.length ? h("p", { class: "kit" }, `Rules applied: ${r.rules.join(", ")}`) : null));
+}
+
+function weekCard(w, current) {
+  const rep = reportFor(w);
+  return h("details", { class: `card week${current ? " week-now" : ""}`, open: current || null },
+    h("summary", {},
+      h("span", { class: "idx" }, w.n ? String(w.n).padStart(2, "0") : "··"),
+      h("span", { class: "name" }, w.focus),
+      h("span", { class: "dose" }, rep ? statusPill(rep.status) : w.hours),
+      h("span", { class: "cue" }, `${weekRange(w)} · ${w.phase}${w.type === "recovery" ? " · recovery" : ""}`)),
+    h("div", { class: "detail" }, weekBody(w)));
+}
+
+function renderPlan() {
+  document.title = "Plan · tally";
+  const i = currentWeekIndex();
+  const w = plan.weeks[i];
+  const race = plan.race;
+  const raceWeek = plan.weeks.findIndex((x) => x.type === "race");
+  const toGo = Math.max(0, raceWeek - i);
+  const latest = (plan.reports || []).slice(-1)[0];
+  let n = 0;
+
+  document.getElementById("main").replaceChildren(...[
+    h("a", { class: "back", href: "#" }, "← All routines"),
+    h("h1", {}, race.name),
+    h("div", { class: "stats" },
+      h("div", { class: "stat" }, h("b", {}, String(toGo)), h("span", {}, toGo === 1 ? "week to go" : "weeks to go")),
+      h("div", { class: "stat" }, h("b", {}, race.climb_m.toLocaleString("en-GB")), h("span", {}, `m up · ${race.km} km`)),
+      h("div", { class: "stat" }, h("b", {}, `${plan.ftp.watts} W`), h("span", {}, plan.ftp.tested ? `FTP · ${shortDate(plan.ftp.tested)}` : "FTP · untested"))),
+    h("p", { class: "format" }, `${shortDate(race.date)} ${race.date.slice(0, 4)}, ${race.place}. ${race.date_note || ""}`),
+    h("details", { class: "card warmup" },
+      h("summary", {}, h("span", { class: "name" }, "Course"), h("span", { class: "dose" }, "4 climbs")),
+      h("div", { class: "detail" }, h("p", {}, race.profile))),
+
+    latest && latest.week !== w.start && h("section", { class: "block" },
+      h("h2", { class: "block-title" }, "Latest review"),
+      reportCard(latest, latest.date >= w.start)),
+
+    h("section", { class: "block" },
+      h("h2", { class: "block-title" }, `This week · ${weekRange(w)}`),
+      h("div", { class: "week-head" },
+        h("span", { class: "week-focus" }, w.focus),
+        h("span", { class: "week-meta" }, `${weekTitle(w)} · ${w.hours}`)),
+      weekBody(w)),
+
+    h("section", { class: "block" },
+      h("h2", { class: "block-title" }, "Coming up"),
+      plan.weeks.slice(i + 1).map((x) => weekCard(x, false))),
+
+    i > 0 && h("section", { class: "block" },
+      h("h2", { class: "block-title" }, "Done"),
+      plan.weeks.slice(0, i).reverse().map((x) => weekCard(x, false))),
+
+    h("details", { class: "card kit-card" },
+      h("summary", {}, h("span", { class: "name" }, "How the plan adjusts"), h("span", { class: "dose" }, `${plan.rules.length} rules`)),
+      h("div", { class: "detail" },
+        h("p", { class: "kit" }, "Every Monday morning a review reads Strava, applies these rules to the coming week and writes a report here. Put “RPE 8”, “bad night” or “sick” in a Strava description when it matters."),
+        h("ul", { class: "rules" }, plan.rules.map((r) => h("li", {}, h("b", {}, `${r.id} `), r.text))))),
+  ].flat().filter(Boolean));
+}
+
+function planTile() {
+  if (!plan) return null;
+  const w = plan.weeks[currentWeekIndex()];
+  return h("a", { class: "tile plan-tile", href: "#plan" },
+    h("span", { class: "tile-kicker" }, `This week · ${w.n ? `wk ${w.n}` : w.phase}`),
+    h("span", { class: "tile-name" }, w.focus),
+    h("span", { class: "tile-meta" }, `${w.sessions.length} sessions · ${w.hours}`),
+    h("span", { class: "pills" }, h("span", { class: "pl hue-green" }, plan.race.name)));
+}
+
 function renderHome() {
   document.title = "tally";
   const place = currentPlace();
@@ -135,6 +305,7 @@ function renderHome() {
         h("button", { type: "button", class: `chip hue-${p.hue || "none"}`, "aria-pressed": String(place === p.id), onclick: pick(p.id) }, p.name))
     ),
     h("div", { class: "grid" },
+      planTile(),
       routinesFor(place).map((r) =>
         h("a", { class: "tile", href: `#${r.id}` },
           h("span", { class: "tile-name" }, r.name),
@@ -176,6 +347,11 @@ function renderRoutine(routine) {
 
 function route() {
   if (!data) return;
+  if (location.hash === "#plan" && plan) {
+    renderPlan();
+    window.scrollTo(0, 0);
+    return;
+  }
   const routine = data.routines.find((r) => r.id === location.hash.slice(1));
   if (routine) renderRoutine(routine);
   else renderHome();
@@ -186,13 +362,21 @@ function setStatus(fromCache) {
   const offline = fromCache || !navigator.onLine;
   document.getElementById("status").replaceChildren(
     offline ? h("span", { class: "offline" }, "OFFLINE · ") : "",
-    `routines updated ${data.updated}`
+    `routines updated ${data.updated}`,
+    plan ? ` · plan updated ${plan.updated}` : ""
   );
+}
+
+async function loadPlan() {
+  try {
+    const res = await fetch("plan.json", { cache: "no-cache" });
+    if (res.ok) plan = await res.json();
+  } catch {}
 }
 
 async function load() {
   try {
-    const res = await fetch("routines.json", { cache: "no-cache" });
+    const [res] = await Promise.all([fetch("routines.json", { cache: "no-cache" }), loadPlan()]);
     if (!res.ok) throw new Error(res.status);
     data = await res.json();
     route();

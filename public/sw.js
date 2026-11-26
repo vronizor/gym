@@ -1,10 +1,10 @@
-const VERSION = "gym-v5";
+const VERSION = "gym-v6";
 const SHELL = [
   "./", "index.html", "app.js", "style.css", "manifest.webmanifest",
-  "icon.svg", "icon-192.png", "icon-512.png", "routines.json",
+  "icon.svg", "icon-192.png", "icon-512.png", "routines.json", "plan.json",
   "fonts/inter-tight.woff2", "fonts/jetbrains-mono.woff2",
 ];
-const DATA = "routines.json";
+const DATA = ["routines.json", "plan.json"];
 const NETWORK_TIMEOUT_MS = 3000;
 
 self.addEventListener("install", (event) => {
@@ -25,9 +25,9 @@ function markCached(res) {
   return res.blob().then((body) => new Response(body, { status: res.status, statusText: res.statusText, headers }));
 }
 
-async function networkFirst(request) {
+async function networkFirst(request, file) {
   const cache = await caches.open(VERSION);
-  const key = new URL(DATA, self.registration.scope).href;
+  const key = new URL(file, self.registration.scope).href;
   try {
     const res = await Promise.race([
       fetch(request, { cache: "no-cache" }),
@@ -60,8 +60,9 @@ self.addEventListener("fetch", (event) => {
   if (request.method !== "GET") return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
-  if (url.pathname.endsWith("/" + DATA)) {
-    event.respondWith(networkFirst(request));
+  const file = DATA.find((f) => url.pathname.endsWith("/" + f));
+  if (file) {
+    event.respondWith(networkFirst(request, file));
   } else {
     event.respondWith(staleWhileRevalidate(request));
   }

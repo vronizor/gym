@@ -1,6 +1,6 @@
 # Gym
 
-Reference-only routine page for Vincent's phone. No logging and no backend, by choice.
+Reference-only routine page for Vincent's phone, plus a training Plan page (`#plan`) for the MB Race. No logging and no backend, by choice.
 
 - Places live in `places[]` (`id`, `name`, `hue`, `equipment[]`): the kit Vincent has said is there, in his words. `hue` is one of blue, orange, red, teal, green, pink (unused ones first) and colours that place's pill everywhere. That list is the source of truth when writing a routine for a place: use only what's on it. When he mentions new kit or a new place, update or add the entry. Never invent kit for a place he hasn't described.
 - Each routine has `places: [ids]`; omit it for routines that work anywhere (mobility). The page filters by place.
@@ -12,3 +12,10 @@ Reference-only routine page for Vincent's phone. No logging and no backend, by c
 - Keep it static and dependency-free: no build step, no external fonts or CDNs. It must work fully offline.
 - Validate before pushing: `node -e "const d=require('./public/routines.json');for(const r of d.routines)for(const b of r.blocks)for(const i of b.items)if(!d.exercises[i.ex])throw i.ex"`
 - Deploy is `git pull` on joan-pi (~/gym); nginx serves `public/` mounted read-only.
+
+## Training plan
+
+- `public/plan.json` holds the plan: `race`, `ftp`, `rules[]`, `sessions{}` (library; targets in %FTP, the page adds watts), `weeks[]` (Monday `start`, `phase`, `type` flex/build/recovery/taper/race, `focus`, `hours`, `sessions[]` of `{s, note?, min?}`, optional `adjusted`), `reports[]`.
+- A scheduled task reviews the week every Monday and edits `plan.json` following `docs/weekly-review.md`. When Vincent asks for a plan change in chat, keep the same rules: change the coming weeks, never the taper or race week unless he asks, and name the reason in `adjusted`.
+- Bump `updated` in `plan.json` on any change. Validate with the command in `docs/weekly-review.md`.
+- Releases: tag `vX.Y` after pushing so joan-pi's auto-deploy picks it up.
