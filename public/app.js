@@ -280,12 +280,42 @@ function renderPlan() {
       h("h2", { class: "block-title" }, "Done"),
       plan.weeks.slice(0, i).reverse().map((x) => weekCard(x, false))),
 
+    corosCard(),
+
     h("details", { class: "card kit-card" },
       h("summary", {}, h("span", { class: "name" }, "How the plan adjusts"), h("span", { class: "dose" }, `${plan.rules.length} rules`)),
       h("div", { class: "detail" },
         h("p", { class: "kit" }, "Every Monday morning a review reads Strava, applies these rules to the coming week and writes a report here. Set Perceived Exertion on each Strava activity, and write “bad night” or “sick” in the description when it matters."),
         h("ul", { class: "rules" }, plan.rules.map((r) => h("li", {}, h("b", {}, `${r.id} `), r.text))))),
   ].flat().filter(Boolean));
+}
+
+const NOT_SAVED = new Set(["S", "O", "L", "RECON", "RACE", "FTP"]);
+
+function corosCard() {
+  const first = {};
+  plan.weeks.forEach((w) => w.sessions.forEach((it) => {
+    if (!NOT_SAVED.has(it.s) && !(it.s in first)) first[it.s] = w;
+  }));
+  const ids = Object.keys(first);
+  return h("details", { class: "card kit-card" },
+    h("summary", {}, h("span", { class: "name" }, "Workouts to save in COROS"), h("span", { class: "dose" }, `${ids.length} workouts`)),
+    h("div", { class: "detail" },
+      h("ul", { class: "rules" }, ids.map((id) => {
+        const ses = plan.sessions[id];
+        return h("li", {}, h("b", {}, `${id} `), `${ses.name} · first ${shortDate(first[id].start)}`,
+          h("br"), h("span", { class: "kit" }, ses.coros));
+      })),
+      h("h3", {}, "Setting them up"),
+      list("ul", [
+        "Name each one with its code first (“T1 Threshold 2×15”) so it's easy to match here and in Strava.",
+        "Intensity type %FTP on every step, never Power: %FTP follows the FTP on the Dura, watts don't.",
+        "Narrow ranges, about 5% wide: ERG holds a single value inside the range.",
+        "Step types: Warm Up, Training, Rest, Cool Down; use Repeat for interval sets.",
+        "Torque steps: %FTP target, and put the cadence in the step name (“60 rpm”).",
+        "Sprints and open steps: target Not set.",
+        "After every FTP test, check the Dura shows the new value before the next session.",
+      ])));
 }
 
 function planTile() {

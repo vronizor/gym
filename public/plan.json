@@ -79,7 +79,7 @@
    "kind": "test",
    "where": "Trainer",
    "dur": "50′",
-   "coros": "Dura's built-in Cycling FTP Test (Indoor Bike mode)",
+   "coros": "Built into the Dura (Cycling FTP Test, Indoor Bike mode): nothing to save",
    "steps": [
     [
      "10′",
@@ -1101,7 +1101,7 @@
     {
      "s": "L",
      "min": 270,
-     "note": "4.5 h · 1,600–2,000 m, hardest climb last"
+     "note": "4.5 h · 1,600–2,000 m. Open with the Barillette MTB climb as a benchmark: steady hard, note time, HR and exertion"
     },
     {
      "s": "S"
@@ -1281,7 +1281,7 @@
     {
      "s": "L",
      "min": 360,
-     "note": "6 h · 2,500 m+, race-day rehearsal"
+     "note": "6 h · 2,500 m+, race-day rehearsal. Open with the Barillette MTB benchmark (same route as April), then keep riding"
     },
     {
      "s": "E"
