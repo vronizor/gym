@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-04",
+  "updated": "2026-11-26",
   "places": [
     {
       "id": "gym",
@@ -214,6 +214,49 @@
       ]
     },
     {
+      "id": "mtb-strength",
+      "name": "MTB race strength",
+      "places": ["paris"],
+      "plan": true,
+      "duration": "25 min",
+      "equipment": "Bands, 2 kg dumbbells, mat, foam roller",
+      "stats": [["25′", "total"], ["×3", "rounds"], ["30″", "rest"]],
+      "format": "Circuit, 3 rounds, 30 s rest between exercises, 1 min between rounds. Built for the MB Race: single legs for steep climbs, upper body and side-to-side core for long descents. Light kit, so every leg rep is slow: 3 s down.",
+      "warmup": [
+        "Foam roll quads and glutes, 30 s each",
+        "10 bodyweight squats",
+        "10 band pull-aparts with the lightest band",
+        "4 per side of the world's greatest stretch"
+      ],
+      "blocks": [
+        {
+          "title": "Circuit",
+          "items": [
+            {"ex": "split-squat", "dose": "8 per leg", "note": "3 s down, 1 s pause at the bottom. A 2 kg dumbbell in each hand once it's easy."},
+            {"ex": "sl-rdl", "dose": "8 per leg", "note": "2 kg in the opposite hand, 3 s down."},
+            {"ex": "push-up", "dose": "8–12", "note": "Slow lowering. This is your descending posture: arms working, hips quiet."},
+            {"ex": "band-row", "dose": "12–15"},
+            {"ex": "lateral-lunge", "dose": "6 per side", "note": "2 kg at the chest. Hip control for off-camber trails."},
+            {"ex": "side-plank", "dose": "25–40 s per side"},
+            {"ex": "dead-bug", "dose": "8 per side"}
+          ]
+        },
+        {
+          "title": "Cool-down",
+          "items": [
+            {"ex": "foam-thoracic", "dose": "1 min", "tag": "posture"},
+            {"ex": "childs-pose", "dose": "1 min"}
+          ]
+        }
+      ],
+      "notes": [
+        "Do it after an easy day or after the torque session, never the day before the quality session or a long MTB ride.",
+        "Progress with slower reps, a harder band or an extra 2 reps, not weight.",
+        "From May (week 21) drop to 2 rounds to keep the legs fresh; skip it in taper and race week.",
+        "In CH, the bodyweight circuit covers the same ground."
+      ]
+    },
+    {
       "id": "paris-home",
       "name": "Home strength",
       "places": ["paris"],
@@ -256,6 +299,7 @@
       "id": "ch-bodyweight",
       "name": "Bodyweight circuit",
       "places": ["ch"],
+      "plan": true,
       "duration": "20 min",
       "equipment": "Mat only",
       "stats": [["20′", "total"], ["×3", "rounds"], ["45″", "rest"]],

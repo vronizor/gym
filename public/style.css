@@ -543,3 +543,20 @@ h1 {
 .rules { padding-left: 0 !important; list-style: none; }
 .rules li { margin: 8px 0; font-size: 15px; }
 .rules b { font-family: "JetBrains Mono", ui-monospace, monospace; color: var(--num); }
+
+.stamp {
+  background: var(--led);
+  color: var(--led-ink);
+  transform: rotate(-3deg);
+  box-shadow: 0 0 0 1px var(--led-ink) inset;
+}
+.quote {
+  margin: 2px 0 12px;
+  padding: 2px 0 2px 12px;
+  border-left: 3px solid var(--slash);
+  color: var(--body);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.4;
+}
+.tile-quote { font-size: 14px; font-style: italic; color: var(--muted); line-height: 1.35; }

@@ -70,9 +70,14 @@ function currentPlace() {
 }
 
 function routinesFor(place) {
-  if (place === "all") return data.routines;
-  const routines = data.routines.filter((r) => anywhere(r) || r.places.includes(place));
-  return [...routines.filter((r) => !anywhere(r)), ...routines.filter(anywhere)];
+  const routines = place === "all" ? data.routines : data.routines.filter((r) => anywhere(r) || r.places.includes(place));
+  const ordered = place === "all" ? routines : [...routines.filter((r) => !anywhere(r)), ...routines.filter(anywhere)];
+  return [...ordered.filter((r) => r.plan), ...ordered.filter((r) => !r.plan)];
+}
+
+function planStamp(routine) {
+  if (!routine.plan) return null;
+  return h("span", { class: "pl stamp" }, plan ? plan.race.name.replace(/ \d+ km$/, "") : "Plan");
 }
 
 function placePills(routine) {
@@ -199,6 +204,7 @@ function sessionCard(item, index) {
 function weekBody(w) {
   const rep = reportFor(w);
   return [
+    w.quote && h("blockquote", { class: "quote" }, w.quote),
     w.adjusted && h("p", { class: "adjusted" }, h("b", {}, "Adjusted: "), w.adjusted.reason),
     w.sessions.map((it, i) => sessionCard(it, i + 1)),
     w.notes && w.notes.length ? h("ul", { class: "notes week-notes" }, w.notes.map((t) => h("li", {}, t))) : null,
@@ -289,6 +295,7 @@ function planTile() {
     h("span", { class: "tile-kicker" }, `This week · ${w.n ? `wk ${w.n}` : w.phase}`),
     h("span", { class: "tile-name" }, w.focus),
     h("span", { class: "tile-meta" }, `${w.sessions.length} sessions · ${w.hours}`),
+    w.quote && h("span", { class: "tile-quote" }, w.quote),
     h("span", { class: "pills" }, h("span", { class: "pl hue-green" }, plan.race.name)));
 }
 
@@ -310,7 +317,7 @@ function renderHome() {
         h("a", { class: "tile", href: `#${r.id}` },
           h("span", { class: "tile-name" }, r.name),
           r.stats && r.stats[0] && h("span", { class: "tile-meta" }, r.stats.slice(0, 2).map(([v]) => v).join(" · ")),
-          h("span", { class: "pills" }, placePills(r))
+          h("span", { class: "pills" }, planStamp(r), placePills(r))
         ))
     ),
     kit && h("details", { class: "card kit-card" },
@@ -325,7 +332,7 @@ function renderRoutine(routine) {
   document.getElementById("main").replaceChildren(...[
     h("a", { class: "back", href: "#" }, "← All routines"),
     h("h1", {}, routine.name),
-    h("div", { class: "pills hero-pills" }, placePills(routine)),
+    h("div", { class: "pills hero-pills" }, planStamp(routine), placePills(routine)),
     routine.equipment && h("p", { class: "equip" }, routine.equipment),
     routine.stats && routine.stats.length
       ? h("div", { class: "stats" }, routine.stats.map(([v, l]) => h("div", { class: "stat" }, h("b", {}, v), h("span", {}, l))))

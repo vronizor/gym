@@ -29,12 +29,24 @@ Runs every Monday early morning as a scheduled task. It reads Vincent's Strava, 
    ```
    If the reviewed week isn't in `weeks[]` (before 2026-11-30, or after the race), change nothing and don't commit. Pre-season and holiday weeks (`type: "flex"`) get a report but are never judged harshly: classify them, note what was done, change nothing unless a rule clearly applies.
 8. If the coming week changed, set its `adjusted` to `{ "date": "<today>", "reason": "<one sentence naming the rule>" }` and edit its `sessions` (or `hours`, `notes`). Never invent a session id: only ids in `sessions{}`. An item can carry a `note` (shown on the card) and `min` (planned minutes).
-9. Bump `updated` in `plan.json` to today.
+9. Write the coming week's `quote` (see below). Bump `updated` in `plan.json` to today.
 10. Validate (command below), commit as `Weekly review: week of <date>`, and push to `main`. Then push the next release tag (`vX.Y`, increment the minor version from the latest tag) so joan-pi deploys it. If the tag push is refused, don't retry or work around it: the commit on `main` is enough.
+
+## The weekly quote
+
+One original line, written fresh each week and tied to what actually happened or what's coming: the session that went well, the one that got skipped, the weather, the fixie on the trainer, Paris, a baby who doesn't care about FTP. Under 25 words.
+
+- Tone: dry, self-deprecating, a bit punk. Every few weeks lean into bike-messenger spirit: fixies, no brakes, red lights as suggestions, chain grease as a personality, riding in the rain because that's just Tuesday. Not too serious, but it should still make him want to get on the bike.
+- Never guilt, never "no excuses" gym-bro lines, never mock a missed week. A missed week gets a line about getting back on, not about failing.
+- Write your own lines. No quotes from real people, no song lyrics, no famous slogans.
+- Don't repeat an earlier week's joke: read the previous `quote` values first.
+
+Example: "Pros have soigneurs. You have a bottle warmer and a 2×20. Same energy."
 
 ## Guardrails
 
 - Facts only from Strava and Vincent's own words. Don't guess how a session felt.
+- The repo may be public: keep health notes general ("noted feeling unwell", "bad sleep") and never copy his descriptions word for word, name people he rode with, or give start locations.
 - If Strava can't be read, add a report with `status` omitted, a summary saying the review couldn't run, change nothing else, and still commit and tag.
 - Keep the tone flat and useful. No cheerleading, no guilt.
 - Don't touch `routines.json` or app files.
