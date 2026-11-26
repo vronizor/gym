@@ -27,7 +27,7 @@ Runs every Monday early morning as a scheduled task. It reads Vincent's Strava, 
      "rules": ["R4", "R7"]
    }
    ```
-   No report for weeks before 2026-11-30. Pre-season and holiday weeks (`type: "flex"`) get a report but are never judged harshly: classify them, note what was done, change nothing unless a rule clearly applies.
+   If the reviewed week isn't in `weeks[]` (before 2026-11-30, or after the race), change nothing and don't commit. Pre-season and holiday weeks (`type: "flex"`) get a report but are never judged harshly: classify them, note what was done, change nothing unless a rule clearly applies.
 8. If the coming week changed, set its `adjusted` to `{ "date": "<today>", "reason": "<one sentence naming the rule>" }` and edit its `sessions` (or `hours`, `notes`). Never invent a session id: only ids in `sessions{}`. An item can carry a `note` (shown on the card) and `min` (planned minutes).
 9. Bump `updated` in `plan.json` to today.
 10. Validate (command below), commit as `Weekly review: week of <date>`, and push to `main`. Then push the next release tag (`vX.Y`, increment the minor version from the latest tag) so joan-pi deploys it. If the tag push is refused, don't retry or work around it: the commit on `main` is enough.
