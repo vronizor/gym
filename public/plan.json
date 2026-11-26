@@ -11,7 +11,7 @@
  },
  "ftp": {
   "watts": 283,
-  "source": "Strava, set manually; probably stale",
+  "source": "Early 2025, gym trainer test (set in Strava between mid-January and mid-March 2025). Different power meter and protocol from the Kickr and the COROS test.",
   "tested": null
  },
  "rules": [
