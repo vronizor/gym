@@ -29,7 +29,7 @@
   },
   {
    "id": "R4",
-   "text": "Advance to the next week's targets only if the last quality session was completed as written. If intervals were cut short or average power fell more than 3% below the band, repeat that session next week with targets 3% lower. Perceived exertion 9–10 on a threshold session also counts as not completed as written."
+   "text": "Advance to the next week's targets only if the last quality session was completed as written. If intervals were cut short, average power fell more than 3% below the band, or perceived exertion was 9–10, repeat that same workout next week instead of moving to the next one; after a second miss, step back to the previous saved workout (T3 → T2 → T1)."
   },
   {
    "id": "R5",
@@ -57,7 +57,7 @@
   },
   {
    "id": "R11",
-   "text": "Change at most one variable per session per week: reps, duration, or targets by 3–5% FTP. No new workouts that would need rebuilding in COROS."
+   "text": "Adjust only by choosing among the saved workouts (repeat, step back, or swap one for another), stopping an interval set early (\"stop after 3 of 5\"), or shortening a long ride. Never change a workout's targets or structure: nothing should need rebuilding in COROS."
   },
   {
    "id": "R12",
@@ -78,7 +78,7 @@
    "name": "FTP test",
    "kind": "test",
    "where": "Trainer",
-   "dur": "50′",
+   "dur": "45–55′",
    "coros": "Built into the Dura (Cycling FTP Test, Indoor Bike mode): nothing to save",
    "steps": [
     [
@@ -144,7 +144,7 @@
     ],
     [
      "10′",
-     "50%"
+     "45–50%"
     ]
    ],
    "notes": [
@@ -177,7 +177,7 @@
     ],
     [
      "10′",
-     "50%"
+     "45–50%"
     ]
    ],
    "notes": []
@@ -208,7 +208,7 @@
     ],
     [
      "10′",
-     "50%"
+     "45–50%"
     ]
    ],
    "notes": [
@@ -249,7 +249,7 @@
     ],
     [
      "10′",
-     "50%"
+     "45–50%"
     ]
    ],
    "notes": [
@@ -282,7 +282,7 @@
     ],
     [
      "7′",
-     "50%"
+     "45–50%"
     ]
    ],
    "notes": []
@@ -318,7 +318,7 @@
     ],
     [
      "10′",
-     "50%"
+     "45–50%"
     ]
    ],
    "notes": [
@@ -344,7 +344,7 @@
     ],
     [
      "5′",
-     "50%"
+     "45–50%"
     ]
    ],
    "notes": [
@@ -371,7 +371,7 @@
     ],
     [
      "5′",
-     "50%"
+     "45–50%"
     ]
    ],
    "notes": [
@@ -397,7 +397,7 @@
     ],
     [
      "4′",
-     "50%"
+     "45–50%"
     ]
    ],
    "notes": [
@@ -419,11 +419,11 @@
     [
      "3 × 15′",
      "78–83%",
-     "5′ easy at 60% after each block"
+     "5′ easy at 55–60% after each block"
     ],
     [
      "15′",
-     "50%"
+     "45–50%"
     ]
    ],
    "notes": [
@@ -445,7 +445,7 @@
     [
      "3 × 20′",
      "78–83%",
-     "5′ easy at 60% after each block"
+     "5′ easy at 55–60% after each block"
     ],
     [
      "20′",
@@ -454,7 +454,7 @@
     ],
     [
      "10′",
-     "50%"
+     "45–50%"
     ]
    ],
    "notes": [
@@ -484,7 +484,7 @@
     ],
     [
      "25′",
-     "55% → 50%"
+     "45–50%"
     ]
    ],
    "notes": [
@@ -496,17 +496,17 @@
    "name": "Easy spin",
    "kind": "endurance",
    "where": "Trainer or outdoors",
-   "dur": "45–60′",
+   "dur": "50′",
    "coros": "Free ride in ERG at a fixed wattage",
    "steps": [
     [
-     "45–60′",
-     "60–70%",
+     "50′",
+     "60–65%",
      "a show on, nose breathing"
     ]
    ],
    "notes": [
-    "Optional. First thing to drop in a busy week."
+    "Optional. First thing to drop in a busy week. Ride it longer or shorter as time allows: same workout."
    ]
   },
   "S": {
@@ -557,7 +557,7 @@
    "name": "Openers",
    "kind": "endurance",
    "where": "Trainer or outdoors",
-   "dur": "30–40′",
+   "dur": "35′",
    "steps": [
     [
      "20′",
@@ -565,15 +565,12 @@
     ],
     [
      "3 × 1′",
-     "100–105%"
+     "100–105%",
+     "2′ easy at 55–60% after each"
     ],
     [
-     "2 × 3′",
-     "60%"
-    ],
-    [
-     "5′",
-     "50%"
+     "6′",
+     "45–50%"
     ]
    ],
    "notes": []
