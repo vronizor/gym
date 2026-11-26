@@ -283,7 +283,7 @@ function renderPlan() {
     h("details", { class: "card kit-card" },
       h("summary", {}, h("span", { class: "name" }, "How the plan adjusts"), h("span", { class: "dose" }, `${plan.rules.length} rules`)),
       h("div", { class: "detail" },
-        h("p", { class: "kit" }, "Every Monday morning a review reads Strava, applies these rules to the coming week and writes a report here. Put “RPE 8”, “bad night” or “sick” in a Strava description when it matters."),
+        h("p", { class: "kit" }, "Every Monday morning a review reads Strava, applies these rules to the coming week and writes a report here. Set Perceived Exertion on each Strava activity, and write “bad night” or “sick” in the description when it matters."),
         h("ul", { class: "rules" }, plan.rules.map((r) => h("li", {}, h("b", {}, `${r.id} `), r.text))))),
   ].flat().filter(Boolean));
 }

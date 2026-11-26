@@ -29,7 +29,7 @@
   },
   {
    "id": "R4",
-   "text": "Advance to the next week's targets only if the last quality session was completed as written. If intervals were cut short or average power fell more than 3% below the band, repeat that session next week with targets 3% lower."
+   "text": "Advance to the next week's targets only if the last quality session was completed as written. If intervals were cut short or average power fell more than 3% below the band, repeat that session next week with targets 3% lower. Perceived exertion 9–10 on a threshold session also counts as not completed as written."
   },
   {
    "id": "R5",
@@ -41,7 +41,7 @@
   },
   {
    "id": "R7",
-   "text": "Strava descriptions mentioning sickness, bad nights, exhaustion or RPE 9–10 (in any language): next week keep the quality session only if the note says he's well, drop torque, cut long sessions by 30%. Sick: no intensity until two symptom-free days."
+   "text": "Perceived exertion 9–10 on an endurance or tempo session, or descriptions mentioning sickness, bad nights or exhaustion (in any language): next week keep the quality session only if he seems well, drop torque, cut long sessions by 30%. Sick: no intensity until two symptom-free days."
   },
   {
    "id": "R8",
@@ -61,7 +61,7 @@
   },
   {
    "id": "R12",
-   "text": "Three quality sessions in a row noted RPE 6 or below at full targets: bring the next FTP test forward."
+   "text": "Three quality sessions in a row at full targets with perceived exertion 6 or below: bring the next FTP test forward."
   },
   {
    "id": "R13",

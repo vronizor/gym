@@ -5,7 +5,7 @@ Runs every Monday early morning as a scheduled task. It reads Vincent's Strava, 
 ## Inputs
 
 - `public/plan.json`: `weeks[]` (each has `start`, a Monday), `sessions{}` (the session library), `rules[]`, `reports[]`, `ftp`.
-- Strava (connector): activities from the reviewed week's Monday 00:00 to Sunday 23:59, local time. Use `list_activities` with `include_tags` and `use_preferred_units`. For trainer sessions that look like quality sessions, use `get_activity_performance` or laps to check whether the intervals were done at target. Read every activity description: that is where Vincent notes RPE, sleep, sickness, fatigue, in English, French, Spanish or Catalan.
+- Strava (connector): activities from the reviewed week's Monday 00:00 to Sunday 23:59, local time. Use `list_activities` with `include_tags` and `use_preferred_units`. For trainer sessions that look like quality sessions, use `get_activity_performance` or laps to check whether the intervals were done at target. Call `get_activity_performance` on every activity of the week: its `perceived_exertion` (1–10, from Strava's Perceived Exertion slider; missing if he didn't set it) is the RPE the rules use, and it also gives average power, heart rate and laps. Read every activity description too: that is where Vincent notes sleep, sickness or fatigue, in English, French, Spanish or Catalan.
 
 ## Steps
 
