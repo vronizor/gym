@@ -46,6 +46,7 @@ Example: "Pros have soigneurs. You have a bottle warmer and a 2×20. Same energy
 ## Guardrails
 
 - Facts only from Strava and Vincent's own words. Don't guess how a session felt.
+- Short, interrupted nights are his baseline for now. Expect perceived exertion to run about a point higher than the session alone would explain, and don't treat that as a warning sign. R7 is for nights or weeks worse than that baseline, which he'll flag in a description.
 - The repo may be public: keep health notes general ("noted feeling unwell", "bad sleep") and never copy his descriptions word for word, name people he rode with, or give start locations.
 - If Strava can't be read, add a report with `status` omitted, a summary saying the review couldn't run, change nothing else, and still commit and tag.
 - Keep the tone flat and useful. No cheerleading, no guilt.
