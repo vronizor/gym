@@ -580,3 +580,15 @@ h1 {
 .st-registered { background: var(--led); color: var(--led-ink); }
 .st-card-planned, .st-card-registered { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--h-green) 55%, var(--line)); }
 .st-card-skipped .name { color: var(--muted); text-decoration: line-through; }
+.focus-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1.5px var(--slash);
+}
+.focus-name { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+.focus-card .pills { margin-top: 4px; }
