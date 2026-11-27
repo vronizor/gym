@@ -15,7 +15,7 @@
     "40 km · 700 m",
     "60 km · 1,350 m"
    ],
-   "url": "https://battistrada.com/en/cycling-calendar/edition/la-cernaysienne-vtt-2025/37208",
+   "url": null,
    "notes": [
     "Rando, capped at 500 riders. Close to Paris."
    ],
@@ -69,7 +69,7 @@
     "225 km",
     "312 km · 5,050 m"
    ],
-   "url": "https://www.finishers.com/en/course/mallorca-312",
+   "url": "http://www.mallorca312.com/",
    "notes": [
     "Closed roads over the Serra de Tramuntana, incl. Puig Major. Distance picked on the day.",
     "Sells out in minutes. Official resale marketplace runs 1 Dec to 31 Mar."
@@ -148,7 +148,7 @@
    "distances": [
     "200 km · 6,500 m"
    ],
-   "url": "https://nuemtb.com/gigantes-spain/",
+   "url": "https://www.gigantedepiedra.com/",
    "notes": [
     "Gegant de Pedra. Very rocky, Penyagolosa mountains, 17 h limit.",
     "2026 was 6 June; registration opened 1 Feb."
@@ -175,7 +175,7 @@
    "distances": [
     "1,000 km, mostly singletrack"
    ],
-   "url": "https://bikepacking.com/event/hope-1000-2027/",
+   "url": "https://www.hope1000.ch/",
    "notes": [
     "Nonstop across Switzerland, Lake Constance to the Freddie Mercury statue."
    ],
@@ -200,7 +200,7 @@
     "80 km · 1,860 m (Argent)",
     "200+ km nonstop"
    ],
-   "url": "https://www.finishers.com/fr/course/pedals-de-foc",
+   "url": "https://www.pdfnonstop.com/",
    "notes": [
     "\"Pédale comme un phoque.\" The nonstop is one of the hardest in Spain."
    ],
@@ -225,7 +225,7 @@
    "distances": [
     "70 km · ~3,200 m"
    ],
-   "url": null,
+   "url": "https://www.mb-race.com/",
    "alpine_cup": true,
    "notes": [
     "Target race of the training plan."
@@ -256,7 +256,7 @@
     "50 km",
     "80 km"
    ],
-   "url": "https://www.eigerbike.ch",
+   "url": "https://www.eigerbike.ch/",
    "notes": [
     "Finish under the Eiger north face. Part of the Swiss Bike Marathon Classics.",
     "Late-registration surcharge from 1 August."
@@ -310,7 +310,7 @@
    "distances": [
     "~1,000 km, mixed terrain"
    ],
-   "url": "https://www.bike-magazin.de/en/tours/switzerland/alps-divide-ultra-from-menton-to-lake-geneva-the-western-alps-the-hard-way/",
+   "url": "https://www.alpsdivide.com/",
    "notes": [
     "Applications close in mid-November the year before."
    ],
@@ -318,7 +318,7 @@
     "2027": {
      "date": "2027-09-04",
      "status": "idea",
-     "registration": "Closed 14 Nov 2026. Realistically a 2028 race."
+     "registration": "A bike magazine reported applications closing 14 Nov 2026, but the official site still says 2027 registration is open: check."
     }
    }
   },
@@ -438,22 +438,22 @@
    "discipline": "mtb",
    "format": "self-supported",
    "vibe": "classic",
-   "usual": "Late August / early September",
+   "usual": "Late August to early September",
    "month": 8,
    "distances": [
     "Entree ~500 km · 17,000 m",
     "Classic ~780 km · 28,000 m",
     "Adventure 1,100 km · 40,000 m"
    ],
-   "url": "https://bikepacking.com/event/sneak-peaks-bikepacking-expedition-adventure-2026/",
+   "url": "https://www.orbit360.cc/sneak-peaks",
    "notes": [
     "Orbit360. Steep, some hike-a-bike, rifugios as checkpoints.",
-    "2026: Adventure started 26 Aug, Entree 30 Aug."
+    "2027 window: 25 Aug – 4 Sep."
    ],
    "editions": {
     "2027": {
-     "date": "2027-08-26",
-     "approx": true,
+     "date": "2027-08-25",
+     "end": "2027-09-04",
      "status": "idea"
     }
    }
@@ -491,19 +491,19 @@
    "discipline": "mtb",
    "format": "marathon",
    "vibe": "small",
-   "usual": "Early November, Sunday",
+   "usual": "November, weekend",
    "month": 11,
    "distances": [
     "80 km · 2,200 m"
    ],
-   "url": "https://femturisme.cat/agenda/transmaresme-bike",
+   "url": "https://www.transmaresmebike.com/",
    "notes": [
-    "Crosses the whole Maresme with sea views. MTB or gravel.",
-    "2025 was 9 November."
+    "Crosses the whole Maresme with sea views. MTB or gravel, 8 h time limit.",
+    "2025 was 9 Nov, 2026 was 21 Nov."
    ],
    "editions": {
     "2027": {
-     "date": "2027-11-07",
+     "date": "2027-11-20",
      "approx": true,
      "status": "idea"
     }
@@ -600,17 +600,17 @@
    "usual": "Third weekend of September, Saturday",
    "month": 9,
    "distances": [
-    "Courses from 0.3 to 47 km"
+    "Petit and Grand parcours, e-bike, kids (0.3 to 47 km)"
    ],
-   "url": "https://fribourg.ch/en/la-gruyere/events/openbike-haute-gruyere/",
+   "url": "https://www.openbike.ch/",
    "notes": [
     "Big MTB party through 6 villages of the Intyamon, past Lake Lessoc and through Gruyères, finish at the festival in Grandvillard.",
     "2025 was 20 Sept, 2026 was 19 Sept. Registration opened mid-February; on-site entry too."
    ],
    "editions": {
     "2027": {
-     "date": "2027-09-18",
-     "approx": true,
+     "date": "2027-09-17",
+     "end": "2027-09-18",
      "status": "planned",
      "registration": "Opens mid-February; on-site entry possible."
     }
