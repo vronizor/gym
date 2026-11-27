@@ -1,0 +1,269 @@
+{
+ "updated": "2026-11-27",
+ "gaps": {
+  "marathon": 14,
+  "endurance": 21,
+  "ultra": 21,
+  "self-supported": 28,
+  "gran-fondo": 14,
+  "stage": 14
+ },
+ "events": [
+  {
+   "id": "cernaysienne",
+   "name": "La Cernaysienne",
+   "place": "Cernay-la-Ville, Yvelines",
+   "country": "FR",
+   "discipline": "mtb",
+   "format": "marathon",
+   "vibe": "small",
+   "usual": "Late March, Sunday",
+   "month": 3,
+   "distances": ["40 km · 700 m", "60 km · 1,350 m"],
+   "url": "https://battistrada.com/en/cycling-calendar/edition/la-cernaysienne-vtt-2025/37208",
+   "notes": ["To confirm it's the one you meant by \"Cernesienne\".", "Rando, capped at 500 riders. Close to Paris."],
+   "editions": {
+    "2027": { "date": "2027-03-21", "approx": true, "status": "idea" }
+   }
+  },
+  {
+   "id": "volcat",
+   "name": "VolCAT",
+   "place": "Igualada, Barcelona",
+   "country": "ES",
+   "discipline": "mtb",
+   "format": "stage",
+   "vibe": "classic",
+   "usual": "Holy Week, 2 days",
+   "month": 3,
+   "distances": ["2 stages: XCP + XCM"],
+   "url": "https://volcatbtt.com/en",
+   "notes": ["Oldest MTB stage race in Spain. Solo or pairs.", "2026 was 3–4 April; 2027 Easter is 28 March, so expect late March."],
+   "editions": {
+    "2027": { "date": "2027-03-26", "end": "2027-03-27", "approx": true, "status": "idea" }
+   }
+  },
+  {
+   "id": "mallorca-312",
+   "name": "Mallorca 312",
+   "place": "Playa de Muro, Mallorca",
+   "country": "ES",
+   "discipline": "road",
+   "format": "gran-fondo",
+   "vibe": "classic",
+   "usual": "Late April, Saturday",
+   "month": 4,
+   "distances": ["167 km", "225 km", "312 km · 5,050 m"],
+   "url": "https://www.finishers.com/en/course/mallorca-312",
+   "notes": ["Closed roads over the Serra de Tramuntana, incl. Puig Major. Distance picked on the day.", "Sells out in minutes. Official resale marketplace runs 1 Dec to 31 Mar."],
+   "editions": {
+    "2027": { "date": "2027-04-24", "status": "idea", "registration": "Sold out. Resale marketplace 1 Dec 2026 – 31 Mar 2027." }
+   }
+  },
+  {
+   "id": "buthiers",
+   "name": "Buthiers VTT endurance",
+   "place": "Buthiers, Seine-et-Marne",
+   "country": "FR",
+   "discipline": "mtb",
+   "format": "endurance",
+   "vibe": "small",
+   "usual": "Early May weekend",
+   "month": 5,
+   "distances": ["24h (2027 edition)"],
+   "url": null,
+   "notes": ["Solo. Chance to try night riding.", "Not in the MB Race training plan."],
+   "editions": {
+    "2027": { "date": "2027-05-01", "end": "2027-05-02", "status": "maybe" }
+   }
+  },
+  {
+   "id": "couraillon",
+   "name": "Brevet du Couraillon",
+   "place": "Western Switzerland",
+   "country": "CH",
+   "discipline": "mtb",
+   "format": "self-supported",
+   "vibe": "small",
+   "usual": "First weekend of June",
+   "month": 6,
+   "distances": ["2 days"],
+   "url": "https://www.instagram.com/brevetcouraillon/",
+   "notes": ["Endurance and navigation, self-supported.", "2025 edition was 7–8 June."],
+   "editions": {
+    "2027": { "date": "2027-06-05", "end": "2027-06-06", "approx": true, "status": "idea" }
+   }
+  },
+  {
+   "id": "gigante-de-piedra",
+   "name": "Gigante de Piedra",
+   "place": "L'Alcora, Castellón",
+   "country": "ES",
+   "discipline": "mtb",
+   "format": "ultra",
+   "vibe": "classic",
+   "usual": "Early June, Saturday",
+   "month": 6,
+   "distances": ["200 km · 6,500 m"],
+   "url": "https://nuemtb.com/gigantes-spain/",
+   "notes": ["Gegant de Pedra. Very rocky, Penyagolosa mountains, 17 h limit.", "2026 was 6 June; registration opened 1 Feb."],
+   "editions": {
+    "2027": { "date": "2027-06-05", "approx": true, "status": "idea", "registration": "Opened early February for 2026." }
+   }
+  },
+  {
+   "id": "hope-1000",
+   "name": "Hope-1000",
+   "place": "Romanshorn → Montreux",
+   "country": "CH",
+   "discipline": "mtb",
+   "format": "self-supported",
+   "vibe": "classic",
+   "usual": "Mid-June, Saturday start",
+   "month": 6,
+   "distances": ["1,000 km, mostly singletrack"],
+   "url": "https://bikepacking.com/event/hope-1000-2027/",
+   "notes": ["Nonstop across Switzerland, Lake Constance to the Freddie Mercury statue."],
+   "editions": {
+    "2027": { "date": "2027-06-12", "status": "idea" }
+   }
+  },
+  {
+   "id": "pedals-de-foc",
+   "name": "Pedals de Foc",
+   "place": "Vielha, Val d'Aran",
+   "country": "ES",
+   "discipline": "mtb",
+   "format": "ultra",
+   "vibe": "classic",
+   "usual": "Mid-June",
+   "month": 6,
+   "distances": ["80 km · 1,860 m (Argent)", "200+ km nonstop"],
+   "url": "https://www.finishers.com/fr/course/pedals-de-foc",
+   "notes": ["\"Pédale comme un phoque.\" The nonstop is one of the hardest in Spain."],
+   "editions": {
+    "2027": { "date": "2027-06-19", "approx": true, "status": "idea" }
+   }
+  },
+  {
+   "id": "mb-race",
+   "name": "MB Race",
+   "place": "Combloux / Megève",
+   "country": "FR",
+   "discipline": "mtb",
+   "format": "marathon",
+   "vibe": "classic",
+   "usual": "Early July, Saturday",
+   "month": 7,
+   "distances": ["70 km · ~3,200 m"],
+   "url": null,
+   "alpine_cup": true,
+   "notes": ["Target race of the training plan."],
+   "editions": {
+    "2027": { "date": "2027-07-03", "status": "planned", "distance": "70 km" }
+   }
+  },
+  {
+   "id": "eiger-bike",
+   "name": "Eiger Bike Challenge",
+   "place": "Grindelwald",
+   "country": "CH",
+   "discipline": "mtb",
+   "format": "marathon",
+   "vibe": "classic",
+   "usual": "Early August weekend",
+   "month": 8,
+   "distances": ["20 km", "30 km", "45 km", "50 km", "80 km"],
+   "url": "https://www.eigerbike.ch",
+   "notes": ["Finish under the Eiger north face. Part of the Swiss Bike Marathon Classics.", "Late-registration surcharge from 1 August."],
+   "editions": {
+    "2027": { "date": "2027-08-07", "approx": true, "status": "idea" }
+   }
+  },
+  {
+   "id": "grand-raid",
+   "name": "Grand Raid BCVs",
+   "place": "Verbier → Grimentz",
+   "country": "CH",
+   "discipline": "mtb",
+   "format": "marathon",
+   "vibe": "classic",
+   "usual": "Late August, Saturday",
+   "month": 8,
+   "distances": ["Evolène 37 km", "Hérémence 68 km", "Nendaz 92 km", "Verbier 125 km · 5,000 m"],
+   "url": "https://grand-raid-bcvs.ch/",
+   "alpine_cup": true,
+   "notes": ["Every start goes over the Pas de Lona."],
+   "editions": {
+    "2027": { "date": "2027-08-21", "status": "idea" }
+   }
+  },
+  {
+   "id": "alps-divide",
+   "name": "Alps Divide Ultra",
+   "place": "Menton → Lake Geneva",
+   "country": "FR",
+   "discipline": "mtb",
+   "format": "self-supported",
+   "vibe": "classic",
+   "usual": "Early September start",
+   "month": 9,
+   "distances": ["~1,000 km, mixed terrain"],
+   "url": "https://www.bike-magazin.de/en/tours/switzerland/alps-divide-ultra-from-menton-to-lake-geneva-the-western-alps-the-hard-way/",
+   "notes": ["Applications close in mid-November the year before."],
+   "editions": {
+    "2027": { "date": "2027-09-04", "status": "idea", "registration": "Closed 14 Nov 2026. Realistically a 2028 race." }
+   }
+  },
+  {
+   "id": "forestiere",
+   "name": "La Forestière",
+   "place": "Longchaumois → Arbent, Jura/Ain",
+   "country": "FR",
+   "discipline": "mtb",
+   "format": "marathon",
+   "vibe": "classic",
+   "usual": "Mid-September weekend",
+   "month": 9,
+   "distances": ["Open 85 km", "Elite 110 km", "Randos 33–85 km"],
+   "url": "https://www.la-forestiere.com/epreuve-forestiere-vtt/",
+   "alpine_cup": true,
+   "notes": ["The autumn classic. 2026 was 19–20 September."],
+   "editions": {
+    "2027": { "date": "2027-09-18", "approx": true, "status": "idea" }
+   }
+  },
+  {
+   "id": "transvesubienne",
+   "name": "Transvésubienne",
+   "place": "Valdeblore → Nice",
+   "country": "FR",
+   "discipline": "mtb",
+   "format": "marathon",
+   "vibe": "classic",
+   "usual": "End of September",
+   "month": 9,
+   "distances": ["Explorer 60 km", "Ultra 82–88 km · 2,850 m up / 4,300 m down"],
+   "url": "https://www.ucc-sportevent.com/en/transvesubienne-3",
+   "notes": ["Mountains down to the Baie des Anges. Technical, with time limits."],
+   "editions": {
+    "2027": { "date": "2027-09-26", "approx": true, "status": "idea" }
+   }
+  },
+  {
+   "id": "303lucerne",
+   "name": "303Lucerne",
+   "place": "Lucerne",
+   "country": "CH",
+   "discipline": "gravel",
+   "format": "ultra",
+   "vibe": "small",
+   "usual": "Date to check",
+   "month": null,
+   "distances": ["2 days on dirt roads"],
+   "url": "https://dotwatcher.cc/race/303lucerne-2025",
+   "notes": ["About 100 riders. Gravel rather than MTB."],
+   "editions": {}
+  }
+ ]
+}

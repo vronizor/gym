@@ -1,6 +1,6 @@
 # Gym
 
-Reference-only routine page for Vincent's phone, plus a training Plan page (`#plan`) for the MB Race. No logging and no backend, by choice.
+Reference-only routine page for Vincent's phone, plus a training Plan page (`#plan`) for the MB Race and a race calendar (`#races`). No logging and no backend, by choice.
 
 - Places live in `places[]` (`id`, `name`, `hue`, `equipment[]`): the kit Vincent has said is there, in his words. `hue` is one of blue, orange, red, teal, green, pink (unused ones first) and colours that place's pill everywhere. That list is the source of truth when writing a routine for a place: use only what's on it. When he mentions new kit or a new place, update or add the entry. Never invent kit for a place he hasn't described.
 - Each routine has `places: [ids]`; omit it for routines that work anywhere (mobility). The page filters by place.
@@ -20,3 +20,12 @@ Reference-only routine page for Vincent's phone, plus a training Plan page (`#pl
 - A scheduled task reviews the week every Monday and edits `plan.json` following `docs/weekly-review.md`. When Vincent asks for a plan change in chat, keep the same rules: change the coming weeks, never the taper or race week unless he asks, and name the reason in `adjusted`.
 - Bump `updated` in `plan.json` on any change. Validate with the command in `docs/weekly-review.md`.
 - Releases: tag `vX.Y` after pushing so joan-pi's auto-deploy picks it up.
+
+## Race calendar
+
+- `public/races.json` is a multi-year reference of races Vincent might do, so he can pick each year's set and spot clashes. `events[]` are the recurring races; each year lives in `editions{"YYYY": {...}}`.
+- Event fields: `id`, `name`, `place`, `country`, `discipline` (mtb, gravel, road), `format` (marathon, ultra, self-supported, endurance, stage, gran-fondo), `vibe` (small or classic), `usual` (when it usually happens, in words), `month` (usual month, for sorting when a year has no date), `distances[]`, `url`, `notes[]`, optional `alpine_cup`.
+- Edition fields: `date` (ISO, first day), optional `end`, `approx: true` when estimated from past editions, `status` (idea, maybe, planned, registered, done, skipped), optional `distance` (the one he picked) and `registration` (when it opens, sell-out, deadlines).
+- Clashes are computed on the page: overlapping dates, or a start sooner than `gaps[format]` days after the previous race. Only planned, registered and maybe races are checked against others.
+- When he names a race, add the event and look up the date and distances on the web; never invent a URL (use `null`). Confirmed dates replace estimates: drop `approx`. Never change a `status` he didn't ask to change.
+- Bump `updated` in `races.json` on any change. Validate: `node -e "const r=require('./public/races.json');for(const e of r.events){if(!r.gaps[e.format])throw e.id;for(const d of Object.values(e.editions))if(!['idea','maybe','planned','registered','done','skipped'].includes(d.status))throw e.id}"`

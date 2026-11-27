@@ -1,10 +1,10 @@
-const VERSION = "gym-v9";
+const VERSION = "gym-v10";
 const SHELL = [
   "./", "index.html", "app.js", "style.css", "manifest.webmanifest",
-  "icon.svg", "icon-192.png", "icon-512.png", "routines.json", "plan.json",
+  "icon.svg", "icon-192.png", "icon-512.png", "routines.json", "plan.json", "races.json",
   "fonts/inter-tight.woff2", "fonts/jetbrains-mono.woff2",
 ];
-const DATA = ["routines.json", "plan.json"];
+const DATA = ["routines.json", "plan.json", "races.json"];
 const NETWORK_TIMEOUT_MS = 3000;
 
 self.addEventListener("install", (event) => {

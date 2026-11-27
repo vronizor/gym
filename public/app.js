@@ -6,6 +6,7 @@ const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
 let data = null;
 let plan = null;
+let races = null;
 
 function h(tag, attrs = {}, ...children) {
   const el = document.createElement(tag);
@@ -329,6 +330,187 @@ function planTile() {
     h("span", { class: "pills" }, h("span", { class: "pl hue-green" }, plan.race.name)));
 }
 
+const YEAR_KEY = "gym:race-year";
+const DISC_KEY = "gym:race-disc";
+const DISCIPLINES = { mtb: "MTB", gravel: "Gravel", road: "Road" };
+const FORMATS = {
+  marathon: "Marathon", ultra: "Ultra", "self-supported": "Self-supported",
+  endurance: "Endurance", stage: "Stage race", "gran-fondo": "Gran fondo",
+};
+const STATUS = ["registered", "planned", "maybe", "idea", "done", "skipped"];
+const IN = new Set(["planned", "registered", "maybe"]);
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+function dayNum(iso) {
+  const [y, m, d] = iso.split("-").map(Number);
+  return Math.round(Date.UTC(y, m - 1, d) / 86400000);
+}
+
+function raceYears() {
+  const ys = new Set();
+  races.events.forEach((e) => Object.keys(e.editions || {}).forEach((y) => ys.add(y)));
+  ys.add(String(new Date().getFullYear() + 1));
+  return [...ys].sort();
+}
+
+function currentYear() {
+  const ys = raceYears();
+  const saved = read(YEAR_KEY);
+  if (ys.includes(saved)) return saved;
+  const today = isoDay(new Date());
+  const upcoming = ys.find((y) => races.events.some((e) => {
+    const ed = e.editions && e.editions[y];
+    return ed && ed.date && ed.date >= today;
+  }));
+  return upcoming || ys[ys.length - 1];
+}
+
+function raceEntries(year) {
+  return races.events.map((e) => {
+    const ed = (e.editions && e.editions[year]) || null;
+    const start = ed && ed.date;
+    return { e, ed, start, end: ed && (ed.end || ed.date), status: (ed && ed.status) || "idea" };
+  });
+}
+
+function gapAfter(entry) {
+  return (races.gaps && races.gaps[entry.e.format]) || 14;
+}
+
+function clash(a, b) {
+  if (!a.start || !b.start) return null;
+  const [first, second] = a.start <= b.start ? [a, b] : [b, a];
+  const days = dayNum(second.start) - dayNum(first.end);
+  if (days <= 0) return { kind: "overlap", days: 0, first, second };
+  if (days < gapAfter(first)) return { kind: "tight", days, first, second };
+  return null;
+}
+
+function clashText(c, self) {
+  const other = c.first === self ? c.second : c.first;
+  const approx = (c.first.ed.approx || c.second.ed.approx) ? "~" : "";
+  if (c.kind === "overlap") return `Same dates as ${other.e.name}`;
+  const weeks = c.days >= 14 ? `${approx}${Math.round(c.days / 7)} wks` : `${approx}${c.days} days`;
+  return c.first === self ? `${other.e.name} ${weeks} later` : `${weeks} after ${other.e.name}`;
+}
+
+function raceDate(entry) {
+  if (!entry.start) return entry.e.month ? `${MONTHS[entry.e.month - 1].toUpperCase()}?` : "TBC";
+  const [, m, d] = entry.start.split("-").map(Number);
+  return `${entry.ed.approx ? "~" : ""}${d} ${MONTHS[m - 1].toUpperCase()}`;
+}
+
+function sortKey(entry, year) {
+  if (entry.start) return entry.start;
+  if (entry.e.month) return `${year}-${String(entry.e.month).padStart(2, "0")}-32`;
+  return "zzzz";
+}
+
+function monthOf(entry) {
+  if (entry.start) return Number(entry.start.split("-")[1]);
+  return entry.e.month || null;
+}
+
+function raceCard(entry, conflicts) {
+  const { e, ed, status } = entry;
+  const mine = conflicts.filter((c) => c.first === entry || c.second === entry);
+  const cue = [e.place, ...mine.map((c) => clashText(c, entry))].join(" · ");
+  return h("details", { class: `card race st-card-${status}` },
+    h("summary", {},
+      h("span", { class: "idx race-date" }, raceDate(entry)),
+      h("span", { class: "name" }, e.name, h("span", { class: `tag tag-f-${e.format}` }, FORMATS[e.format] || e.format)),
+      h("span", { class: "dose" }, h("span", { class: `st st-${status}` }, status)),
+      h("span", { class: `cue${mine.some((c) => c.kind === "overlap") ? " cue-clash" : mine.length ? " cue-tight" : ""}` }, cue)),
+    h("div", { class: "detail" },
+      h("div", { class: "pills race-pills" },
+        h("span", { class: "pl" }, DISCIPLINES[e.discipline] || e.discipline),
+        h("span", { class: "pl pl-any" }, e.vibe === "small" ? "Small & fun" : "Big classic"),
+        e.alpine_cup && h("span", { class: "pl hue-teal" }, "Alpine Cup")),
+      h("p", { class: "kit" }, [e.usual, ed && ed.approx ? "date estimated from past editions" : null].filter(Boolean).join(" · ")),
+      e.distances && e.distances.length ? [h("h3", {}, "Distances"), list("ul", e.distances)] : null,
+      ed && ed.distance && h("p", {}, h("b", {}, "Picked: "), ed.distance),
+      ed && ed.registration && [h("h3", {}, "Registration"), h("p", {}, ed.registration)],
+      e.notes && e.notes.length ? [h("h3", {}, "Notes"), list("ul", e.notes)] : null,
+      e.url && h("a", { class: "yt", href: e.url, target: "_blank", rel: "noopener noreferrer" }, "Website ↗")));
+}
+
+function renderRaces() {
+  document.title = "Races · tally";
+  const years = raceYears();
+  const year = currentYear();
+  const disc = DISCIPLINES[read(DISC_KEY)] ? read(DISC_KEY) : "all";
+  const pickYear = (y) => () => { save(YEAR_KEY, y); renderRaces(); };
+  const pickDisc = (d) => () => { save(DISC_KEY, d); renderRaces(); };
+
+  const all = raceEntries(year);
+  const ins = all.filter((x) => IN.has(x.status));
+  const conflicts = [];
+  for (const x of all) for (const y of ins) {
+    if (x === y || (IN.has(x.status) && all.indexOf(x) > all.indexOf(y))) continue;
+    const c = clash(x, y);
+    if (c) conflicts.push(c);
+  }
+  const between = conflicts.filter((c) => IN.has(c.first.status) && IN.has(c.second.status));
+  const shown = all.filter((x) => disc === "all" || x.e.discipline === disc).sort((a, b) => sortKey(a, year).localeCompare(sortKey(b, year)));
+  const counts = STATUS.map((s) => [s, all.filter((x) => x.status === s).length]).filter(([, n]) => n);
+
+  const groups = [];
+  for (const x of shown) {
+    const m = monthOf(x);
+    const label = m ? MONTHS[m - 1] : "Date unknown";
+    if (!groups.length || groups[groups.length - 1].label !== label) groups.push({ label, items: [] });
+    groups[groups.length - 1].items.push(x);
+  }
+
+  document.getElementById("main").replaceChildren(...[
+    h("a", { class: "back", href: "#" }, "← All routines"),
+    h("h1", {}, "Races"),
+    h("p", { class: "format" }, counts.map(([s, n]) => `${n} ${s}`).join(" · ")),
+    h("div", { class: "filter race-filter", role: "group", "aria-label": "Year" },
+      years.map((y) => h("button", { type: "button", class: "chip", "aria-pressed": String(y === year), onclick: pickYear(y) }, y))),
+    h("div", { class: "filter race-filter", role: "group", "aria-label": "Discipline" },
+      h("button", { type: "button", class: "chip", "aria-pressed": String(disc === "all"), onclick: pickDisc("all") }, "All"),
+      Object.entries(DISCIPLINES).map(([k, v]) =>
+        h("button", { type: "button", class: "chip", "aria-pressed": String(disc === k), onclick: pickDisc(k) }, v))),
+
+    between.length
+      ? h("section", { class: "block" },
+          h("h2", { class: "block-title" }, "Clashes in your plan"),
+          h("ul", { class: "clashes" }, between.map((c) =>
+            h("li", { class: c.kind === "overlap" ? "cue-clash" : "cue-tight" },
+              `${c.first.e.name} → ${c.second.e.name}: `,
+              c.kind === "overlap" ? "same dates" : `${c.days} days apart (wants ${gapAfter(c.first)})`))))
+      : ins.length > 1 && h("p", { class: "adjusted ok" }, `No clashes between your ${ins.length} planned and maybe races.`),
+
+    groups.map((g) => h("section", { class: "block" },
+      h("h2", { class: "block-title" }, g.label),
+      g.items.map((x) => raceCard(x, conflicts)))),
+
+    h("details", { class: "card kit-card" },
+      h("summary", {}, h("span", { class: "name" }, "How clashes are checked"), h("span", { class: "dose" }, "rule of thumb")),
+      h("div", { class: "detail" },
+        h("p", {}, "Races marked planned, registered or maybe are checked against every race that year. A race clashes when the dates overlap, and is tight when it starts sooner after the previous one than that one's recovery gap."),
+        h("ul", { class: "rules" }, Object.entries(races.gaps || {}).map(([f, d]) =>
+          h("li", {}, h("b", {}, `${d} days `), `after ${FORMATS[f] || f}`))),
+        h("p", { class: "kit" }, "A ~ marks dates estimated from past editions. Ask Claude to add a race, change a status or fill in a confirmed date."))),
+  ].flat().filter(Boolean));
+}
+
+function racesTile() {
+  if (!races) return null;
+  const today = isoDay(new Date());
+  const next = races.events
+    .flatMap((e) => Object.values(e.editions || {}).map((ed) => ({ e, ed })))
+    .filter(({ ed }) => ed.date && ed.date >= today && (ed.status === "planned" || ed.status === "registered"))
+    .sort((a, b) => a.ed.date.localeCompare(b.ed.date))[0];
+  const weeks = next ? Math.ceil((dayNum(next.ed.date) - dayNum(today)) / 7) : null;
+  return h("a", { class: "tile races-tile", href: "#races" },
+    h("span", { class: "tile-kicker" }, "Race calendar"),
+    h("span", { class: "tile-name" }, next ? next.e.name : "Races"),
+    h("span", { class: "tile-meta" }, next ? `${shortDate(next.ed.date)} · ${weeks} wks` : `${races.events.length} races`),
+    h("span", { class: "pills" }, h("span", { class: "pl hue-teal" }, `${races.events.length} races`)));
+}
+
 function renderHome() {
   document.title = "tally";
   const place = currentPlace();
@@ -343,6 +525,7 @@ function renderHome() {
     ),
     h("div", { class: "grid" },
       planTile(),
+      racesTile(),
       routinesFor(place).map((r) =>
         h("a", { class: "tile", href: `#${r.id}` },
           h("span", { class: "tile-name" }, r.name),
@@ -389,6 +572,11 @@ function route() {
     window.scrollTo(0, 0);
     return;
   }
+  if (location.hash === "#races" && races) {
+    renderRaces();
+    window.scrollTo(0, 0);
+    return;
+  }
   const routine = data.routines.find((r) => r.id === location.hash.slice(1));
   if (routine) renderRoutine(routine);
   else renderHome();
@@ -400,7 +588,8 @@ function setStatus(fromCache) {
   document.getElementById("status").replaceChildren(
     offline ? h("span", { class: "offline" }, "OFFLINE · ") : "",
     `routines updated ${data.updated}`,
-    plan ? ` · plan updated ${plan.updated}` : ""
+    plan ? ` · plan updated ${plan.updated}` : "",
+    races ? ` · races updated ${races.updated}` : ""
   );
 }
 
@@ -411,9 +600,16 @@ async function loadPlan() {
   } catch {}
 }
 
+async function loadRaces() {
+  try {
+    const res = await fetch("races.json", { cache: "no-cache" });
+    if (res.ok) races = await res.json();
+  } catch {}
+}
+
 async function load() {
   try {
-    const [res] = await Promise.all([fetch("routines.json", { cache: "no-cache" }), loadPlan()]);
+    const [res] = await Promise.all([fetch("routines.json", { cache: "no-cache" }), loadPlan(), loadRaces()]);
     if (!res.ok) throw new Error(res.status);
     data = await res.json();
     route();

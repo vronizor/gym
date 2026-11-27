@@ -8,6 +8,7 @@ Gym routine reference for the phone: routines with exercise how-tos, installable
 public/
   routines.json        all content: routines + exercise library
   plan.json            MB Race training plan, weekly reports
+  races.json           race calendar: events and their yearly editions
   index.html app.js style.css
   sw.js                offline cache
   manifest.webmanifest icon.svg icon-*.png
@@ -63,3 +64,7 @@ Bump `updated` when content changes. Bump `VERSION` in `sw.js` when you change a
 ## Training plan
 
 `#plan` shows the MB Race plan from `public/plan.json`: this week's sessions with %FTP targets and watts, the coming weeks, past weeks with their review status, and the adjustment rules. A scheduled Claude task runs every Monday morning, reads Strava, applies the rules to the coming week, writes a report, commits and tags a release. See `docs/weekly-review.md`.
+
+## Race calendar
+
+`#races` lists the races in `public/races.json` for a chosen year, grouped by month and filterable by discipline. Each race has a status per year (idea, maybe, planned, registered, done, skipped). The page flags races whose dates overlap or that come too soon after another (recovery gaps per format live in `gaps`). Dates marked `~` are estimates from past editions. Add races or change statuses by asking Claude.
