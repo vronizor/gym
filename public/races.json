@@ -615,6 +615,32 @@
      "registration": "Opens mid-February; on-site entry possible."
     }
    }
+  },
+  {
+   "id": "barillette",
+   "name": "VTT La Barillette",
+   "place": "Chéserex, Nyon region",
+   "country": "CH",
+   "discipline": "mtb",
+   "format": "marathon",
+   "vibe": "small",
+   "usual": "Last Saturday of August",
+   "month": 8,
+   "distances": [
+    "Grand parcours ~33 km · 1,500 m, up to La Barillette (1,528 m)"
+   ],
+   "url": "https://www.vtt-barillette.ch/",
+   "notes": [
+    "Popular race via the Barillette antenna, La Givrine and Saint-Cergue, then the big descent to Chéserex. West Bike Cup round.",
+    "2026 was 29 Aug (32nd edition). Online entry via MSO; on-site entry too."
+   ],
+   "editions": {
+    "2027": {
+     "date": "2027-08-28",
+     "approx": true,
+     "status": "idea"
+    }
+   }
   }
  ]
 }
