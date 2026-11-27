@@ -15,9 +15,10 @@
     "40 km · 700 m",
     "60 km · 1,350 m"
    ],
-   "url": null,
+   "url": "https://www.lacernaysiennevtt.fr/",
    "notes": [
-    "Rando, capped at 500 riders. Close to Paris."
+    "Rando, capped at 500 riders. Close to Paris.",
+    "2025 was 23 March, 2026 was 22 March."
    ],
    "editions": {
     "2027": {
@@ -95,10 +96,10 @@
    "distances": [
     "24h (2027 edition)"
    ],
-   "url": null,
+   "url": "https://24heuresvtt.org/",
    "notes": [
-    "Solo. Chance to try night riding.",
-    "Not in the MB Race training plan."
+    "Esprit Raid runs both the 8h and 24h at Buthiers. Solo is possible.",
+    "Night riding. Not in the MB Race training plan."
    ],
    "editions": {
     "2027": {
@@ -111,7 +112,7 @@
   {
    "id": "couraillon",
    "name": "Brevet du Couraillon",
-   "place": "Western Switzerland",
+   "place": "La Chaux-de-Fonds, Jura",
    "country": "CH",
    "discipline": "mtb",
    "format": "self-supported",
@@ -119,19 +120,21 @@
    "usual": "First weekend of June",
    "month": 6,
    "distances": [
-    "2 days"
+    "~120 km",
+    "~210 km"
    ],
-   "url": "https://www.instagram.com/brevetcouraillon/",
+   "url": "https://couraillon.cc/",
    "notes": [
-    "Endurance and navigation, self-supported.",
-    "2025 edition was 7–8 June."
+    "Endurance and navigation, self-supported, with checkpoints. Saturday night meal and party on an alpine pasture, back down on Sunday.",
+    "2026 was 6–7 June and filled up (waiting list)."
    ],
    "editions": {
     "2027": {
      "date": "2027-06-05",
      "end": "2027-06-06",
      "approx": true,
-     "status": "planned"
+     "status": "planned",
+     "registration": "Filled up for 2026; waiting list opened."
     }
    }
   },
@@ -412,20 +415,19 @@
    "discipline": "mtb",
    "format": "self-supported",
    "vibe": "classic",
-   "usual": "Early August start",
-   "month": 8,
+   "usual": "September",
+   "month": 9,
    "distances": [
-    "800 km · 28,000 m, 70% unpaved"
+    "~900 km · 29,000 m, mostly unpaved"
    ],
-   "url": "https://bikepacking.com/event/dahu-trail-2026/",
+   "url": "https://dahutrail.it/",
    "notes": [
-    "Western Alps, crosses the Italy–France–Switzerland borders eight times.",
-    "2026 started 3 August; entry €220."
+    "Western Alps, crosses the Italy–France–Switzerland borders several times. Aosta → Saluzzo in 2026.",
+    "2026 started early August; 2027 moves to 12 September."
    ],
    "editions": {
     "2027": {
-     "date": "2027-08-02",
-     "approx": true,
+     "date": "2027-09-12",
      "status": "idea"
     }
    }
@@ -466,22 +468,16 @@
    "discipline": "mtb",
    "format": "self-supported",
    "vibe": "classic",
-   "usual": "Early August start (2024: 3 Aug from Lille)",
-   "month": 8,
+   "usual": "Ended: 2025 was the last edition",
+   "month": null,
    "distances": [
-    "~2,200 km · 30,000+ m"
+    "~2,100–2,200 km · ~40,000 m"
    ],
-   "url": null,
+   "url": "https://www.frenchdivide.com/",
    "notes": [
-    "Unclear if it's still running: one listing marks the 2026 edition cancelled, others say date to confirm. No 2027 edition found."
+    "The organisers called the 9th edition (from Strasbourg, 31 May 2025) the last one. Kept here for the record."
    ],
-   "editions": {
-    "2027": {
-     "date": "2027-08-07",
-     "approx": true,
-     "status": "idea"
-    }
-   }
+   "editions": {}
   },
   {
    "id": "transmaresme",
@@ -574,12 +570,12 @@
    "usual": "Mid-May, Saturday",
    "month": 5,
    "distances": [
-    "Fixed route around the lake"
+    "~360 km · 7,000 m"
    ],
-   "url": "https://bikepacking.com/?p=159913",
+   "url": "https://www.lausannegravel.cc/lgc",
    "notes": [
     "Self-supported, fixed route.",
-    "2024 was 18 May."
+    "Last listed edition was 17–19 May 2024; the next date is announced via their newsletter."
    ],
    "editions": {
     "2027": {
