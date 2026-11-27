@@ -25,7 +25,6 @@
    ],
    "url": "https://battistrada.com/en/cycling-calendar/edition/la-cernaysienne-vtt-2025/37208",
    "notes": [
-    "To confirm it's the one you meant by \"Cernesienne\".",
     "Rando, capped at 500 riders. Close to Paris."
    ],
    "editions": {
@@ -499,6 +498,60 @@
      "date": "2027-11-07",
      "approx": true,
      "status": "idea"
+    }
+   }
+  },
+  {
+   "id": "atlas-mountain-race",
+   "name": "Atlas Mountain Race",
+   "place": "Ouzoud → Essaouira, Morocco",
+   "country": "MA",
+   "discipline": "mtb",
+   "format": "self-supported",
+   "vibe": "classic",
+   "usual": "Winter/spring, moves with Ramadan",
+   "month": 3,
+   "distances": [
+    "~1,350 km · 25,000 m, ~8 days"
+   ],
+   "url": "https://www.themountainraces.cc/atlas-mountain-race",
+   "notes": [
+    "The Mountain Races series. Fixed route, unsupported, clock never stops.",
+    "Applications open in summer the year before; 25% of places reserved for women."
+   ],
+   "editions": {
+    "2027": {
+     "date": "2027-03-13",
+     "end": "2027-03-20",
+     "status": "idea",
+     "registration": "Application window closed, fully booked."
+    }
+   }
+  },
+  {
+   "id": "hellenic-mountain-race",
+   "name": "Hellenic Mountain Race",
+   "place": "Greek mountains (2026: finish in Nafpaktos)",
+   "country": "GR",
+   "discipline": "mtb",
+   "format": "self-supported",
+   "vibe": "classic",
+   "usual": "Late May, one week",
+   "month": 5,
+   "distances": [
+    "~900 km · 30,000 m, ~7 days"
+   ],
+   "url": "https://www.themountainraces.cc/hellenic-mountain-race",
+   "notes": [
+    "The Mountain Races series. Gravel roads, stone paths and tarmac. Solo or pairs, £375.",
+    "Applications close end of October the year before, accepted on a rolling basis."
+   ],
+   "editions": {
+    "2027": {
+     "date": "2027-05-22",
+     "end": "2027-05-29",
+     "status": "idea",
+     "registration": "Applications closed 31 Oct 2026."
     }
    }
   }
