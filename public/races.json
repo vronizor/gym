@@ -19,11 +19,21 @@
    "vibe": "small",
    "usual": "Late March, Sunday",
    "month": 3,
-   "distances": ["40 km · 700 m", "60 km · 1,350 m"],
+   "distances": [
+    "40 km · 700 m",
+    "60 km · 1,350 m"
+   ],
    "url": "https://battistrada.com/en/cycling-calendar/edition/la-cernaysienne-vtt-2025/37208",
-   "notes": ["To confirm it's the one you meant by \"Cernesienne\".", "Rando, capped at 500 riders. Close to Paris."],
+   "notes": [
+    "To confirm it's the one you meant by \"Cernesienne\".",
+    "Rando, capped at 500 riders. Close to Paris."
+   ],
    "editions": {
-    "2027": { "date": "2027-03-21", "approx": true, "status": "idea" }
+    "2027": {
+     "date": "2027-03-21",
+     "approx": true,
+     "status": "idea"
+    }
    }
   },
   {
@@ -36,11 +46,21 @@
    "vibe": "classic",
    "usual": "Holy Week, 2 days",
    "month": 3,
-   "distances": ["2 stages: XCP + XCM"],
+   "distances": [
+    "2 stages: XCP + XCM"
+   ],
    "url": "https://volcatbtt.com/en",
-   "notes": ["Oldest MTB stage race in Spain. Solo or pairs.", "2026 was 3–4 April; 2027 Easter is 28 March, so expect late March."],
+   "notes": [
+    "Oldest MTB stage race in Spain. Solo or pairs.",
+    "2026 was 3–4 April; 2027 Easter is 28 March, so expect late March."
+   ],
    "editions": {
-    "2027": { "date": "2027-03-26", "end": "2027-03-27", "approx": true, "status": "idea" }
+    "2027": {
+     "date": "2027-03-26",
+     "end": "2027-03-27",
+     "approx": true,
+     "status": "idea"
+    }
    }
   },
   {
@@ -53,11 +73,22 @@
    "vibe": "classic",
    "usual": "Late April, Saturday",
    "month": 4,
-   "distances": ["167 km", "225 km", "312 km · 5,050 m"],
+   "distances": [
+    "167 km",
+    "225 km",
+    "312 km · 5,050 m"
+   ],
    "url": "https://www.finishers.com/en/course/mallorca-312",
-   "notes": ["Closed roads over the Serra de Tramuntana, incl. Puig Major. Distance picked on the day.", "Sells out in minutes. Official resale marketplace runs 1 Dec to 31 Mar."],
+   "notes": [
+    "Closed roads over the Serra de Tramuntana, incl. Puig Major. Distance picked on the day.",
+    "Sells out in minutes. Official resale marketplace runs 1 Dec to 31 Mar."
+   ],
    "editions": {
-    "2027": { "date": "2027-04-24", "status": "idea", "registration": "Sold out. Resale marketplace 1 Dec 2026 – 31 Mar 2027." }
+    "2027": {
+     "date": "2027-04-24",
+     "status": "idea",
+     "registration": "Sold out. Resale marketplace 1 Dec 2026 – 31 Mar 2027."
+    }
    }
   },
   {
@@ -70,11 +101,20 @@
    "vibe": "small",
    "usual": "Early May weekend",
    "month": 5,
-   "distances": ["24h (2027 edition)"],
+   "distances": [
+    "24h (2027 edition)"
+   ],
    "url": null,
-   "notes": ["Solo. Chance to try night riding.", "Not in the MB Race training plan."],
+   "notes": [
+    "Solo. Chance to try night riding.",
+    "Not in the MB Race training plan."
+   ],
    "editions": {
-    "2027": { "date": "2027-05-01", "end": "2027-05-02", "status": "maybe" }
+    "2027": {
+     "date": "2027-05-01",
+     "end": "2027-05-02",
+     "status": "maybe"
+    }
    }
   },
   {
@@ -87,11 +127,21 @@
    "vibe": "small",
    "usual": "First weekend of June",
    "month": 6,
-   "distances": ["2 days"],
+   "distances": [
+    "2 days"
+   ],
    "url": "https://www.instagram.com/brevetcouraillon/",
-   "notes": ["Endurance and navigation, self-supported.", "2025 edition was 7–8 June."],
+   "notes": [
+    "Endurance and navigation, self-supported.",
+    "2025 edition was 7–8 June."
+   ],
    "editions": {
-    "2027": { "date": "2027-06-05", "end": "2027-06-06", "approx": true, "status": "idea" }
+    "2027": {
+     "date": "2027-06-05",
+     "end": "2027-06-06",
+     "approx": true,
+     "status": "idea"
+    }
    }
   },
   {
@@ -104,11 +154,21 @@
    "vibe": "classic",
    "usual": "Early June, Saturday",
    "month": 6,
-   "distances": ["200 km · 6,500 m"],
+   "distances": [
+    "200 km · 6,500 m"
+   ],
    "url": "https://nuemtb.com/gigantes-spain/",
-   "notes": ["Gegant de Pedra. Very rocky, Penyagolosa mountains, 17 h limit.", "2026 was 6 June; registration opened 1 Feb."],
+   "notes": [
+    "Gegant de Pedra. Very rocky, Penyagolosa mountains, 17 h limit.",
+    "2026 was 6 June; registration opened 1 Feb."
+   ],
    "editions": {
-    "2027": { "date": "2027-06-05", "approx": true, "status": "idea", "registration": "Opened early February for 2026." }
+    "2027": {
+     "date": "2027-06-05",
+     "approx": true,
+     "status": "idea",
+     "registration": "Opened early February for 2026."
+    }
    }
   },
   {
@@ -121,11 +181,18 @@
    "vibe": "classic",
    "usual": "Mid-June, Saturday start",
    "month": 6,
-   "distances": ["1,000 km, mostly singletrack"],
+   "distances": [
+    "1,000 km, mostly singletrack"
+   ],
    "url": "https://bikepacking.com/event/hope-1000-2027/",
-   "notes": ["Nonstop across Switzerland, Lake Constance to the Freddie Mercury statue."],
+   "notes": [
+    "Nonstop across Switzerland, Lake Constance to the Freddie Mercury statue."
+   ],
    "editions": {
-    "2027": { "date": "2027-06-12", "status": "idea" }
+    "2027": {
+     "date": "2027-06-12",
+     "status": "idea"
+    }
    }
   },
   {
@@ -138,11 +205,20 @@
    "vibe": "classic",
    "usual": "Mid-June",
    "month": 6,
-   "distances": ["80 km · 1,860 m (Argent)", "200+ km nonstop"],
+   "distances": [
+    "80 km · 1,860 m (Argent)",
+    "200+ km nonstop"
+   ],
    "url": "https://www.finishers.com/fr/course/pedals-de-foc",
-   "notes": ["\"Pédale comme un phoque.\" The nonstop is one of the hardest in Spain."],
+   "notes": [
+    "\"Pédale comme un phoque.\" The nonstop is one of the hardest in Spain."
+   ],
    "editions": {
-    "2027": { "date": "2027-06-19", "approx": true, "status": "idea" }
+    "2027": {
+     "date": "2027-06-19",
+     "approx": true,
+     "status": "idea"
+    }
    }
   },
   {
@@ -155,12 +231,20 @@
    "vibe": "classic",
    "usual": "Early July, Saturday",
    "month": 7,
-   "distances": ["70 km · ~3,200 m"],
+   "distances": [
+    "70 km · ~3,200 m"
+   ],
    "url": null,
    "alpine_cup": true,
-   "notes": ["Target race of the training plan."],
+   "notes": [
+    "Target race of the training plan."
+   ],
    "editions": {
-    "2027": { "date": "2027-07-03", "status": "planned", "distance": "70 km" }
+    "2027": {
+     "date": "2027-07-03",
+     "status": "planned",
+     "distance": "70 km"
+    }
    }
   },
   {
@@ -173,11 +257,24 @@
    "vibe": "classic",
    "usual": "Early August weekend",
    "month": 8,
-   "distances": ["20 km", "30 km", "45 km", "50 km", "80 km"],
+   "distances": [
+    "20 km",
+    "30 km",
+    "45 km",
+    "50 km",
+    "80 km"
+   ],
    "url": "https://www.eigerbike.ch",
-   "notes": ["Finish under the Eiger north face. Part of the Swiss Bike Marathon Classics.", "Late-registration surcharge from 1 August."],
+   "notes": [
+    "Finish under the Eiger north face. Part of the Swiss Bike Marathon Classics.",
+    "Late-registration surcharge from 1 August."
+   ],
    "editions": {
-    "2027": { "date": "2027-08-07", "approx": true, "status": "idea" }
+    "2027": {
+     "date": "2027-08-07",
+     "approx": true,
+     "status": "idea"
+    }
    }
   },
   {
@@ -190,12 +287,22 @@
    "vibe": "classic",
    "usual": "Late August, Saturday",
    "month": 8,
-   "distances": ["Evolène 37 km", "Hérémence 68 km", "Nendaz 92 km", "Verbier 125 km · 5,000 m"],
+   "distances": [
+    "Evolène 37 km",
+    "Hérémence 68 km",
+    "Nendaz 92 km",
+    "Verbier 125 km · 5,000 m"
+   ],
    "url": "https://grand-raid-bcvs.ch/",
    "alpine_cup": true,
-   "notes": ["Every start goes over the Pas de Lona."],
+   "notes": [
+    "Every start goes over the Pas de Lona."
+   ],
    "editions": {
-    "2027": { "date": "2027-08-21", "status": "idea" }
+    "2027": {
+     "date": "2027-08-21",
+     "status": "idea"
+    }
    }
   },
   {
@@ -208,11 +315,19 @@
    "vibe": "classic",
    "usual": "Early September start",
    "month": 9,
-   "distances": ["~1,000 km, mixed terrain"],
+   "distances": [
+    "~1,000 km, mixed terrain"
+   ],
    "url": "https://www.bike-magazin.de/en/tours/switzerland/alps-divide-ultra-from-menton-to-lake-geneva-the-western-alps-the-hard-way/",
-   "notes": ["Applications close in mid-November the year before."],
+   "notes": [
+    "Applications close in mid-November the year before."
+   ],
    "editions": {
-    "2027": { "date": "2027-09-04", "status": "idea", "registration": "Closed 14 Nov 2026. Realistically a 2028 race." }
+    "2027": {
+     "date": "2027-09-04",
+     "status": "idea",
+     "registration": "Closed 14 Nov 2026. Realistically a 2028 race."
+    }
    }
   },
   {
@@ -225,12 +340,22 @@
    "vibe": "classic",
    "usual": "Mid-September weekend",
    "month": 9,
-   "distances": ["Open 85 km", "Elite 110 km", "Randos 33–85 km"],
+   "distances": [
+    "Open 85 km",
+    "Elite 110 km",
+    "Randos 33–85 km"
+   ],
    "url": "https://www.la-forestiere.com/epreuve-forestiere-vtt/",
    "alpine_cup": true,
-   "notes": ["The autumn classic. 2026 was 19–20 September."],
+   "notes": [
+    "The autumn classic. 2026 was 19–20 September."
+   ],
    "editions": {
-    "2027": { "date": "2027-09-18", "approx": true, "status": "idea" }
+    "2027": {
+     "date": "2027-09-18",
+     "approx": true,
+     "status": "idea"
+    }
    }
   },
   {
@@ -243,11 +368,20 @@
    "vibe": "classic",
    "usual": "End of September",
    "month": 9,
-   "distances": ["Explorer 60 km", "Ultra 82–88 km · 2,850 m up / 4,300 m down"],
+   "distances": [
+    "Explorer 60 km",
+    "Ultra 82–88 km · 2,850 m up / 4,300 m down"
+   ],
    "url": "https://www.ucc-sportevent.com/en/transvesubienne-3",
-   "notes": ["Mountains down to the Baie des Anges. Technical, with time limits."],
+   "notes": [
+    "Mountains down to the Baie des Anges. Technical, with time limits."
+   ],
    "editions": {
-    "2027": { "date": "2027-09-26", "approx": true, "status": "idea" }
+    "2027": {
+     "date": "2027-09-26",
+     "approx": true,
+     "status": "idea"
+    }
    }
   },
   {
@@ -260,10 +394,113 @@
    "vibe": "small",
    "usual": "Date to check",
    "month": null,
-   "distances": ["2 days on dirt roads"],
+   "distances": [
+    "2 days on dirt roads"
+   ],
    "url": "https://dotwatcher.cc/race/303lucerne-2025",
-   "notes": ["About 100 riders. Gravel rather than MTB."],
+   "notes": [
+    "About 100 riders. Gravel rather than MTB."
+   ],
    "editions": {}
+  },
+  {
+   "id": "dahu-trail",
+   "name": "Dahu Trail",
+   "place": "Aosta → Saluzzo",
+   "country": "IT",
+   "discipline": "mtb",
+   "format": "self-supported",
+   "vibe": "classic",
+   "usual": "Early August start",
+   "month": 8,
+   "distances": [
+    "800 km · 28,000 m, 70% unpaved"
+   ],
+   "url": "https://bikepacking.com/event/dahu-trail-2026/",
+   "notes": [
+    "Western Alps, crosses the Italy–France–Switzerland borders eight times.",
+    "2026 started 3 August; entry €220."
+   ],
+   "editions": {
+    "2027": {
+     "date": "2027-08-02",
+     "approx": true,
+     "status": "idea"
+    }
+   }
+  },
+  {
+   "id": "sneak-peaks",
+   "name": "Sneak Peaks",
+   "place": "Bolzano, Dolomites",
+   "country": "IT",
+   "discipline": "mtb",
+   "format": "self-supported",
+   "vibe": "classic",
+   "usual": "Late August / early September",
+   "month": 8,
+   "distances": [
+    "Entree ~500 km · 17,000 m",
+    "Classic ~780 km · 28,000 m",
+    "Adventure 1,100 km · 40,000 m"
+   ],
+   "url": "https://bikepacking.com/event/sneak-peaks-bikepacking-expedition-adventure-2026/",
+   "notes": [
+    "Orbit360. Steep, some hike-a-bike, rifugios as checkpoints.",
+    "2026: Adventure started 26 Aug, Entree 30 Aug."
+   ],
+   "editions": {
+    "2027": {
+     "date": "2027-08-26",
+     "approx": true,
+     "status": "idea"
+    }
+   }
+  },
+  {
+   "id": "french-divide",
+   "name": "French Divide",
+   "place": "Across France, north to south",
+   "country": "FR",
+   "discipline": "mtb",
+   "format": "self-supported",
+   "vibe": "classic",
+   "usual": "Varies; no 2027 date announced",
+   "month": null,
+   "distances": [
+    "~2,200 km · 30,000+ m"
+   ],
+   "url": null,
+   "notes": [
+    "Unclear if it's still running: one listing marks the 2026 edition cancelled, others say date to confirm. No 2027 edition found."
+   ],
+   "editions": {}
+  },
+  {
+   "id": "transmaresme",
+   "name": "TransMaresme Bike",
+   "place": "Santa Coloma de Gramenet → Santa Susanna",
+   "country": "ES",
+   "discipline": "mtb",
+   "format": "marathon",
+   "vibe": "small",
+   "usual": "Early November, Sunday",
+   "month": 11,
+   "distances": [
+    "80 km · 2,200 m"
+   ],
+   "url": "https://femturisme.cat/agenda/transmaresme-bike",
+   "notes": [
+    "Crosses the whole Maresme with sea views. MTB or gravel.",
+    "2025 was 9 November."
+   ],
+   "editions": {
+    "2027": {
+     "date": "2027-11-07",
+     "approx": true,
+     "status": "idea"
+    }
+   }
   }
  ]
 }
