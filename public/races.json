@@ -391,16 +391,25 @@
    "discipline": "gravel",
    "format": "ultra",
    "vibe": "small",
-   "usual": "Date to check",
-   "month": null,
+   "usual": "Early May weekend",
+   "month": 5,
    "distances": [
     "2 days on dirt roads"
    ],
-   "url": "https://dotwatcher.cc/race/303lucerne-2025",
+   "url": "https://303lucerne.ch/",
    "notes": [
-    "About 100 riders. Gravel rather than MTB."
+    "About 100 riders, self-supported, solo or pairs. Gravel rather than MTB.",
+    "2026 was 9 May and sold out in January."
    ],
-   "editions": {}
+   "editions": {
+    "2027": {
+     "date": "2027-05-08",
+     "end": "2027-05-09",
+     "approx": true,
+     "status": "idea",
+     "registration": "Sold out by January for 2026."
+    }
+   }
   },
   {
    "id": "dahu-trail",
@@ -464,8 +473,8 @@
    "discipline": "mtb",
    "format": "self-supported",
    "vibe": "classic",
-   "usual": "Varies; no 2027 date announced",
-   "month": null,
+   "usual": "Early August start (2024: 3 Aug from Lille)",
+   "month": 8,
    "distances": [
     "~2,200 km · 30,000+ m"
    ],
@@ -473,7 +482,13 @@
    "notes": [
     "Unclear if it's still running: one listing marks the 2026 edition cancelled, others say date to confirm. No 2027 edition found."
    ],
-   "editions": {}
+   "editions": {
+    "2027": {
+     "date": "2027-08-07",
+     "approx": true,
+     "status": "idea"
+    }
+   }
   },
   {
    "id": "transmaresme",
@@ -552,6 +567,59 @@
      "end": "2027-05-29",
      "status": "idea",
      "registration": "Applications closed 31 Oct 2026."
+    }
+   }
+  },
+  {
+   "id": "leman-gravel",
+   "name": "Léman Gravel Challenge",
+   "place": "Lausanne, around Lac Léman",
+   "country": "CH",
+   "discipline": "gravel",
+   "format": "self-supported",
+   "vibe": "small",
+   "usual": "Mid-May, Saturday",
+   "month": 5,
+   "distances": [
+    "Fixed route around the lake"
+   ],
+   "url": "https://bikepacking.com/?p=159913",
+   "notes": [
+    "Self-supported, fixed route.",
+    "2024 was 18 May."
+   ],
+   "editions": {
+    "2027": {
+     "date": "2027-05-15",
+     "approx": true,
+     "status": "idea"
+    }
+   }
+  },
+  {
+   "id": "open-bike-gruyere",
+   "name": "Open Bike Haute-Gruyère",
+   "place": "Grandvillard, Intyamon valley",
+   "country": "CH",
+   "discipline": "mtb",
+   "format": "marathon",
+   "vibe": "small",
+   "usual": "Third weekend of September, Saturday",
+   "month": 9,
+   "distances": [
+    "Courses from 0.3 to 47 km"
+   ],
+   "url": "https://fribourg.ch/en/la-gruyere/events/openbike-haute-gruyere/",
+   "notes": [
+    "Big MTB party through 6 villages of the Intyamon, past Lake Lessoc and through Gruyères, finish at the festival in Grandvillard.",
+    "2025 was 20 Sept, 2026 was 19 Sept. Registration opened mid-February; on-site entry too."
+   ],
+   "editions": {
+    "2027": {
+     "date": "2027-09-18",
+     "approx": true,
+     "status": "idea",
+     "registration": "Opens mid-February; on-site entry possible."
     }
    }
   }
