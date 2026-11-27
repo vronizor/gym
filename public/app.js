@@ -373,25 +373,24 @@ function raceEntries(year) {
   });
 }
 
-function gapAfter(entry) {
-  return (races.gaps && races.gaps[entry.e.format]) || 14;
+const RUN_UP_DAYS = 14;
+
+function overlaps(a, b) {
+  return a.start && b.start && a.start <= b.end && b.start <= a.end;
 }
 
-function clash(a, b) {
-  if (!a.start || !b.start) return null;
-  const [first, second] = a.start <= b.start ? [a, b] : [b, a];
-  const days = dayNum(second.start) - dayNum(first.end);
-  if (days <= 0) return { kind: "overlap", days: 0, first, second };
-  if (days < gapAfter(first)) return { kind: "tight", days, first, second };
-  return null;
-}
-
-function clashText(c, self) {
-  const other = c.first === self ? c.second : c.first;
-  const approx = (c.first.ed.approx || c.second.ed.approx) ? "~" : "";
-  if (c.kind === "overlap") return `Same dates as ${other.e.name}`;
-  const weeks = c.days >= 14 ? `${approx}${Math.round(c.days / 7)} wks` : `${approx}${c.days} days`;
-  return c.first === self ? `${other.e.name} ${weeks} later` : `${weeks} after ${other.e.name}`;
+function raceNotes(entry, all) {
+  const notes = [];
+  const focus = all.find((x) => x.ed && x.ed.focus);
+  for (const x of all) {
+    if (x === entry || !overlaps(entry, x)) continue;
+    if (IN.has(entry.status) || IN.has(x.status)) notes.push(`same weekend as ${x.e.name}`);
+  }
+  if (focus && focus !== entry && entry.start && IN.has(entry.status)) {
+    const days = dayNum(focus.start) - dayNum(entry.end);
+    if (days > 0 && days <= RUN_UP_DAYS) notes.push(`${days} days before ${focus.e.name}`);
+  }
+  return notes;
 }
 
 function raceDate(entry) {
@@ -411,16 +410,16 @@ function monthOf(entry) {
   return entry.e.month || null;
 }
 
-function raceCard(entry, conflicts) {
+function raceCard(entry, all) {
   const { e, ed, status } = entry;
-  const mine = conflicts.filter((c) => c.first === entry || c.second === entry);
-  const cue = [e.place, ...mine.map((c) => clashText(c, entry))].join(" · ");
-  return h("details", { class: `card race st-card-${status}` },
+  const notes = raceNotes(entry, all);
+  const focus = ed && ed.focus;
+  return h("details", { class: `card race st-card-${status}${focus ? " race-focus" : ""}` },
     h("summary", {},
       h("span", { class: "idx race-date" }, raceDate(entry)),
       h("span", { class: "name" }, e.name, h("span", { class: `tag tag-f-${e.format}` }, FORMATS[e.format] || e.format)),
-      h("span", { class: "dose" }, h("span", { class: `st st-${status}` }, status)),
-      h("span", { class: `cue${mine.some((c) => c.kind === "overlap") ? " cue-clash" : mine.length ? " cue-tight" : ""}` }, cue)),
+      h("span", { class: "dose" }, focus ? h("span", { class: "pl stamp" }, "Focus") : h("span", { class: `st st-${status}` }, status)),
+      h("span", { class: "cue" }, e.place, notes.length ? h("span", { class: "race-note" }, ` · ${notes.join(" · ")}`) : null)),
     h("div", { class: "detail" },
       h("div", { class: "pills race-pills" },
         h("span", { class: "pl" }, DISCIPLINES[e.discipline] || e.discipline),
@@ -434,6 +433,10 @@ function raceCard(entry, conflicts) {
       e.url && h("a", { class: "yt", href: e.url, target: "_blank", rel: "noopener noreferrer" }, "Website ↗")));
 }
 
+function weeksTo(iso) {
+  return Math.max(0, Math.ceil((dayNum(iso) - dayNum(isoDay(new Date()))) / 7));
+}
+
 function renderRaces() {
   document.title = "Races · tally";
   const years = raceYears();
@@ -443,14 +446,8 @@ function renderRaces() {
   const pickDisc = (d) => () => { save(DISC_KEY, d); renderRaces(); };
 
   const all = raceEntries(year);
-  const ins = all.filter((x) => IN.has(x.status));
-  const conflicts = [];
-  for (const x of all) for (const y of ins) {
-    if (x === y || (IN.has(x.status) && all.indexOf(x) > all.indexOf(y))) continue;
-    const c = clash(x, y);
-    if (c) conflicts.push(c);
-  }
-  const between = conflicts.filter((c) => IN.has(c.first.status) && IN.has(c.second.status));
+  const focus = all.find((x) => x.ed && x.ed.focus);
+  const fun = all.filter((x) => x !== focus && (x.status === "planned" || x.status === "registered"));
   const shown = all.filter((x) => disc === "all" || x.e.discipline === disc).sort((a, b) => sortKey(a, year).localeCompare(sortKey(b, year)));
   const counts = STATUS.map((s) => [s, all.filter((x) => x.status === s).length]).filter(([, n]) => n);
 
@@ -465,33 +462,26 @@ function renderRaces() {
   document.getElementById("main").replaceChildren(...[
     h("a", { class: "back", href: "#" }, "← All routines"),
     h("h1", {}, "Races"),
-    h("p", { class: "format" }, counts.map(([s, n]) => `${n} ${s}`).join(" · ")),
     h("div", { class: "filter race-filter", role: "group", "aria-label": "Year" },
       years.map((y) => h("button", { type: "button", class: "chip", "aria-pressed": String(y === year), onclick: pickYear(y) }, y))),
+    focus && h("div", { class: "stats" },
+      h("div", { class: "stat" }, h("b", {}, focus.e.name), h("span", {}, `focus · ${shortDate(focus.start)}`)),
+      h("div", { class: "stat" }, h("b", {}, String(weeksTo(focus.start))), h("span", {}, "weeks to go")),
+      h("div", { class: "stat" }, h("b", {}, String(fun.length)), h("span", {}, "more for fun"))),
+    h("p", { class: "format" }, counts.map(([s, n]) => `${n} ${s}`).join(" · ")),
     h("div", { class: "filter race-filter", role: "group", "aria-label": "Discipline" },
       h("button", { type: "button", class: "chip", "aria-pressed": String(disc === "all"), onclick: pickDisc("all") }, "All"),
       Object.entries(DISCIPLINES).map(([k, v]) =>
         h("button", { type: "button", class: "chip", "aria-pressed": String(disc === k), onclick: pickDisc(k) }, v))),
 
-    between.length
-      ? h("section", { class: "block" },
-          h("h2", { class: "block-title" }, "Clashes in your plan"),
-          h("ul", { class: "clashes" }, between.map((c) =>
-            h("li", { class: c.kind === "overlap" ? "cue-clash" : "cue-tight" },
-              `${c.first.e.name} → ${c.second.e.name}: `,
-              c.kind === "overlap" ? "same dates" : `${c.days} days apart (wants ${gapAfter(c.first)})`))))
-      : ins.length > 1 && h("p", { class: "adjusted ok" }, `No clashes between your ${ins.length} planned and maybe races.`),
-
     groups.map((g) => h("section", { class: "block" },
       h("h2", { class: "block-title" }, g.label),
-      g.items.map((x) => raceCard(x, conflicts)))),
+      g.items.map((x) => raceCard(x, all)))),
 
     h("details", { class: "card kit-card" },
-      h("summary", {}, h("span", { class: "name" }, "How clashes are checked"), h("span", { class: "dose" }, "rule of thumb")),
+      h("summary", {}, h("span", { class: "name" }, "How to read this"), h("span", { class: "dose" }, "")),
       h("div", { class: "detail" },
-        h("p", {}, "Races marked planned, registered or maybe are checked against every race that year. A race clashes when the dates overlap, and is tight when it starts sooner after the previous one than that one's recovery gap."),
-        h("ul", { class: "rules" }, Object.entries(races.gaps || {}).map(([f, d]) =>
-          h("li", {}, h("b", {}, `${d} days `), `after ${FORMATS[f] || f}`))),
+        h("p", {}, "One focus race a year gets the serious preparation; the rest are for fun. Small grey notes point out races on the same weekend as one you plan to do, and planned races in the last two weeks before the focus race. Back-to-back weekends are fine."),
         h("p", { class: "kit" }, "A ~ marks dates estimated from past editions. Ask Claude to add a race, change a status or fill in a confirmed date."))),
   ].flat().filter(Boolean));
 }
@@ -499,16 +489,19 @@ function renderRaces() {
 function racesTile() {
   if (!races) return null;
   const today = isoDay(new Date());
-  const next = races.events
+  const upcoming = races.events
     .flatMap((e) => Object.values(e.editions || {}).map((ed) => ({ e, ed })))
-    .filter(({ ed }) => ed.date && ed.date >= today && (ed.status === "planned" || ed.status === "registered"))
-    .sort((a, b) => a.ed.date.localeCompare(b.ed.date))[0];
-  const weeks = next ? Math.ceil((dayNum(next.ed.date) - dayNum(today)) / 7) : null;
+    .filter(({ ed }) => ed.date && ed.date >= today);
+  const focus = upcoming.filter(({ ed }) => ed.focus).sort((a, b) => a.ed.date.localeCompare(b.ed.date))[0];
+  const year = focus ? focus.ed.date.slice(0, 4) : null;
+  const fun = focus ? upcoming.filter(({ ed }) => ed !== focus.ed && ed.date.startsWith(year) && (ed.status === "planned" || ed.status === "registered")).length : 0;
   return h("a", { class: "tile races-tile", href: "#races" },
-    h("span", { class: "tile-kicker" }, "Race calendar"),
-    h("span", { class: "tile-name" }, next ? next.e.name : "Races"),
-    h("span", { class: "tile-meta" }, next ? `${shortDate(next.ed.date)} · ${weeks} wks` : `${races.events.length} races`),
-    h("span", { class: "pills" }, h("span", { class: "pl hue-teal" }, `${races.events.length} races`)));
+    h("span", { class: "tile-kicker" }, focus ? `Race calendar · ${year} focus` : "Race calendar"),
+    h("span", { class: "tile-name" }, focus ? focus.e.name : "Races"),
+    h("span", { class: "tile-meta" }, focus ? `${shortDate(focus.ed.date)} · ${weeksTo(focus.ed.date)} wks` : `${races.events.length} races`),
+    h("span", { class: "pills" },
+      fun ? h("span", { class: "pl hue-green" }, `+${fun} for fun`) : null,
+      h("span", { class: "pl hue-teal" }, `${races.events.length} races`)));
 }
 
 function renderHome() {

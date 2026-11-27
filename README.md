@@ -67,4 +67,4 @@ Bump `updated` when content changes. Bump `VERSION` in `sw.js` when you change a
 
 ## Race calendar
 
-`#races` lists the races in `public/races.json` for a chosen year, grouped by month and filterable by discipline. Each race has a status per year (idea, maybe, planned, registered, done, skipped). The page flags races whose dates overlap or that come too soon after another (recovery gaps per format live in `gaps`). Dates marked `~` are estimates from past editions. Add races or change statuses by asking Claude.
+`#races` lists the races in `public/races.json` for a chosen year, grouped by month and filterable by discipline. Each race has a status per year (idea, maybe, planned, registered, done, skipped). One race per year can be the focus (`focus: true`); the rest are for fun. The page only adds small notes for races on the same weekend and planned races just before the focus race. Dates marked `~` are estimates from past editions. Add races or change statuses by asking Claude.

@@ -1,13 +1,5 @@
 {
  "updated": "2026-11-27",
- "gaps": {
-  "marathon": 14,
-  "endurance": 21,
-  "ultra": 21,
-  "self-supported": 28,
-  "gran-fondo": 14,
-  "stage": 14
- },
  "events": [
   {
    "id": "cernaysienne",
@@ -139,7 +131,7 @@
      "date": "2027-06-05",
      "end": "2027-06-06",
      "approx": true,
-     "status": "idea"
+     "status": "planned"
     }
    }
   },
@@ -242,7 +234,8 @@
     "2027": {
      "date": "2027-07-03",
      "status": "planned",
-     "distance": "70 km"
+     "distance": "70 km",
+     "focus": true
     }
    }
   },
@@ -618,7 +611,7 @@
     "2027": {
      "date": "2027-09-18",
      "approx": true,
-     "status": "idea",
+     "status": "planned",
      "registration": "Opens mid-February; on-site entry possible."
     }
    }
